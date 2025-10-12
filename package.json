@@ -1,0 +1,44 @@
+{
+  "name": "@agenticledger/any-api-call-mcp-server",
+  "version": "1.0.0",
+  "description": "Universal Natural Language API MCP Server - Make any HTTP API call through AI-friendly tools",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "node tests/integration-test.js",
+    "test:integration": "node tests/integration-test.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "api",
+    "http",
+    "rest",
+    "api-client",
+    "universal-api",
+    "natural-language",
+    "ai-agent",
+    "agenticledger"
+  ],
+  "author": "AgenticLedger Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oregpt/Agenticledger_MCP_AnyApIService.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "axios": "^1.7.9",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
