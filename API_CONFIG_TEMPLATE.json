@@ -1,0 +1,153 @@
+{
+  "_comment": "Template for adding new APIs to config/apis.json",
+  "_instructions": "Copy the example below and customize for your API",
+
+  "template_minimal": {
+    "id": "your-api-id",
+    "name": "Your API Name",
+    "description": "What this API does",
+    "baseUrl": "https://api.example.com",
+    "requiresAuth": false,
+    "endpoints": [
+      {
+        "name": "endpoint_name",
+        "path": "/endpoint/path",
+        "method": "GET",
+        "description": "What this endpoint does"
+      }
+    ]
+  },
+
+  "template_with_authentication": {
+    "id": "auth-api-id",
+    "name": "Authenticated API",
+    "description": "API requiring authentication",
+    "baseUrl": "https://api.example.com/v1",
+    "requiresAuth": true,
+    "authType": "bearer",
+    "rateLimit": {
+      "requestsPerMinute": 60,
+      "requestsPerDay": 5000
+    },
+    "endpoints": [
+      {
+        "name": "get_resource",
+        "path": "/resources/{id}",
+        "method": "GET",
+        "description": "Get a specific resource",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Resource ID"
+          }
+        ],
+        "queryParams": [
+          {
+            "name": "include",
+            "type": "string",
+            "required": false,
+            "description": "Related data to include"
+          }
+        ]
+      }
+    ]
+  },
+
+  "template_with_post": {
+    "id": "create-api-id",
+    "name": "API with POST",
+    "description": "API that creates resources",
+    "baseUrl": "https://api.example.com",
+    "requiresAuth": true,
+    "authType": "apikey",
+    "authHeaderName": "X-API-Key",
+    "endpoints": [
+      {
+        "name": "create_item",
+        "path": "/items",
+        "method": "POST",
+        "description": "Create a new item",
+        "bodyParams": [
+          {
+            "name": "title",
+            "type": "string",
+            "required": true,
+            "description": "Item title"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Item description"
+          }
+        ],
+        "exampleRequest": {
+          "body": {
+            "title": "My Item",
+            "description": "Item details"
+          }
+        }
+      }
+    ]
+  },
+
+  "auth_types": {
+    "bearer": "Authorization: Bearer <token>",
+    "apikey": "Custom header with API key",
+    "basic": "Authorization: Basic <base64(user:pass)>",
+    "custom": "Custom authentication"
+  },
+
+  "parameter_types": {
+    "string": "Text value",
+    "number": "Numeric value",
+    "boolean": "true or false",
+    "object": "JSON object",
+    "array": "JSON array"
+  },
+
+  "http_methods": [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE"
+  ],
+
+  "quick_examples": {
+    "spotify_search": {
+      "id": "spotify",
+      "name": "Spotify",
+      "baseUrl": "https://api.spotify.com/v1",
+      "requiresAuth": true,
+      "authType": "bearer",
+      "endpoints": [
+        {
+          "name": "search",
+          "path": "/search",
+          "method": "GET",
+          "queryParams": [
+            {"name": "q", "type": "string", "required": true},
+            {"name": "type", "type": "string", "required": true}
+          ]
+        }
+      ]
+    },
+
+    "public_api": {
+      "id": "catfacts",
+      "name": "Cat Facts",
+      "baseUrl": "https://catfact.ninja",
+      "requiresAuth": false,
+      "endpoints": [
+        {
+          "name": "random_fact",
+          "path": "/fact",
+          "method": "GET"
+        }
+      ]
+    }
+  }
+}

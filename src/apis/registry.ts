@@ -6,6 +6,12 @@
 
 import { APIDefinition, APIRegistry as IAPIRegistry } from '../types.js';
 import { CORE_APIS } from './definitions.js';
+import * as fs from 'fs';
+import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export class APIRegistry implements IAPIRegistry {
   public apis: Map<string, APIDefinition>;
@@ -13,7 +19,36 @@ export class APIRegistry implements IAPIRegistry {
   constructor() {
     this.apis = new Map();
 
-    // Register all core APIs on initialization
+    // Try to load APIs from JSON config first
+    try {
+      const configPath = path.join(__dirname, '../../config/apis.json');
+
+      if (fs.existsSync(configPath)) {
+        console.log('📄 Loading API definitions from config/apis.json...');
+        const configData = fs.readFileSync(configPath, 'utf-8');
+        const config = JSON.parse(configData);
+
+        if (config.apis && Array.isArray(config.apis)) {
+          config.apis.forEach((api: APIDefinition) => {
+            this.registerAPI(api);
+          });
+          console.log(`✅ Loaded ${config.apis.length} APIs from JSON config`);
+        }
+      } else {
+        console.log('⚠️  config/apis.json not found, falling back to TypeScript definitions');
+        this.loadFromTypeScript();
+      }
+    } catch (error) {
+      console.error('❌ Error loading JSON config:', error);
+      console.log('⚠️  Falling back to TypeScript definitions');
+      this.loadFromTypeScript();
+    }
+  }
+
+  /**
+   * Fallback: Load APIs from TypeScript definitions
+   */
+  private loadFromTypeScript(): void {
     CORE_APIS.forEach(api => {
       this.registerAPI(api);
     });
