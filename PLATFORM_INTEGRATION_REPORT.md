@@ -659,11 +659,78 @@ npm test
 
 ---
 
+## Pre-Built API Configurations for Platform Integration
+
+### 🆕 NEW: Ready-to-Use API Configs
+
+We now provide **pre-built, production-ready API configurations** in the `api-configs/` folder!
+
+#### Available Pre-Built APIs:
+
+**1. Canton Network (NodeFortress)** - `api-configs/nodefortress_canton.md`
+- **Type:** Blockchain Explorer API
+- **Auth:** Required (Bearer Token)
+- **Endpoints:** 15+ documented
+- **Use Case:** Canton blockchain data access
+- **Status:** ✅ Production Ready
+
+**2. Bitwave Address Service** - `api-configs/bitwave.md`
+- **Type:** Cryptocurrency Address Validation
+- **Auth:** Not Required (Public API)
+- **Endpoints:** 9 documented
+- **Use Case:** Crypto address validation and symbol lookup
+- **Status:** ✅ Production Ready
+
+#### For Platform Integration Teams:
+
+Each pre-built config file includes:
+- ✅ Complete JSON configuration (copy-paste ready)
+- ✅ Full API documentation
+- ✅ Integration guide with step-by-step instructions
+- ✅ Usage examples and test cases
+- ✅ Authentication setup instructions
+- ✅ Known issues and best practices
+
+#### How to Integrate:
+
+1. Open the `.md` file in `api-configs/` folder
+2. Locate the **"JSON Configuration"** section
+3. Copy the entire JSON object
+4. Add to your platform's API registry
+5. Configure user authentication (if required)
+6. Done! No code changes needed
+
+#### Example Integration:
+
+```typescript
+// 1. Load pre-built config
+const cantonConfig = extractJsonFromMarkdown('api-configs/nodefortress_canton.md');
+
+// 2. Register with platform
+platform.apiRegistry.register(cantonConfig);
+
+// 3. Enable for users
+platform.enableAPI('canton-nodefortress', {
+  requiresUserToken: true,
+  tokenLabel: "Canton Network API Token"
+});
+```
+
+See `api-configs/README.md` for complete integration documentation.
+
+---
+
 ## Expandability
 
-### Adding New APIs
+### Adding New APIs via JSON Config (Recommended)
 
-Adding a new API requires only adding a configuration object to `src/apis/definitions.ts`:
+Simply edit `config/apis.json` - **no code changes or rebuild needed!**
+
+See `HOW_TO_ADD_NEW_APIS.md` for the complete guide.
+
+### Adding New APIs via TypeScript (Legacy)
+
+Adding a new API via TypeScript requires adding a configuration object to `src/apis/definitions.ts`:
 
 ```typescript
 export const NEW_API: APIDefinition = {

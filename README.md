@@ -19,6 +19,7 @@ Make any HTTP API call through AI-friendly tools. Supports 6+ core APIs out of t
 - [Available Tools](#available-tools)
 - [Supported APIs](#supported-apis)
 - [Usage Examples](#usage-examples)
+- [Pre-Built API Configurations](#pre-built-api-configurations) ⭐ NEW
 - [Adding New APIs](#adding-new-apis)
 - [Testing](#testing)
 - [Platform Integration](#platform-integration)
@@ -486,9 +487,53 @@ console.log(`Region: ${data.region}`);
 
 ---
 
+## Pre-Built API Configurations
+
+**NEW:** We now provide ready-to-use API configurations for popular APIs!
+
+### 📦 Available Pre-Built Configs
+
+Check the `api-configs/` folder for complete, production-ready configurations:
+
+- **Canton Network (NodeFortress)** - Blockchain explorer API (`api-configs/nodefortress_canton.md`)
+- **Bitwave Address Service** - Crypto address validation (`api-configs/bitwave.md`)
+- **More coming soon!**
+
+### 🚀 Quick Integration
+
+Each pre-built config includes:
+- ✅ Complete JSON configuration
+- ✅ Full API documentation
+- ✅ Integration guide
+- ✅ Usage examples
+- ✅ Test cases
+
+**For Platform Teams:**
+1. Open the `.md` file in `api-configs/`
+2. Copy the JSON configuration section
+3. Add to your platform's API registry
+4. Done! No code changes needed
+
+**For MCP Server Users:**
+1. Copy JSON from `api-configs/<api-name>.md`
+2. Add to `config/apis.json`
+3. Restart server (no rebuild!)
+
+See `api-configs/README.md` for complete details.
+
+---
+
 ## Adding New APIs
 
-Adding a new API is simple - just add configuration to `src/apis/definitions.ts`:
+### Option 1: Use JSON Config (Recommended)
+
+Simply edit `config/apis.json` and add your API. **No rebuild needed!**
+
+See `HOW_TO_ADD_NEW_APIS.md` for the complete guide.
+
+### Option 2: Use TypeScript Config (Legacy)
+
+Adding a new API via TypeScript - just add configuration to `src/apis/definitions.ts`:
 
 ```typescript
 export const YOUR_API: APIDefinition = {
@@ -618,15 +663,22 @@ AnyAPICall/
 │   ├── schemas.ts                  # Zod validation schemas
 │   ├── apis/
 │   │   ├── registry.ts             # API registry manager
-│   │   └── definitions.ts          # API configurations
+│   │   └── definitions.ts          # API configurations (fallback)
 │   └── utils/
 │       └── apiClient.ts            # HTTP client wrapper
+├── config/
+│   └── apis.json                   # JSON API configurations ⭐ NEW
+├── api-configs/                    # Pre-built API configs ⭐ NEW
+│   ├── README.md                   # Integration guide
+│   ├── nodefortress_canton.md      # Canton Network API
+│   └── bitwave.md                  # Bitwave Address Service
 ├── tests/
 │   └── integration-test.js         # Integration tests
 ├── dist/                           # Compiled JavaScript
 ├── package.json
 ├── tsconfig.json
 ├── README.md                       # This file
+├── HOW_TO_ADD_NEW_APIS.md          # Complete API addition guide
 └── PLATFORM_INTEGRATION_REPORT.md  # Platform integration docs
 ```
 
