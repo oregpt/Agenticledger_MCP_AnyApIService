@@ -20,8 +20,8 @@ Each file contains:
 
 | API | File | Auth Required | Endpoints | Status |
 |-----|------|---------------|-----------|--------|
-| **NodeFortress Explorer** | `nodefortress_canton.md` | ✅ Yes (Bearer) | 15+ | ⚠️ Unverified |
-| **Bitwave Address Service** | `bitwave.md` | ❌ No | 9 | ✅ Ready |
+| **NodeFortress Explorer** | `nodefortress_canton.md` | ✅ Yes (Bearer) | 15 | ❌ Cannot Verify (401) |
+| **Bitwave Address Service** | `bitwave.md` | ❌ No | 3 | ✅ Verified Working |
 
 ---
 
@@ -110,8 +110,9 @@ registerAPI(apiConfig);
 
 **Bitwave Address Service:**
 - No authentication needed
+- **3 verified working endpoints** (tested Jan 2025)
 - Ready to use immediately
-- No setup required
+- **Note:** Only 3 endpoints work - many shown in docs return 404
 
 ---
 
@@ -204,12 +205,14 @@ make_api_call({
 
 ```bash
 # With curl (no auth needed)
-curl https://address-svc-utyjy373hq-uc.a.run.app/api/symbols/BTC
+curl https://address-svc-utyjy373hq-uc.a.run.app/symbols/BTC
+curl https://address-svc-utyjy373hq-uc.a.run.app/coins
+curl https://address-svc-utyjy373hq-uc.a.run.app/
 
 # With AnyAPICall MCP
 make_api_call({
   apiId: "bitwave-address",
-  endpoint: "/api/symbols/{symbol}",
+  endpoint: "/symbols/{symbol}",
   pathParams: { symbol: "BTC" }
 })
 ```
@@ -319,9 +322,10 @@ agent.makeAPICall({
 ### 1. Start with Public APIs
 
 Begin integration with **Bitwave** (no auth needed):
-- Faster to test
+- Faster to test - only 3 endpoints but all verified working
 - No user token management
 - Proves integration works
+- **Note:** Limited to coin/symbol lookup (no validation features)
 
 ### 2. Then Add Authenticated APIs
 
@@ -372,10 +376,10 @@ Move to **NodeFortress Explorer**:
 
 ## 🚦 Status Legend
 
-- ✅ **Ready** - Tested and production-ready
-- 🚧 **Beta** - Functional but may change
+- ✅ **Verified Working** - All endpoints tested and confirmed working
+- ⚠️ **Unverified** - Endpoints exist but cannot verify with provided credentials
+- ❌ **Cannot Verify** - Authentication failures, need valid production credentials
 - 📝 **Draft** - Work in progress
-- ⚠️ **Deprecated** - Use alternative
 
 ---
 
@@ -412,6 +416,8 @@ Have an API you want pre-configured?
 
 ---
 
-**Last Updated:** 2025-01-16
-**Total APIs:** 2
-**Status:** Ready for Production
+**Last Updated:** 2025-01-17
+**Total APIs:** 2 (1 verified working, 1 cannot verify due to auth)
+**Verified Endpoints:** Bitwave (3/3 endpoints working)
+**Testing Date:** January 17, 2025
+**Status:** Bitwave ready for production, NodeFortress requires valid API token

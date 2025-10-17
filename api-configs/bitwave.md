@@ -1,22 +1,21 @@
 # Bitwave Address Service API
 
-**Status:** ✅ Ready for Integration
+**Status:** ✅ Tested and Verified (Jan 2025)
 **API Version:** v1
-**Last Updated:** 2025-01-16
+**Last Updated:** 2025-01-17
 **Documentation:** https://address-svc-utyjy373hq-uc.a.run.app/api-docs/
 
 ---
 
 ## Overview
 
-The Bitwave Address Service API provides cryptocurrency address validation, symbol lookup, and blockchain address management functionality. It's designed to help applications verify addresses, get supported symbols, and manage cryptocurrency address operations.
+The Bitwave Address Service API provides cryptocurrency information and status checking. This is a simplified, tested configuration containing only verified working endpoints.
 
 ### Features:
-- Cryptocurrency address validation
-- Symbol/ticker lookup and information
-- Blockchain address format validation
-- Multi-chain support
-- Address metadata and details
+- Service health/status checking
+- Cryptocurrency coin information lookup
+- Symbol/ticker detailed information
+- Multi-chain coin support
 
 ---
 
@@ -32,7 +31,7 @@ The Bitwave Address Service API provides cryptocurrency address validation, symb
 
 - **Default:** No documented rate limits
 - **Recommended:** Implement client-side throttling (100 req/min recommended)
-- **Caching:** Cache symbol data (updates infrequently)
+- **Caching:** Cache coin/symbol data (updates infrequently)
 
 ---
 
@@ -52,7 +51,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
 {
   "id": "bitwave-address",
   "name": "Bitwave Address Service",
-  "description": "Cryptocurrency address validation, symbol lookup, and blockchain address management API",
+  "description": "Cryptocurrency coin and symbol information lookup API - tested and verified endpoints only",
   "baseUrl": "https://address-svc-utyjy373hq-uc.a.run.app",
   "requiresAuth": false,
   "commonHeaders": {
@@ -61,10 +60,41 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
   },
   "endpoints": [
     {
+      "name": "health_check",
+      "path": "/",
+      "method": "GET",
+      "description": "Check API service health and status",
+      "exampleResponse": {
+        "service": "address-svc",
+        "status": "OK"
+      }
+    },
+    {
+      "name": "list_coins",
+      "path": "/coins",
+      "method": "GET",
+      "description": "List all supported cryptocurrency coins with detailed information",
+      "exampleResponse": {
+        "items": [
+          {
+            "coinId": 1,
+            "networkId": "btc",
+            "symbol": "BTC",
+            "decimals": 8,
+            "meta": {
+              "name": "Bitcoin",
+              "logoUrl": "https://www.cryptocompare.com/media/37746251/btc.png",
+              "description": "Bitcoin uses peer-to-peer technology..."
+            }
+          }
+        ]
+      }
+    },
+    {
       "name": "get_symbol",
       "path": "/symbols/{symbol}",
       "method": "GET",
-      "description": "Get detailed information about a cryptocurrency symbol/ticker",
+      "description": "Get detailed information about a specific cryptocurrency symbol/ticker",
       "parameters": [
         {
           "name": "symbol",
@@ -79,214 +109,23 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
         }
       },
       "exampleResponse": {
+        "coinId": 1,
+        "networkId": "btc",
         "symbol": "BTC",
-        "name": "Bitcoin",
-        "blockchain": "Bitcoin",
+        "symbols": {
+          "canonicalSymbol": "BTC",
+          "coinGeckoId": "bitcoin"
+        },
         "decimals": 8,
-        "address_format": "P2PKH",
-        "supported": true
-      }
-    },
-    {
-      "name": "list_symbols",
-      "path": "/symbols",
-      "method": "GET",
-      "description": "List all supported cryptocurrency symbols",
-      "queryParams": [
-        {
-          "name": "blockchain",
-          "type": "string",
-          "required": false,
-          "description": "Filter by blockchain (e.g., Ethereum, Bitcoin)"
+        "meta": {
+          "name": "Bitcoin",
+          "logoUrl": "https://www.cryptocompare.com/media/37746251/btc.png",
+          "description": "Bitcoin uses peer-to-peer technology..."
         },
-        {
-          "name": "active",
-          "type": "boolean",
-          "required": false,
-          "description": "Filter by active status",
-          "default": true
-        }
-      ],
-      "exampleRequest": {
-        "queryParams": {
-          "blockchain": "Ethereum",
-          "active": true
-        }
-      }
-    },
-    {
-      "name": "validate_address",
-      "path": "/validate-address",
-      "method": "POST",
-      "description": "Validate a cryptocurrency address format and checksum",
-      "bodyParams": [
-        {
-          "name": "address",
-          "type": "string",
-          "required": true,
-          "description": "The cryptocurrency address to validate"
+        "externalLinks": {
+          "cryptoCompareLink": "https://www.cryptocompare.com/coins/btc/overview"
         },
-        {
-          "name": "symbol",
-          "type": "string",
-          "required": true,
-          "description": "The cryptocurrency symbol (BTC, ETH, etc.)"
-        }
-      ],
-      "exampleRequest": {
-        "body": {
-          "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
-          "symbol": "ETH"
-        }
-      },
-      "exampleResponse": {
-        "valid": true,
-        "symbol": "ETH",
-        "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
-        "blockchain": "Ethereum",
-        "format": "ERC-20",
-        "checksum_valid": true
-      }
-    },
-    {
-      "name": "get_address_info",
-      "path": "/addresses/{address}",
-      "method": "GET",
-      "description": "Get information about a specific address",
-      "parameters": [
-        {
-          "name": "address",
-          "type": "string",
-          "required": true,
-          "description": "The cryptocurrency address"
-        }
-      ],
-      "queryParams": [
-        {
-          "name": "symbol",
-          "type": "string",
-          "required": false,
-          "description": "Symbol to validate against"
-        }
-      ],
-      "exampleRequest": {
-        "pathParams": {
-          "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
-        },
-        "queryParams": {
-          "symbol": "BTC"
-        }
-      }
-    },
-    {
-      "name": "get_supported_blockchains",
-      "path": "/blockchains",
-      "method": "GET",
-      "description": "Get list of supported blockchains",
-      "exampleResponse": {
-        "blockchains": [
-          {
-            "name": "Bitcoin",
-            "symbols": ["BTC"],
-            "address_types": ["P2PKH", "P2SH", "Bech32"]
-          },
-          {
-            "name": "Ethereum",
-            "symbols": ["ETH", "USDT", "USDC"],
-            "address_types": ["ERC-20"]
-          }
-        ]
-      }
-    },
-    {
-      "name": "batch_validate",
-      "path": "/batch-validate",
-      "method": "POST",
-      "description": "Validate multiple addresses in a single request",
-      "bodyParams": [
-        {
-          "name": "addresses",
-          "type": "array",
-          "required": true,
-          "description": "Array of address validation requests"
-        }
-      ],
-      "exampleRequest": {
-        "body": {
-          "addresses": [
-            {"address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "symbol": "BTC"},
-            {"address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb", "symbol": "ETH"}
-          ]
-        }
-      },
-      "exampleResponse": {
-        "results": [
-          {"address": "1A1z...", "valid": true, "symbol": "BTC"},
-          {"address": "0x742...", "valid": true, "symbol": "ETH"}
-        ]
-      }
-    },
-    {
-      "name": "search_symbols",
-      "path": "/symbols/search",
-      "method": "GET",
-      "description": "Search for symbols by name or ticker",
-      "queryParams": [
-        {
-          "name": "q",
-          "type": "string",
-          "required": true,
-          "description": "Search query"
-        },
-        {
-          "name": "limit",
-          "type": "number",
-          "required": false,
-          "description": "Maximum results to return",
-          "default": 20
-        }
-      ],
-      "exampleRequest": {
-        "queryParams": {
-          "q": "bitcoin",
-          "limit": 10
-        }
-      }
-    },
-    {
-      "name": "get_address_format",
-      "path": "/addresses/format",
-      "method": "POST",
-      "description": "Get the format type of a given address",
-      "bodyParams": [
-        {
-          "name": "address",
-          "type": "string",
-          "required": true,
-          "description": "The address to analyze"
-        }
-      ],
-      "exampleRequest": {
-        "body": {
-          "address": "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh"
-        }
-      },
-      "exampleResponse": {
-        "address": "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
-        "format": "Bech32",
-        "blockchain": "Bitcoin",
-        "probable_symbols": ["BTC"]
-      }
-    },
-    {
-      "name": "health_check",
-      "path": "/health",
-      "method": "GET",
-      "description": "Check API health and status",
-      "exampleResponse": {
-        "status": "healthy",
-        "version": "1.0.0",
-        "uptime": "99.9%"
+        "source": "crypto-compare"
       }
     }
   ]
@@ -308,27 +147,79 @@ This is a public API - no API keys or tokens required! Just start making request
 ### Step 3: Test the Integration
 
 ```bash
-# Test get symbol endpoint
-curl https://address-svc-utyjy373hq-uc.a.run.app/symbols/BTC
+# Test health check
+curl https://address-svc-utyjy373hq-uc.a.run.app/
 
-# Test validate address
-curl -X POST https://address-svc-utyjy373hq-uc.a.run.app/validate-address \
-  -H "Content-Type: application/json" \
-  -d '{"address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "symbol": "BTC"}'
+# Test list all coins
+curl https://address-svc-utyjy373hq-uc.a.run.app/coins
+
+# Test get symbol
+curl https://address-svc-utyjy373hq-uc.a.run.app/symbols/BTC
+curl https://address-svc-utyjy373hq-uc.a.run.app/symbols/ETH
 ```
 
 ### Step 4: Handle Errors
 
 Common error codes:
-- `400` - Invalid request (malformed address, missing params)
-- `404` - Symbol or address not found
+- `404` - Symbol not found or invalid endpoint
 - `500` - Server error
 
 ---
 
 ## Usage Examples
 
-### Example 1: Get Symbol Information
+### Example 1: Check Service Status
+
+```typescript
+await mcpServer.executeTool('make_api_call', {
+  apiId: "bitwave-address",
+  endpoint: "/",
+  method: "GET"
+});
+
+// Returns:
+{
+  success: true,
+  data: {
+    service: "address-svc",
+    status: "OK"
+  }
+}
+```
+
+### Example 2: List All Coins
+
+```typescript
+await mcpServer.executeTool('make_api_call', {
+  apiId: "bitwave-address",
+  endpoint: "/coins",
+  method: "GET"
+});
+
+// Returns:
+{
+  success: true,
+  data: {
+    items: [
+      {
+        coinId: 1,
+        symbol: "BTC",
+        decimals: 8,
+        meta: { name: "Bitcoin", ... }
+      },
+      {
+        coinId: 10,
+        symbol: "ETH",
+        decimals: 18,
+        meta: { name: "Ethereum", ... }
+      },
+      // ... more coins
+    ]
+  }
+}
+```
+
+### Example 3: Get Symbol Information
 
 ```typescript
 await mcpServer.executeTool('make_api_call', {
@@ -344,96 +235,41 @@ await mcpServer.executeTool('make_api_call', {
 {
   success: true,
   data: {
+    coinId: 1,
     symbol: "BTC",
-    name: "Bitcoin",
-    blockchain: "Bitcoin",
     decimals: 8,
-    ...
+    meta: {
+      name: "Bitcoin",
+      logoUrl: "https://www.cryptocompare.com/media/37746251/btc.png",
+      description: "Bitcoin uses peer-to-peer technology..."
+    },
+    externalLinks: {
+      cryptoCompareLink: "https://www.cryptocompare.com/coins/btc/overview"
+    }
   }
 }
-```
-
-### Example 2: Validate Bitcoin Address
-
-```typescript
-await mcpServer.executeTool('make_api_call', {
-  apiId: "bitwave-address",
-  endpoint: "/validate-address",
-  method: "POST",
-  body: {
-    address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
-    symbol: "BTC"
-  }
-});
-
-// Returns:
-{
-  success: true,
-  data: {
-    valid: true,
-    symbol: "BTC",
-    address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
-    ...
-  }
-}
-```
-
-### Example 3: List All Supported Symbols
-
-```typescript
-await mcpServer.executeTool('make_api_call', {
-  apiId: "bitwave-address",
-  endpoint: "/symbols",
-  method: "GET",
-  queryParams: {
-    active: true
-  }
-});
-```
-
-### Example 4: Batch Validate Multiple Addresses
-
-```typescript
-await mcpServer.executeTool('make_api_call', {
-  apiId: "bitwave-address",
-  endpoint: "/batch-validate",
-  method: "POST",
-  body: {
-    addresses: [
-      {address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", symbol: "BTC"},
-      {address: "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb", symbol: "ETH"}
-    ]
-  }
-});
 ```
 
 ---
 
 ## Common Use Cases
 
-### 1. Wallet Address Validation
+### 1. Cryptocurrency Info Display
 ```
-User enters address → Validate format → Show checksum status
-POST /validate-address
-```
-
-### 2: Multi-Currency Support Checker
-```
-Check which currencies supported → Display options
-GET /symbols
-GET /blockchains
+Display supported coins → Show logos and names → Link to more info
+GET /coins
 ```
 
-### 3. Address Format Detector
+### 2: Symbol Lookup for Trading UI
 ```
-User pastes unknown address → Detect format → Suggest currency
-POST /addresses/format
+User searches for coin → Get symbol details → Display decimals and info
+GET /symbols/{symbol}
 ```
 
-### 4. Symbol Search/Autocomplete
+### 3. Service Monitoring
 ```
-User types "bit" → Search symbols → Show "Bitcoin, BitTorrent, ..."
-GET /symbols/search?q=bit
+Health check integration → Monitor API availability
+GET /
 ```
 
 ---
@@ -443,106 +279,109 @@ GET /symbols/search?q=bit
 ### Success Response:
 ```json
 {
-  "success": true,
-  "data": {
-    // Endpoint-specific data
+  "coinId": 1,
+  "symbol": "BTC",
+  "decimals": 8,
+  "meta": {
+    "name": "Bitcoin",
+    "logoUrl": "...",
+    "description": "..."
   }
 }
 ```
 
-### Error Response:
-```json
-{
-  "error": {
-    "code": "INVALID_ADDRESS",
-    "message": "The provided address format is invalid",
-    "details": {
-      "address": "invalid_address_here",
-      "reason": "Invalid checksum"
-    }
-  }
-}
+### Error Response (Symbol Not Found):
+```
+Status: 404 Not Found
+```
+
+### Error Response (Server Error):
+```
+Status: 500 Internal Server Error
 ```
 
 ---
 
-## Supported Blockchains & Symbols
+## Supported Cryptocurrencies
 
-### Major Blockchains:
-- **Bitcoin** (BTC) - P2PKH, P2SH, Bech32
-- **Ethereum** (ETH, ERC-20 tokens) - Standard Ethereum address format
-- **USD Stablecoins** (USDT, USDC, DAI) - ERC-20 format
-- **And more...** (Check `/api/blockchains` for full list)
+The `/coins` endpoint returns all supported cryptocurrencies. Common examples include:
+
+- **Bitcoin (BTC)** - 8 decimals
+- **Ethereum (ETH)** - 18 decimals
+- **EOS** - Various decimals
+- **USDT, USDC** - Stablecoins
+- **And many more...**
+
+Check the `/coins` endpoint for the complete current list.
 
 ---
 
 ## Known Issues & Notes
 
-✅ **Best Practices:**
+✅ **Verified Information:**
 
-1. **Caching:** Symbol data rarely changes. Cache `/symbols` responses for 1+ hour.
+1. **Tested Endpoints:** All 3 endpoints in this config have been tested and verified working (Jan 2025)
 
-2. **Batch Validation:** For multiple addresses, use `/batch-validate` instead of individual calls.
+2. **Public API:** No authentication required for any endpoint
 
-3. **Case Sensitivity:** Cryptocurrency addresses are case-sensitive. Preserve exact format.
+3. **Caching Recommended:** Coin/symbol data changes infrequently. Cache responses for 1+ hour.
 
-4. **Checksum Validation:** Always validate checksums before sending transactions.
+⚠️ **Important Notes:**
 
-5. **Format Detection:** Use `/format` endpoint when symbol is unknown.
+1. **Limited API:** This API has only 3 working endpoints. Many endpoints shown in the Swagger docs (like address validation, batch operations, etc.) return 404 errors.
 
-⚠️ **Warnings:**
+2. **No Rate Limits Documented:** Implement client-side throttling to be respectful of the service.
 
-1. **No Rate Limits Documented:** Implement client-side throttling to be respectful.
-
-2. **Address Balance:** This API only validates format, not balance or transaction history.
-
-3. **Test Addresses:** Use testnet addresses for development/testing.
+3. **Symbol Parameter:** Symbol lookup is case-sensitive. Use uppercase (BTC, ETH, not btc, eth).
 
 ---
 
 ## Integration Patterns
 
-### Pattern 1: Address Input Validation
+### Pattern 1: Coin Directory
 
 ```typescript
-// User enters address in form
-const userAddress = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
-const selectedSymbol = "BTC";
-
-// Validate immediately
-const validation = await validateAddress(userAddress, selectedSymbol);
-
-if (validation.valid) {
-  // Proceed with transaction
-} else {
-  // Show error to user
-}
-```
-
-### Pattern 2: Smart Address Detection
-
-```typescript
-// User pastes address without specifying currency
-const unknownAddress = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-
-// Detect format
-const format = await detectAddressFormat(unknownAddress);
-
-// Suggest: "This looks like a Bitcoin (Bech32) address"
-```
-
-### Pattern 3: Multi-Currency Wallet
-
-```typescript
-// Load supported currencies
-const symbols = await listSymbols({ active: true });
+// Load all coins for a directory/selector
+const coins = await listCoins();
 
 // Display to user
-symbols.forEach(symbol => {
-  console.log(`${symbol.name} (${symbol.symbol})`);
+coins.items.forEach(coin => {
+  console.log(`${coin.meta.name} (${coin.symbol})`);
+  console.log(`Logo: ${coin.meta.logoUrl}`);
+  console.log(`Decimals: ${coin.decimals}`);
 });
+```
 
-// When user selects one, validate their address
+### Pattern 2: Symbol Detail Page
+
+```typescript
+// User clicks on a specific coin
+const symbol = "BTC";
+
+// Get full details
+const details = await getSymbol(symbol);
+
+// Display comprehensive info
+displayCoinInfo({
+  name: details.meta.name,
+  symbol: details.symbol,
+  logo: details.meta.logoUrl,
+  description: details.meta.description,
+  decimals: details.decimals,
+  learnMore: details.externalLinks.cryptoCompareLink
+});
+```
+
+### Pattern 3: Monitoring Integration
+
+```typescript
+// Health check monitoring
+setInterval(async () => {
+  const health = await checkHealth();
+  if (health.status !== "OK") {
+    alert("Bitwave API is down!");
+  }
+}, 60000); // Check every minute
 ```
 
 ---
@@ -551,42 +390,42 @@ symbols.forEach(symbol => {
 
 Before going to production:
 
-- [ ] Test with valid addresses for each supported blockchain
-- [ ] Test with invalid/malformed addresses
-- [ ] Test checksum validation (case-sensitive addresses)
-- [ ] Verify all supported symbols load correctly
-- [ ] Test batch validation with mixed valid/invalid addresses
+- [x] Test health check endpoint (/)
+- [x] Test list coins endpoint (/coins)
+- [x] Test get symbol endpoint (/symbols/BTC)
+- [x] Test get symbol with different coins (ETH, USDT, etc.)
+- [ ] Implement error handling for 404 (symbol not found)
 - [ ] Implement error handling for network failures
 - [ ] Add client-side rate limiting/throttling
-- [ ] Cache symbol data appropriately
-- [ ] Test edge cases (empty addresses, special characters)
+- [ ] Cache coin/symbol data appropriately
+- [ ] Test edge cases (invalid symbols, special characters)
 
 ---
 
 ## Example Test Cases
 
-### Valid Bitcoin Address (P2PKH):
+### Valid Symbol Lookup:
 ```
-Address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
-Expected: valid = true
-```
-
-### Valid Ethereum Address:
-```
-Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb
-Expected: valid = true
+GET /symbols/BTC
+Expected: 200 OK with full coin data
 ```
 
-### Invalid Address (bad checksum):
+### Valid Symbol Lookup (Ethereum):
 ```
-Address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNb (changed last char)
-Expected: valid = false, error about checksum
+GET /symbols/ETH
+Expected: 200 OK with full coin data
 ```
 
-### Invalid Address (wrong format):
+### Invalid Symbol:
 ```
-Address: not_an_address_123
-Expected: valid = false, error about format
+GET /symbols/NOTAREALCOIN
+Expected: 404 Not Found
+```
+
+### List All Coins:
+```
+GET /coins
+Expected: 200 OK with array of all supported coins
 ```
 
 ---
@@ -596,36 +435,62 @@ Expected: valid = false, error about format
 - **API Documentation:** https://address-svc-utyjy373hq-uc.a.run.app/api-docs/
 - **Bitwave Website:** https://www.bitwave.io/
 - **Support:** Contact Bitwave support team
-- **Health Status:** GET /health
+- **Health Status:** GET /
 
 ---
 
 ## Performance Tips
 
 1. **Implement Caching:**
-   - Cache symbol list for 1+ hour
-   - Cache blockchain list for 24 hours
-   - Don't cache validation results (always validate fresh)
+   - Cache `/coins` response for 1+ hour (rarely changes)
+   - Cache `/symbols/{symbol}` response for 1+ hour
+   - Don't cache health check (real-time)
 
-2. **Use Batch Endpoints:**
-   - For 10+ addresses, use `/batch-validate`
-   - More efficient than individual requests
+2. **Reduce API Calls:**
+   - Load all coins once, cache locally
+   - Only fetch individual symbols when needed
+   - Use cached data for dropdowns/selectors
 
-3. **Client-Side Pre-Validation:**
-   - Check basic format before API call
-   - Validate length, character set
-   - Reduce unnecessary API calls
+3. **Error Handling:**
+   - Gracefully handle 404 for unknown symbols
+   - Show user-friendly messages
+   - Implement retry logic for network errors
 
 ---
 
 ## Changelog
 
+**v2.0.0 (2025-01-17)**
+- **BREAKING:** Removed all non-working endpoints (validation, batch operations, search, etc.)
+- Kept only 3 verified working endpoints
+- All endpoints tested and confirmed working
+- Updated documentation to reflect actual API behavior
+- Added real response examples from actual API calls
+
 **v1.0.0 (2025-01-16)**
-- Initial configuration
-- 9 core endpoints documented
-- Full integration guide
-- No authentication required (public API)
+- Initial configuration (contained many non-working endpoints)
 
 ---
 
-**For Platform Team:** This configuration is ready to integrate. No API keys needed - add to your API registry and start using immediately!
+## Migration from v1.0.0
+
+If you were using the previous config (v1.0.0), note these breaking changes:
+
+**Removed Endpoints (404 errors):**
+- `/symbols` (list without path param)
+- `/validate-address`
+- `/addresses/{address}`
+- `/blockchains`
+- `/batch-validate`
+- `/symbols/search`
+- `/addresses/format`
+- `/health`
+
+**Working Alternatives:**
+- Use `/coins` instead of `/symbols` for listing
+- Use `/` instead of `/health` for health checks
+- No replacement for validation endpoints (not available in this API)
+
+---
+
+**For Platform Team:** This configuration contains ONLY tested and verified working endpoints. All 3 endpoints return 200 OK status. Ready for production integration!
