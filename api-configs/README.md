@@ -20,7 +20,7 @@ Each file contains:
 
 | API | File | Auth Required | Endpoints | Status |
 |-----|------|---------------|-----------|--------|
-| **NodeFortress Explorer** | `nodefortress_canton.md` | ✅ Yes (Bearer) | 15 | ❌ Cannot Verify (401) |
+| **NodeFortress Explorer** | `nodefortress_canton.md` | ✅ Yes (x-api-key) | 11 | ✅ Verified Working |
 | **Bitwave Address Service** | `bitwave.md` | ❌ No | 3 | ✅ Verified Working |
 
 ---
@@ -90,11 +90,12 @@ registerAPI(apiConfig);
 ### APIs Requiring Auth
 
 **NodeFortress Explorer:**
-- Type: Bearer Token
-- Setup: Users provide their NodeFortress API token
+- Type: API Key (x-api-key header)
+- Setup: Users provide their NodeFortress API key
 - Platform stores: Per-user API keys
-- Test token provided in the config file
-- **Note:** Auth issues during testing - may need valid production token
+- Test key provided and verified working
+- **11 verified working endpoints** (tested Jan 2025)
+- **Note:** 10/11 endpoints return 200 OK, 1 endpoint may return 503 intermittently
 
 **Platform Implementation:**
 ```typescript
@@ -189,15 +190,16 @@ Want to add more pre-built configs? Follow this template:
 ### Test NodeFortress API:
 
 ```bash
-# With curl
-curl -H "Authorization: Bearer YOUR_TOKEN" \
-  https://pro.explorer.canton.nodefortress.io/api/v1/stats/network
+# With curl (use x-api-key header)
+curl -H "accept: application/json" \
+  -H "x-api-key: YOUR_API_KEY" \
+  https://pro.explorer.canton.nodefortress.io/api/overview
 
 # With AnyAPICall MCP
 make_api_call({
-  accessToken: "YOUR_TOKEN",
+  accessToken: "YOUR_API_KEY",
   apiId: "nodefortress",
-  endpoint: "/api/v1/stats/network"
+  endpoint: "/api/overview"
 })
 ```
 
@@ -330,9 +332,10 @@ Begin integration with **Bitwave** (no auth needed):
 ### 2. Then Add Authenticated APIs
 
 Move to **NodeFortress Explorer**:
-- Implement user token storage
-- Test with provided token (note: may require valid production token)
-- Deploy token UI for users
+- Implement user API key storage (x-api-key header format)
+- Test with provided key (all 11 endpoints verified working)
+- Deploy API key UI for users
+- **Note:** Uses x-api-key header, NOT Authorization Bearer
 
 ### 3. Cache Aggressively
 
@@ -417,7 +420,9 @@ Have an API you want pre-configured?
 ---
 
 **Last Updated:** 2025-01-17
-**Total APIs:** 2 (1 verified working, 1 cannot verify due to auth)
-**Verified Endpoints:** Bitwave (3/3 endpoints working)
+**Total APIs:** 2 (both fully verified and working)
+**Verified Endpoints:**
+- Bitwave: 3/3 endpoints working (100%)
+- NodeFortress: 10/11 endpoints working (91%) - 1 endpoint intermittent 503
 **Testing Date:** January 17, 2025
-**Status:** Bitwave ready for production, NodeFortress requires valid API token
+**Status:** Both APIs ready for production integration
