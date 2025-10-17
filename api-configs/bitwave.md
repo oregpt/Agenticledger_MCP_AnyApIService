@@ -62,7 +62,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
   "endpoints": [
     {
       "name": "get_symbol",
-      "path": "/api/symbols/{symbol}",
+      "path": "/symbols/{symbol}",
       "method": "GET",
       "description": "Get detailed information about a cryptocurrency symbol/ticker",
       "parameters": [
@@ -89,7 +89,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "list_symbols",
-      "path": "/api/symbols",
+      "path": "/symbols",
       "method": "GET",
       "description": "List all supported cryptocurrency symbols",
       "queryParams": [
@@ -116,7 +116,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "validate_address",
-      "path": "/api/addresses/validate",
+      "path": "/validate-address",
       "method": "POST",
       "description": "Validate a cryptocurrency address format and checksum",
       "bodyParams": [
@@ -150,7 +150,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "get_address_info",
-      "path": "/api/addresses/{address}",
+      "path": "/addresses/{address}",
       "method": "GET",
       "description": "Get information about a specific address",
       "parameters": [
@@ -180,7 +180,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "get_supported_blockchains",
-      "path": "/api/blockchains",
+      "path": "/blockchains",
       "method": "GET",
       "description": "Get list of supported blockchains",
       "exampleResponse": {
@@ -200,7 +200,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "batch_validate",
-      "path": "/api/addresses/batch-validate",
+      "path": "/batch-validate",
       "method": "POST",
       "description": "Validate multiple addresses in a single request",
       "bodyParams": [
@@ -228,7 +228,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "search_symbols",
-      "path": "/api/symbols/search",
+      "path": "/symbols/search",
       "method": "GET",
       "description": "Search for symbols by name or ticker",
       "queryParams": [
@@ -255,7 +255,7 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
     },
     {
       "name": "get_address_format",
-      "path": "/api/addresses/format",
+      "path": "/addresses/format",
       "method": "POST",
       "description": "Get the format type of a given address",
       "bodyParams": [
@@ -309,10 +309,10 @@ This is a public API - no API keys or tokens required! Just start making request
 
 ```bash
 # Test get symbol endpoint
-curl https://address-svc-utyjy373hq-uc.a.run.app/api/symbols/BTC
+curl https://address-svc-utyjy373hq-uc.a.run.app/symbols/BTC
 
 # Test validate address
-curl -X POST https://address-svc-utyjy373hq-uc.a.run.app/api/addresses/validate \
+curl -X POST https://address-svc-utyjy373hq-uc.a.run.app/validate-address \
   -H "Content-Type: application/json" \
   -d '{"address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "symbol": "BTC"}'
 ```
@@ -333,7 +333,7 @@ Common error codes:
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   apiId: "bitwave-address",
-  endpoint: "/api/symbols/{symbol}",
+  endpoint: "/symbols/{symbol}",
   method: "GET",
   pathParams: {
     symbol: "BTC"
@@ -358,7 +358,7 @@ await mcpServer.executeTool('make_api_call', {
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   apiId: "bitwave-address",
-  endpoint: "/api/addresses/validate",
+  endpoint: "/validate-address",
   method: "POST",
   body: {
     address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
@@ -383,7 +383,7 @@ await mcpServer.executeTool('make_api_call', {
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   apiId: "bitwave-address",
-  endpoint: "/api/symbols",
+  endpoint: "/symbols",
   method: "GET",
   queryParams: {
     active: true
@@ -396,7 +396,7 @@ await mcpServer.executeTool('make_api_call', {
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   apiId: "bitwave-address",
-  endpoint: "/api/addresses/batch-validate",
+  endpoint: "/batch-validate",
   method: "POST",
   body: {
     addresses: [
@@ -414,26 +414,26 @@ await mcpServer.executeTool('make_api_call', {
 ### 1. Wallet Address Validation
 ```
 User enters address → Validate format → Show checksum status
-POST /api/addresses/validate
+POST /validate-address
 ```
 
 ### 2: Multi-Currency Support Checker
 ```
 Check which currencies supported → Display options
-GET /api/symbols
-GET /api/blockchains
+GET /symbols
+GET /blockchains
 ```
 
 ### 3. Address Format Detector
 ```
 User pastes unknown address → Detect format → Suggest currency
-POST /api/addresses/format
+POST /addresses/format
 ```
 
 ### 4. Symbol Search/Autocomplete
 ```
 User types "bit" → Search symbols → Show "Bitcoin, BitTorrent, ..."
-GET /api/symbols/search?q=bit
+GET /symbols/search?q=bit
 ```
 
 ---
@@ -480,7 +480,7 @@ GET /api/symbols/search?q=bit
 
 ✅ **Best Practices:**
 
-1. **Caching:** Symbol data rarely changes. Cache `/api/symbols` responses for 1+ hour.
+1. **Caching:** Symbol data rarely changes. Cache `/symbols` responses for 1+ hour.
 
 2. **Batch Validation:** For multiple addresses, use `/batch-validate` instead of individual calls.
 

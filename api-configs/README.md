@@ -20,7 +20,7 @@ Each file contains:
 
 | API | File | Auth Required | Endpoints | Status |
 |-----|------|---------------|-----------|--------|
-| **Canton Network (NodeFortress)** | `nodefortress_canton.md` | ✅ Yes (Bearer) | 15+ | ✅ Ready |
+| **NodeFortress Explorer** | `nodefortress_canton.md` | ✅ Yes (Bearer) | 15+ | ⚠️ Unverified |
 | **Bitwave Address Service** | `bitwave.md` | ❌ No | 9 | ✅ Ready |
 
 ---
@@ -89,18 +89,19 @@ registerAPI(apiConfig);
 
 ### APIs Requiring Auth
 
-**Canton Network (NodeFortress):**
+**NodeFortress Explorer:**
 - Type: Bearer Token
 - Setup: Users provide their NodeFortress API token
 - Platform stores: Per-user API keys
 - Test token provided in the config file
+- **Note:** Auth issues during testing - may need valid production token
 
 **Platform Implementation:**
 ```typescript
 {
   userId: "user123",
   apiKeys: {
-    "canton-nodefortress": "user_token_here"
+    "nodefortress": "user_token_here"
   }
 }
 ```
@@ -184,7 +185,7 @@ Want to add more pre-built configs? Follow this template:
 
 ## 🧪 Testing Configurations
 
-### Test Canton Network API:
+### Test NodeFortress API:
 
 ```bash
 # With curl
@@ -194,7 +195,7 @@ curl -H "Authorization: Bearer YOUR_TOKEN" \
 # With AnyAPICall MCP
 make_api_call({
   accessToken: "YOUR_TOKEN",
-  apiId: "canton-nodefortress",
+  apiId: "nodefortress",
   endpoint: "/api/v1/stats/network"
 })
 ```
@@ -247,23 +248,23 @@ Each config in this directory meets these standards:
 
 ```typescript
 // 1. Load pre-built config
-import cantonConfig from './api-configs/nodefortress_canton.json';
+import nodefortressConfig from './api-configs/nodefortress_canton.json';
 
 // 2. Register with platform
-platform.apiRegistry.register(cantonConfig);
+platform.apiRegistry.register(nodefortressConfig);
 
 // 3. Enable for users
-platform.enableAPI('canton-nodefortress', {
+platform.enableAPI('nodefortress', {
   requiresUserToken: true,
-  tokenLabel: "NodeFortress Canton API Token",
-  getTokenUrl: "https://nodefortress.io/canton/api-access"
+  tokenLabel: "NodeFortress API Token",
+  getTokenUrl: "https://nodefortress.io/api-access"
 });
 
 // 4. Use in agent
 agent.makeAPICall({
-  apiId: 'canton-nodefortress',
+  apiId: 'nodefortress',
   endpoint: '/api/v1/transactions',
-  userToken: user.getAPIKey('canton-nodefortress')
+  userToken: user.getAPIKey('nodefortress')
 });
 ```
 
@@ -276,10 +277,10 @@ agent.makeAPICall({
   "apis": [
     // ... existing APIs ...
 
-    // Paste Canton config here
+    // Paste NodeFortress config here
     {
-      "id": "canton-nodefortress",
-      "name": "Canton Network Explorer",
+      "id": "nodefortress",
+      "name": "NodeFortress Explorer",
       ...
     },
 
@@ -300,7 +301,7 @@ agent.makeAPICall({
 ### By Use Case:
 
 **Blockchain Explorer:**
-- Canton Network API (`nodefortress_canton.md`)
+- NodeFortress Explorer API (`nodefortress_canton.md`)
 
 **Address Validation:**
 - Bitwave Address Service (`bitwave.md`)
@@ -324,9 +325,9 @@ Begin integration with **Bitwave** (no auth needed):
 
 ### 2. Then Add Authenticated APIs
 
-Move to **Canton Network**:
+Move to **NodeFortress Explorer**:
 - Implement user token storage
-- Test with provided token
+- Test with provided token (note: may require valid production token)
 - Deploy token UI for users
 
 ### 3. Cache Aggressively
@@ -353,8 +354,8 @@ Move to **Canton Network**:
 
 ### For API-Specific Issues:
 
-- **Canton Network:** support@nodefortress.io
-- **Bitwave:** Contact Bitwave support
+- **NodeFortress Explorer:** support@nodefortress.io
+- **Bitwave Address Service:** Contact Bitwave support
 
 ### For Configuration Issues:
 

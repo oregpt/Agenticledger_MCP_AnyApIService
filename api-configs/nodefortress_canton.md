@@ -1,6 +1,6 @@
-# Canton Network API - NodeFortress Explorer
+# NodeFortress Explorer API
 
-**Status:** ✅ Ready for Integration
+**Status:** ⚠️ Unverified - Auth issues during testing
 **API Version:** v1
 **Last Updated:** 2025-01-16
 **Documentation:** https://pro.explorer.canton.nodefortress.io/docs/
@@ -9,7 +9,7 @@
 
 ## Overview
 
-The Canton Network Explorer API (powered by NodeFortress) provides access to Canton blockchain data including transactions, contracts, parties, and network statistics. This API is essential for building applications on the Canton Network.
+The NodeFortress Explorer API provides access to blockchain data including transactions, contracts, parties, and network statistics. This API is essential for building blockchain explorer applications.
 
 ###Features:
 - Transaction querying and monitoring
@@ -28,8 +28,10 @@ The Canton Network Explorer API (powered by NodeFortress) provides access to Can
 
 ### Getting Your API Token:
 1. Contact NodeFortress support at support@nodefortress.io
-2. Or visit: https://nodefortress.io/canton/api-access
+2. Or visit: https://nodefortress.io/api-access
 3. Token format: 64-character hex string
+
+**Note:** During testing, authentication returned 401 errors with the provided test token. Endpoints may require different authentication method or valid production token.
 
 ### Test Token (DO NOT USE IN PRODUCTION):
 ```
@@ -60,9 +62,9 @@ Copy this into your `config/apis.json` or use with AnyAPICall MCP Server:
 
 ```json
 {
-  "id": "canton-nodefortress",
-  "name": "Canton Network Explorer (NodeFortress)",
-  "description": "Access Canton blockchain data including transactions, contracts, parties, and network statistics via NodeFortress explorer API",
+  "id": "nodefortress",
+  "name": "NodeFortress Explorer",
+  "description": "Access blockchain data including transactions, contracts, parties, and network statistics via NodeFortress explorer API",
   "baseUrl": "https://pro.explorer.canton.nodefortress.io",
   "requiresAuth": true,
   "authType": "bearer",
@@ -414,14 +416,14 @@ Copy the JSON configuration above into your platform's API management system.
 
 ### Step 2: Configure User Authentication
 
-Users will need to provide their NodeFortress Canton API token:
+Users will need to provide their NodeFortress API token:
 
 ```typescript
 // Platform stores per-user
 {
   userId: "user123",
   apiKeys: {
-    "canton-nodefortress": "user_canton_api_token_here"
+    "nodefortress": "user_nodefortress_api_token_here"
   }
 }
 ```
@@ -451,7 +453,7 @@ Common error codes:
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   accessToken: "user_api_token",
-  apiId: "canton-nodefortress",
+  apiId: "nodefortress",
   endpoint: "/api/v1/stats/network",
   method: "GET"
 });
@@ -473,7 +475,7 @@ await mcpServer.executeTool('make_api_call', {
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   accessToken: "user_api_token",
-  apiId: "canton-nodefortress",
+  apiId: "nodefortress",
   endpoint: "/api/v1/transactions",
   method: "GET",
   queryParams: {
@@ -488,7 +490,7 @@ await mcpServer.executeTool('make_api_call', {
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   accessToken: "user_api_token",
-  apiId: "canton-nodefortress",
+  apiId: "nodefortress",
   endpoint: "/api/v1/contracts/{contract_id}",
   pathParams: {
     contract_id: "contract_abc_123"
@@ -501,7 +503,7 @@ await mcpServer.executeTool('make_api_call', {
 ```typescript
 await mcpServer.executeTool('make_api_call', {
   accessToken: "user_api_token",
-  apiId: "canton-nodefortress",
+  apiId: "nodefortress",
   endpoint: "/api/v1/search",
   queryParams: {
     q: "my_contract_template",
@@ -612,7 +614,6 @@ For bulk data retrieval, contact NodeFortress about batch API access.
 
 - **API Documentation:** https://pro.explorer.canton.nodefortress.io/docs/
 - **NodeFortress Support:** support@nodefortress.io
-- **Canton Network Docs:** https://docs.canton.network/
 - **Status Page:** (Check with NodeFortress)
 
 ---
@@ -641,4 +642,6 @@ Before going to production:
 
 ---
 
-**For Platform Team:** This configuration is ready to integrate. Add it to your API registry and enable user API key management for Canton Network access.
+**For Platform Team:** This configuration is ready to integrate. Add it to your API registry and enable user API key management for NodeFortress access.
+
+**Note:** Authentication issues were encountered during testing. Endpoints may require verification with a valid production token or different auth method. All endpoints returned 401 errors with test token.
