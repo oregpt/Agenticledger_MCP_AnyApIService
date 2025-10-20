@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2025-01-16",
+  "version": "1.1.0",
+  "lastUpdated": "2025-01-20",
   "apis": [
     {
       "id": "coingecko",
@@ -630,6 +630,330 @@
               "default": 20
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "ccview",
+      "name": "CantonView Explorer",
+      "description": "Comprehensive Canton Network blockchain explorer API - governance, validators, rewards, transfers, and network statistics",
+      "baseUrl": "https://ccview.io",
+      "requiresAuth": true,
+      "authType": "apiKey",
+      "authHeader": "X-API-Key",
+      "rateLimit": {
+        "requestsPerMinute": 60,
+        "requestsPerDay": 10000
+      },
+      "commonHeaders": {
+        "Accept": "application/json"
+      },
+      "endpoints": [
+        {
+          "name": "get_network_stats",
+          "path": "/api/v1/explore/stats",
+          "method": "GET",
+          "description": "Get Canton network statistics overview"
+        },
+        {
+          "name": "get_fee_statistics",
+          "path": "/api/v1/explore/fee-stat",
+          "method": "GET",
+          "description": "Get fee statistics for a date range with auto-aggregation",
+          "queryParams": [
+            {
+              "name": "start",
+              "type": "string",
+              "required": true,
+              "description": "Start date (format: YYYY-MM-DD)"
+            },
+            {
+              "name": "end",
+              "type": "string",
+              "required": true,
+              "description": "End date (format: YYYY-MM-DD)"
+            },
+            {
+              "name": "strict",
+              "type": "boolean",
+              "required": false,
+              "description": "If true, returns raw daily data; if false, auto-aggregates based on range"
+            }
+          ],
+          "exampleRequest": {
+            "queryParams": {
+              "start": "2025-01-01",
+              "end": "2025-01-20",
+              "strict": false
+            }
+          }
+        },
+        {
+          "name": "get_token_prices",
+          "path": "/api/v1/explore/prices",
+          "method": "GET",
+          "description": "Get token price changes for various time periods (current, today, 1d, 1w, 1m, 1y ago)"
+        },
+        {
+          "name": "list_governances",
+          "path": "/api/v1/governances",
+          "method": "GET",
+          "description": "List governance proposals with filtering and search",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": true,
+              "description": "Pagination cursor (ISO 8601 timestamp)"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size (default: 10, max: 100)"
+            },
+            {
+              "name": "votes_filter_type",
+              "type": "string",
+              "required": false,
+              "description": "Filter: 'any', 'active', or 'completed'"
+            },
+            {
+              "name": "search_arg",
+              "type": "string",
+              "required": false,
+              "description": "Search by requester ID/name, DSO party_id, or tracking_cid"
+            }
+          ],
+          "exampleRequest": {
+            "queryParams": {
+              "cursor": "2025-01-20T00:00:00Z",
+              "limit": 20,
+              "votes_filter_type": "active"
+            }
+          }
+        },
+        {
+          "name": "get_governance_details",
+          "path": "/api/v1/governances/details/{tracking_cid}",
+          "method": "GET",
+          "description": "Get detailed information about a specific governance proposal",
+          "parameters": [
+            {
+              "name": "tracking_cid",
+              "type": "string",
+              "required": true,
+              "description": "Governance tracking CID"
+            }
+          ]
+        },
+        {
+          "name": "list_validators",
+          "path": "/api/v1/validators",
+          "method": "GET",
+          "description": "List all validators with pagination",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": true,
+              "description": "Pagination cursor"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size"
+            }
+          ]
+        },
+        {
+          "name": "get_validator_details",
+          "path": "/api/v1/validators/{validator_id}",
+          "method": "GET",
+          "description": "Get detailed information about a specific validator",
+          "parameters": [
+            {
+              "name": "validator_id",
+              "type": "string",
+              "required": true,
+              "description": "Validator identifier"
+            }
+          ]
+        },
+        {
+          "name": "list_token_transfers",
+          "path": "/api/v1/token-transfers",
+          "method": "GET",
+          "description": "List token transfers with pagination",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": true,
+              "description": "Pagination cursor"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size"
+            }
+          ]
+        },
+        {
+          "name": "get_token_transfer_details",
+          "path": "/api/v1/token-transfers/{event_id}",
+          "method": "GET",
+          "description": "Get details of a specific token transfer",
+          "parameters": [
+            {
+              "name": "event_id",
+              "type": "string",
+              "required": true,
+              "description": "Transfer event ID"
+            }
+          ]
+        },
+        {
+          "name": "list_updates",
+          "path": "/api/v1/updates",
+          "method": "GET",
+          "description": "List ledger updates with pagination",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": true,
+              "description": "Pagination cursor"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size"
+            }
+          ]
+        },
+        {
+          "name": "get_update_details",
+          "path": "/api/v1/updates/{update_id}",
+          "method": "GET",
+          "description": "Get details of a specific update",
+          "parameters": [
+            {
+              "name": "update_id",
+              "type": "string",
+              "required": true,
+              "description": "Update identifier (hash)"
+            }
+          ]
+        },
+        {
+          "name": "get_party_details",
+          "path": "/api/v1/parties/{party_id}",
+          "method": "GET",
+          "description": "Get detailed information about a specific party",
+          "parameters": [
+            {
+              "name": "party_id",
+              "type": "string",
+              "required": true,
+              "description": "Party identifier (URL encoded)"
+            }
+          ]
+        },
+        {
+          "name": "list_validator_rewards",
+          "path": "/api/v1/rewards/validator",
+          "method": "GET",
+          "description": "List validator rewards with pagination",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": true,
+              "description": "Pagination cursor"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size"
+            }
+          ]
+        },
+        {
+          "name": "list_mining_rounds",
+          "path": "/api/v1/mining-rounds",
+          "method": "GET",
+          "description": "List mining rounds with pagination",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": true,
+              "description": "Pagination cursor"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size"
+            }
+          ]
+        },
+        {
+          "name": "list_featured_apps",
+          "path": "/api/v1/featured-apps",
+          "method": "GET",
+          "description": "List all featured apps",
+          "queryParams": [
+            {
+              "name": "cursor",
+              "type": "string",
+              "required": false,
+              "description": "Pagination cursor"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size"
+            }
+          ]
+        },
+        {
+          "name": "general_search",
+          "path": "/api/v1/general-search",
+          "method": "GET",
+          "description": "Universal search for parties, updates, or other entities",
+          "queryParams": [
+            {
+              "name": "arg",
+              "type": "string",
+              "required": true,
+              "description": "Search query (Party ID or Update ID)"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Page size for partial search (1-100)"
+            }
+          ],
+          "exampleRequest": {
+            "queryParams": {
+              "arg": "1220",
+              "limit": 20
+            }
+          }
+        },
+        {
+          "name": "health_check",
+          "path": "/api/v1/health",
+          "method": "GET",
+          "description": "API health check endpoint"
         }
       ]
     }
