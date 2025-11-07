@@ -119,8 +119,22 @@ Before using this guide, AgenticLedger platform teams should inspect their own p
 api-name-here
 ```
 
+### ⚠️ CRITICAL REQUIREMENTS (If Any)
+
+> **[Requirement Name] - NOT OPTIONAL**
+>
+> [Exact requirement - e.g., header format, authentication pattern]
+>
+> ```
+> [Show exact code/format]
+> ```
+>
+> **Why This Matters:** [Explain consequence of not following]
+>
+> **Where to Add This:** [Platform-specific location - e.g., "Add to your platform's header injection logic"]
+
 ### Key Requirements
-[Any special requirements like headers, formatting, etc.]
+[Any other non-critical requirements like formatting, conventions, etc.]
 
 ---
 
@@ -148,37 +162,123 @@ api-name-here
 
 ---
 
-## Suggested JSON Configuration
+## Suggested Configuration
 
 **⚠️ REMINDER:** Check your platform's existing AnyAPI configurations first!
 
-### Complete JSON Config
+### Option A: TypeScript Configuration (AgenticLedger Pattern)
+
+If your platform uses TypeScript arrays like AgenticLedger:
+
+```typescript
+// In anyapicall-server.ts or equivalent
+
+const API_NAME: APIDefinition = {
+  id: 'api-id',
+  name: 'API Name',
+  description: 'Description here',
+  baseUrl: 'https://api.example.com',
+  requiresAuth: true, // or false
+  authType: 'bearer', // or 'apikey', 'none', etc.
+  rateLimit: {
+    requestsPerMinute: 60,
+    requestsPerDay: 10000
+  },
+  endpoints: [
+    {
+      name: 'endpoint_name',
+      path: '/path/{param}',
+      method: 'GET',
+      description: 'What this endpoint does',
+      parameters: [
+        {
+          name: 'param',
+          type: 'string',
+          required: true,
+          description: 'Parameter description'
+        }
+      ],
+      queryParams: [
+        {
+          name: 'optional_param',
+          type: 'string',
+          required: false,
+          description: 'Optional parameter'
+        }
+      ]
+    }
+  ]
+};
+
+// Add to CORE_APIS array
+export const CORE_APIS: APIDefinition[] = [
+  // ... existing APIs
+  API_NAME,
+];
+```
+
+### Option B: JSON Configuration (For JSON-Based Platforms)
+
+If your platform uses JSON configuration files:
+
 ```json
 {
   "id": "api-id",
   "name": "API Name",
   "description": "...",
   "baseUrl": "...",
-  "requiresAuth": true/false,
-  "authType": "...",
-  "rateLimit": { ... },
-  "commonHeaders": { ... },
+  "requiresAuth": true,
+  "authType": "bearer",
+  "rateLimit": {
+    "requestsPerMinute": 60,
+    "requestsPerDay": 10000
+  },
+  "commonHeaders": {
+    "Accept": "application/json"
+  },
   "endpoints": [
     {
       "name": "endpoint_name",
       "path": "/path",
       "method": "GET",
       "description": "...",
-      "parameters": [ ... ],
-      "exampleRequest": { ... },
-      "exampleResponse": { ... }
+      "parameters": [],
+      "queryParams": [],
+      "exampleRequest": {},
+      "exampleResponse": {}
     }
   ]
 }
 ```
 
-### Common Parameters/Patterns
-[Document any special parameter formats, common patterns, etc.]
+### Common Parameters/Patterns Reference
+
+If the API has commonly used parameters or patterns, provide them as copy-pasteable code:
+
+```typescript
+// Common parameter values (if applicable)
+const COMMON_PARAMS = {
+  param1: 'value1',
+  param2: 'value2'
+};
+
+// Helper function for common operations (if needed)
+function helperFunction(input: string): string {
+  // Implementation
+  return formatted;
+}
+```
+
+**Example:** For APIs requiring CIK numbers:
+```typescript
+// Convert ticker to properly formatted CIK
+function formatCIK(cik: number | string): string {
+  return String(cik).padStart(10, '0');
+}
+
+// Usage
+const appleCIK = formatCIK(320193); // "0000320193"
+```
 
 ---
 
@@ -193,11 +293,126 @@ api-name-here
 ### STEP 2: Adapt the Configuration
 [Guidance on what to adapt]
 
-### STEP 3: Configure [Special Requirements]
-[E.g., User-Agent, rate limiting, etc.]
+### STEP 3: Handle Special Requirements
 
-### STEP 4: Enable for Users
-[How to make it available]
+**Critical Requirements:**
+If the API has special requirements (User-Agent, custom headers, etc.), show HOW to implement:
+
+```typescript
+// Example: Custom header handling
+export function makeApiCall(args: any) {
+  const headers: Record<string, string> = {
+    'Accept': 'application/json'
+  };
+
+  // Add special header for this API
+  if (args.apiId === 'api-name') {
+    headers['Special-Header'] = 'Required-Value';
+  }
+
+  return axios.request({
+    url: buildUrl(args),
+    method: args.method || 'GET',
+    headers
+  });
+}
+```
+
+**Rate Limiting:**
+If rate limits are strict, show implementation:
+
+```typescript
+// Add to API configuration
+{
+  id: 'api-id',
+  rateLimit: {
+    requestsPerSecond: 10,
+    requestsPerDay: null // unlimited per day
+  }
+}
+
+// Platform-side rate limiter (if needed)
+class RateLimiter {
+  private lastCall: number = 0;
+  private minInterval: number; // milliseconds
+
+  constructor(requestsPerSecond: number) {
+    this.minInterval = 1000 / requestsPerSecond;
+  }
+
+  async throttle(): Promise<void> {
+    const now = Date.now();
+    const timeSinceLastCall = now - this.lastCall;
+
+    if (timeSinceLastCall < this.minInterval) {
+      await new Promise(resolve =>
+        setTimeout(resolve, this.minInterval - timeSinceLastCall)
+      );
+    }
+
+    this.lastCall = Date.now();
+  }
+}
+
+// Usage
+const apiRateLimiter = new RateLimiter(10); // 10 req/sec
+await apiRateLimiter.throttle();
+```
+
+### STEP 4: Add Helper Functions (If Needed)
+
+If there are common operations users will need, provide helper functions:
+
+```typescript
+// Example: Lookup helper for converting identifiers
+async function lookupCompanyId(ticker: string): Promise<string> {
+  const response = await makeApiCall({
+    apiId: 'api-name',
+    endpoint: '/lookup',
+    queryParams: { ticker }
+  });
+
+  return formatId(response.data.id);
+}
+
+// Example: ID formatting helper
+function formatId(id: string | number): string {
+  return String(id).padStart(10, '0');
+}
+```
+
+### STEP 5: Create Quick Integration Checklist
+
+Provide a platform-specific checklist:
+
+```markdown
+## Quick Integration Checklist
+
+For TypeScript-based platforms (like AgenticLedger):
+
+- [ ] Add API definition to CORE_APIS array (anyapicall-server.ts)
+- [ ] Add custom header handling (if required)
+- [ ] Implement rate limiting (if strict limits)
+- [ ] Add helper functions (if needed)
+- [ ] Update server description/apiId schema
+- [ ] Add to Smart Router command map (optional)
+- [ ] Test with sample command: `!api-name test-endpoint`
+- [ ] Verify rate limiting works
+- [ ] Check error handling
+
+For JSON-based platforms:
+
+- [ ] Add JSON config to config/apis.json
+- [ ] Restart server (no rebuild needed)
+- [ ] Configure custom headers in platform settings
+- [ ] Test one endpoint first
+- [ ] Enable for test organization
+- [ ] Verify all endpoints work
+- [ ] Enable for production
+```
+
+### STEP 6: Enable for Users
+[How to make it available to end users]
 
 ---
 
@@ -471,11 +686,67 @@ Use it as a reference for structure and quality!
 
 ---
 
-**Template Version:** 1.0
+**Template Version:** 1.1
 **Created:** 2025-01-20
 **Last Updated:** 2025-01-20
 **Maintained By:** AgenticLedger Development Team
 
 ---
 
-*This template ensures consistent, high-quality API integration guides that prioritize the platform's existing patterns while providing comprehensive test evidence and usage examples.*
+## Template Improvements Based on Platform Feedback
+
+### v1.1 Updates (2025-01-20)
+
+Based on feedback from AgenticLedger platform team, this template now includes:
+
+1. **✅ TypeScript Configuration Format**
+   - Shows both TypeScript array format (AgenticLedger pattern) AND JSON
+   - Provides exact `APIDefinition` structure matching platform conventions
+   - Includes proper type annotations and comments
+
+2. **✅ Prominent Critical Requirements**
+   - Special warning box format for non-optional requirements
+   - Clear consequences of not following requirements
+   - Platform-specific implementation guidance
+
+3. **✅ Copy-Pasteable Helper Functions**
+   - Common operations provided as working code
+   - ID formatting functions (e.g., CIK padding)
+   - Lookup helpers for common workflows
+   - Rate limiter implementation examples
+
+4. **✅ Rate Limit Implementation Code**
+   - Not just documentation - actual working code
+   - Shows both config AND platform-side implementation
+   - Throttling logic with examples
+
+5. **✅ Platform Integration Checklist**
+   - Step-by-step checklist for TypeScript platforms
+   - Separate checklist for JSON platforms
+   - Includes testing and verification steps
+   - Integration time estimate
+
+6. **✅ Common Parameters as Code**
+   - XBRL tags, status codes, etc. as const objects
+   - Format: `const COMMON_TAGS = { ... }`
+   - Ready to copy-paste into platform code
+
+### What Makes Guides Perfect Now
+
+**Before (v1.0):**
+- JSON configuration only
+- Critical requirements buried in text
+- "Implement rate limiting" without showing how
+- Generic integration steps
+
+**After (v1.1):**
+- TypeScript + JSON configurations
+- Critical requirements in warning boxes at top
+- Complete rate limiter class with usage
+- Platform-specific checklists with exact file locations
+- Helper functions ready to copy-paste
+- Integration time: ~30 minutes (documented)
+
+---
+
+*This template ensures consistent, high-quality API integration guides that prioritize the platform's existing patterns while providing comprehensive test evidence, usage examples, and production-ready code snippets.*
