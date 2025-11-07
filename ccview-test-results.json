@@ -1,0 +1,2429 @@
+{
+  "total": 22,
+  "passed": 21,
+  "failed": 1,
+  "tests": [
+    {
+      "name": "health_check",
+      "endpoint": "/api/v1/health",
+      "category": "Health",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": "Service is alive",
+      "response_time_ms": 516,
+      "size_bytes": 16,
+      "note": "Non-JSON response"
+    },
+    {
+      "name": "get_network_stats",
+      "endpoint": "/api/v1/explore/stats",
+      "category": "Explore",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": {
+        "cc_price": "0.1500000000",
+        "total_supply": "34786987576.9983520931",
+        "market_cap": "5218048136.5497528139650000000",
+        "volume": "8895996589.4745498314",
+        "latest_round": 69550,
+        "updates_count": 70404504,
+        "migration": 3,
+        "version": "0.4.23",
+        "total_parties": 60868,
+        "sv_count": 13,
+        "validator_count": 667,
+        "featured_apps_count": 53,
+        "fee_accumulated": "77586862.1022268183",
+        "total_transfer_count": 67404817,
+        "total_governance_vote_count": 161
+      },
+      "response_time_ms": 291,
+      "size_bytes": 414
+    },
+    {
+      "name": "get_fee_statistics",
+      "endpoint": "/api/v1/explore/fee-stat",
+      "category": "Explore",
+      "params": {
+        "start": "2025-10-08",
+        "end": "2025-11-07"
+      },
+      "success": true,
+      "status": 200,
+      "data": [
+        {
+          "day": "2025-11-06",
+          "fee_per_day": "1.1621779231",
+          "fee_accumulated": "77586862.0026579678"
+        },
+        {
+          "day": "2025-11-05",
+          "fee_per_day": "0.9874439505",
+          "fee_accumulated": "77586860.8404800447"
+        },
+        {
+          "day": "2025-11-04",
+          "fee_per_day": "1.5621783241",
+          "fee_accumulated": "77586859.8530360942"
+        },
+        {
+          "day": "2025-11-03",
+          "fee_per_day": "1.3219193366",
+          "fee_accumulated": "77586858.2908577701"
+        },
+        {
+          "day": "2025-11-02",
+          "fee_per_day": "1.4441363522",
+          "fee_accumulated": "77586856.9689384335"
+        },
+        {
+          "day": "2025-11-01",
+          "fee_per_day": "1.4561156232",
+          "fee_accumulated": "77586855.5248020813"
+        },
+        {
+          "day": "2025-10-31",
+          "fee_per_day": "1.5857171750",
+          "fee_accumulated": "77586854.0686864581"
+        },
+        {
+          "day": "2025-10-30",
+          "fee_per_day": "1.6383583008",
+          "fee_accumulated": "77586852.4829692831"
+        },
+        {
+          "day": "2025-10-29",
+          "fee_per_day": "1.8346548520",
+          "fee_accumulated": "77586850.8446109823"
+        },
+        {
+          "day": "2025-10-28",
+          "fee_per_day": "2.8121654801",
+          "fee_accumulated": "77586849.0099561303"
+        },
+        {
+          "day": "2025-10-27",
+          "fee_per_day": "2.5965026248",
+          "fee_accumulated": "77586846.1977906502"
+        },
+        {
+          "day": "2025-10-26",
+          "fee_per_day": "2.8365333792",
+          "fee_accumulated": "77586843.6012880254"
+        },
+        {
+          "day": "2025-10-25",
+          "fee_per_day": "2.9789993184",
+          "fee_accumulated": "77586840.7647546462"
+        },
+        {
+          "day": "2025-10-24",
+          "fee_per_day": "3.6481021696",
+          "fee_accumulated": "77586837.7857553278"
+        },
+        {
+          "day": "2025-10-23",
+          "fee_per_day": "160362.1730217516",
+          "fee_accumulated": "77586834.1376531582"
+        },
+        {
+          "day": "2025-10-22",
+          "fee_per_day": "501834.0164061987",
+          "fee_accumulated": "77426472.7114788766"
+        },
+        {
+          "day": "2025-10-21",
+          "fee_per_day": "479488.5653748234",
+          "fee_accumulated": "76924655.9389452204"
+        },
+        {
+          "day": "2025-10-20",
+          "fee_per_day": "352382.2705762095",
+          "fee_accumulated": "76445190.6460816449"
+        },
+        {
+          "day": "2025-10-19",
+          "fee_per_day": "366706.6187216535",
+          "fee_accumulated": "76092823.8389493900"
+        },
+        {
+          "day": "2025-10-18",
+          "fee_per_day": "315802.9642244827",
+          "fee_accumulated": "75726163.7449753939"
+        },
+        {
+          "day": "2025-10-17",
+          "fee_per_day": "318530.1649486484",
+          "fee_accumulated": "75410368.4009220543"
+        },
+        {
+          "day": "2025-10-16",
+          "fee_per_day": "295383.9724687551",
+          "fee_accumulated": "75091857.2224842769"
+        },
+        {
+          "day": "2025-10-15",
+          "fee_per_day": "314260.6910023810",
+          "fee_accumulated": "74796485.2788513906"
+        },
+        {
+          "day": "2025-10-14",
+          "fee_per_day": "295054.5718567265",
+          "fee_accumulated": "74482234.7239976916"
+        },
+        {
+          "day": "2025-10-13",
+          "fee_per_day": "282981.2026022536",
+          "fee_accumulated": "74187198.4258294649"
+        },
+        {
+          "day": "2025-10-12",
+          "fee_per_day": "266240.9625761842",
+          "fee_accumulated": "73904244.5813900463"
+        },
+        {
+          "day": "2025-10-11",
+          "fee_per_day": "273676.5557885792",
+          "fee_accumulated": "73638022.9615810969"
+        },
+        {
+          "day": "2025-10-10",
+          "fee_per_day": "245800.4224910317",
+          "fee_accumulated": "73364454.0277141424"
+        },
+        {
+          "day": "2025-10-09",
+          "fee_per_day": "282797.9549022510",
+          "fee_accumulated": "73118672.1804227832"
+        },
+        {
+          "day": "2025-10-08",
+          "fee_per_day": "285217.2601502222",
+          "fee_accumulated": "72835878.4969513092"
+        }
+      ],
+      "response_time_ms": 208,
+      "size_bytes": 2781
+    },
+    {
+      "name": "get_token_prices",
+      "endpoint": "/api/v1/explore/prices",
+      "category": "Explore",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": {
+        "current": "0.1500000000",
+        "start_of_day": "0.1500000000",
+        "one_day_ago": "0.1500000000",
+        "one_week_ago": "0.1250000000",
+        "one_month_ago": "0.1000000000",
+        "one_year_ago": "0.0050000000"
+      },
+      "response_time_ms": 209,
+      "size_bytes": 176
+    },
+    {
+      "name": "get_supply_stats",
+      "endpoint": "/api/v1/explore/supply-stats",
+      "category": "Explore",
+      "params": {
+        "start": "2025-10-08",
+        "end": "2025-11-07"
+      },
+      "success": true,
+      "status": 200,
+      "data": [
+        {
+          "day": "2025-10-08",
+          "total_supply_per_day": "22406286028.9044018162",
+          "amulet_price_per_day": "0.1000000000",
+          "market_cap_per_day": "2240628602.8904401816200000000"
+        },
+        {
+          "day": "2025-10-09",
+          "total_supply_per_day": "22583725199.8604099111",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2822965649.9825512388875000000"
+        },
+        {
+          "day": "2025-10-10",
+          "total_supply_per_day": "23337147741.8585206146",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2917143467.7323150768250000000"
+        },
+        {
+          "day": "2025-10-11",
+          "total_supply_per_day": "22499355964.7806236859",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2812419495.5975779607375000000"
+        },
+        {
+          "day": "2025-10-12",
+          "total_supply_per_day": "22454600554.7856156497",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2806825069.3482019562125000000"
+        },
+        {
+          "day": "2025-10-13",
+          "total_supply_per_day": "23565799491.9743340530",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2945724936.4967917566250000000"
+        },
+        {
+          "day": "2025-10-14",
+          "total_supply_per_day": "25037265936.5300459224",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "3129658242.0662557403000000000"
+        },
+        {
+          "day": "2025-10-15",
+          "total_supply_per_day": "22882728831.9896613440",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2860341103.9987076680000000000"
+        },
+        {
+          "day": "2025-10-16",
+          "total_supply_per_day": "23493013340.1629809074",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2936626667.5203726134250000000"
+        },
+        {
+          "day": "2025-10-17",
+          "total_supply_per_day": "22690390174.4942652016",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2836298771.8117831502000000000"
+        },
+        {
+          "day": "2025-10-18",
+          "total_supply_per_day": "22577543750.5683854091",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2822192968.8210481761375000000"
+        },
+        {
+          "day": "2025-10-19",
+          "total_supply_per_day": "22640352666.3762490818",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2830044083.2970311352250000000"
+        },
+        {
+          "day": "2025-10-20",
+          "total_supply_per_day": "23577616034.4830931607",
+          "amulet_price_per_day": "0.1125000000",
+          "market_cap_per_day": "2652481803.8793479805787500000"
+        },
+        {
+          "day": "2025-10-21",
+          "total_supply_per_day": "25111169654.6649694431",
+          "amulet_price_per_day": "0.1125000000",
+          "market_cap_per_day": "2825006586.1498090623487500000"
+        },
+        {
+          "day": "2025-10-22",
+          "total_supply_per_day": "24558383792.8787751896",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "3069797974.1098468987000000000"
+        },
+        {
+          "day": "2025-10-23",
+          "total_supply_per_day": "24196409190.0288689936",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "3024551148.7536086242000000000"
+        },
+        {
+          "day": "2025-10-24",
+          "total_supply_per_day": "23581346602.1370538895",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2947668325.2671317361875000000"
+        },
+        {
+          "day": "2025-10-25",
+          "total_supply_per_day": "22843643801.2600432647",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2855455475.1575054080875000000"
+        },
+        {
+          "day": "2025-10-26",
+          "total_supply_per_day": "22753057392.7637819325",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2844132174.0954727415625000000"
+        },
+        {
+          "day": "2025-10-27",
+          "total_supply_per_day": "23660174413.9256344233",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2957521801.7407043029125000000"
+        },
+        {
+          "day": "2025-10-28",
+          "total_supply_per_day": "23486986507.2162266019",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2935873313.4020283252375000000"
+        },
+        {
+          "day": "2025-10-29",
+          "total_supply_per_day": "23280774551.1300202969",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2910096818.8912525371125000000"
+        },
+        {
+          "day": "2025-10-30",
+          "total_supply_per_day": "23272862059.9015426600",
+          "amulet_price_per_day": "0.1250000000",
+          "market_cap_per_day": "2909107757.4876928325000000000"
+        },
+        {
+          "day": "2025-10-31",
+          "total_supply_per_day": "23748515920.4625192351",
+          "amulet_price_per_day": "0.1350000000",
+          "market_cap_per_day": "3206049649.2624400967385000000"
+        },
+        {
+          "day": "2025-11-01",
+          "total_supply_per_day": "21865674379.1911141289",
+          "amulet_price_per_day": "0.1350000000",
+          "market_cap_per_day": "2951866041.1908004074015000000"
+        },
+        {
+          "day": "2025-11-02",
+          "total_supply_per_day": "21224172092.1748959173",
+          "amulet_price_per_day": "0.1350000000",
+          "market_cap_per_day": "2865263232.4436109488355000000"
+        },
+        {
+          "day": "2025-11-03",
+          "total_supply_per_day": "23806384757.8795757466",
+          "amulet_price_per_day": "0.1500000000",
+          "market_cap_per_day": "3570957713.6819363619900000000"
+        },
+        {
+          "day": "2025-11-04",
+          "total_supply_per_day": "26123184237.7195419880",
+          "amulet_price_per_day": "0.1500000000",
+          "market_cap_per_day": "3918477635.6579312982000000000"
+        },
+        {
+          "day": "2025-11-05",
+          "total_supply_per_day": "28868864114.5917133744",
+          "amulet_price_per_day": "0.1500000000",
+          "market_cap_per_day": "4330329617.1887570061600000000"
+        },
+        {
+          "day": "2025-11-06",
+          "total_supply_per_day": "24660589502.2081802314",
+          "amulet_price_per_day": "0.1500000000",
+          "market_cap_per_day": "3699088425.3312270347100000000"
+        }
+      ],
+      "response_time_ms": 340,
+      "size_bytes": 4831
+    },
+    {
+      "name": "list_governances",
+      "endpoint": "/api/v1/governances",
+      "category": "Governance",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "total_sv": 13,
+        "data": [
+          {
+            "contract_id": "006f55e72017aa4df3f375083797d62c2a0ed06f59dbe4c5fad76d75c954917900ca111220041d171dc61ed9f0ca093c66141817ce870bb1ee40d285129dee563e5faeb246",
+            "event_id": "12205eebc29dd4ce296c5c13b08e07e4b1366ea457d194472545fb3bd0149aa6b275:1",
+            "tracking_cid": "006f55e72017aa4df3f375083797d62c2a0ed06f59dbe4c5fad76d75c954917900ca111220041d171dc61ed9f0ca093c66141817ce870bb1ee40d285129dee563e5faeb246",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-13T20:53:00.182535Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/vote_proposal_on_mainnet_to/116160498",
+            "reason_body": "Console Wallet by PixelPlex is a non-custodial, browser-based wallet. It has been pre-approved by the Tokenomics committee to have featured app status.",
+            "target_effective_at": "2025-11-14T20:53:00Z",
+            "status": "pending",
+            "record_time": "2025-11-06T21:00:41.921276Z",
+            "total_votes": 1,
+            "accept_votes": 1,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "0069489ac0f0bf9e107a9b2ffcfe673c8c271becbf5eb2a2f084ac55aee2b7dbe1ca1112200e88e0c4c82cda13507ea1f3198cd57e8913ca417553e3be219ca9f7c62de590",
+            "event_id": "122008ba758eba8474762ef48be32f48198aa8e7bc3e43c45299dc63e813f1bee2fe:2",
+            "tracking_cid": "00bc62e10971497a85fab415a8d1bd8771e7c0c43f4db3ed73525fa9502dba343fca111220c94f75f546d0da7d5ac2a3112cd92ec6fa992705b9640f83b017c2a42d137268",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-11T19:40:00.231312Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/kucoin_featured_app_partyid/116119054",
+            "reason_body": "KuCoin operates an exchange allowing trades in blockchain assets, and plans to list Canton Coin on its exchange. The Tokenomics Working Group pre-approved featured app status for KuCoin. ",
+            "target_effective_at": "2025-11-12T19:40:00Z",
+            "status": "pending",
+            "record_time": "2025-11-05T21:03:28.092905Z",
+            "total_votes": 9,
+            "accept_votes": 1,
+            "reject_votes": 8
+          },
+          {
+            "contract_id": "00cf4d311d883ceb60d32d79d94f4ed61022bac3c381f29814adb6e28229051454ca1112201d02fa1e2adeb4bb7442f6c52145f57a1f03256c520d7e7505ebab620371e564",
+            "event_id": "1220feb2754667358c2af73bdf8838100c5d70c4324d048abd5ac62e7f5624691b2a:2",
+            "tracking_cid": "0004ab6daba89e66ed01ee3ebd129fbe26b06f197d17814e1985a723696ebdb384ca111220f1d1b361e0f0f11dd9b235d9d762d0bf85e3086cc2b0e09bd65bfd693a03733f",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-11T19:40:00.234105Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/kucoin_featured_app_partyid/116119054",
+            "reason_body": "KuCoin operates an exchange allowing trades in blockchain assets, and plans to list Canton Coin on its exchange. The Tokenomics Working Group pre-approved featured app status for KuCoin. ",
+            "target_effective_at": "2025-11-12T19:40:00Z",
+            "status": "pending",
+            "record_time": "2025-11-05T21:02:07.313071Z",
+            "total_votes": 9,
+            "accept_votes": 9,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "0083bf45c1d0ec35930709a2b99b7f9d6cb2e5852564d7d24175256edead1c1994ca11122022254a8001a937caf7816420fd5dbe1491256dae532c77d190acdca0308e0d84",
+            "event_id": "12206af96029f19135c5a449aeb1afc6b62af3865a295375e6ecc1b79c7ed217bae0:2",
+            "tracking_cid": "00a9d7354d12cc902dd1a022db159ef55cfface1741dbf5fe0c50025b1acc0fdf3ca111220530b4db07819e6e211be7e493a39559195c6a4cb4e904bc3e84a9f2f534f4426",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-09T00:24:00.134570Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/tokenomics-announce/message/252",
+            "reason_body": "Can Track provides real-time transaction monitoring and push notifications via Telegram for Canton Network accounts. Users add their accounts and receive instant, formatted alerts for transfers, validator rewards, and app rewards directly on their mobile devices or laptops. This eliminates the need to constantly check the Canton explorer and provides immediate awareness of account activity. Potential future expansion to a web application component.",
+            "target_effective_at": "2025-11-10T00:24:00Z",
+            "status": "pending",
+            "record_time": "2025-11-05T01:32:02.573952Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "0048930e964396b941f478239d9ac9cb011b7f4201a8ed2a5a925bc54496d7fe6aca1112202d2711559a989aedeb70d955ad744c5ddfffd0d71e1f79070ba3dfaeacd187ff",
+            "event_id": "1220efb83572ffbc182ed1376d431992624693d5264b7cb1af5a317257d5b58d9506:2",
+            "tracking_cid": "007d90e15a73947447a77eb720bbea9826dd25858629e3479be6175b623e2e7ba4ca111220949da3fa32f4d406ee9cd7fb9ca7c0826c34c291dcd962a04e340a3b28fd9adc",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-05T11:00:58.621316Z",
+            "requester_name": "Global-Synchronizer-Foundation",
+            "requester_party_id": "Global-Synchronizer-Foundation::1220b0867964b602f2cc7ea61324a95f000f0060e735cfaf4f23f424fdab02c170ac",
+            "reason_url": "https://lists.sync.global/g/tokenomics-announce/message/245",
+            "reason_body": "According to CIP-0067, this voting proposal is a One-Time Allocation of Historical Unclaimed Rewards to the Global Synchronizer Foundation (GSF). The vote covers the transfer of the entire balance of unclaimed rewards from the pool to the designated Foundation address. For full details, please refer to the CIP-0067.\n\nThis is a fixed proposal with the right amount of CC.",
+            "target_effective_at": "2025-11-05T12:00:58.422Z",
+            "status": "accepted",
+            "record_time": "2025-11-05T01:26:18.100352Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          }
+        ],
+        "next_cursor": "2025-11-05T01:26:18.100352Z"
+      },
+      "response_time_ms": 218,
+      "size_bytes": 6151
+    },
+    {
+      "name": "list_active_governances",
+      "endpoint": "/api/v1/governances/active",
+      "category": "Governance",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "total_sv": 13,
+        "data": [
+          {
+            "contract_id": "006f55e72017aa4df3f375083797d62c2a0ed06f59dbe4c5fad76d75c954917900ca111220041d171dc61ed9f0ca093c66141817ce870bb1ee40d285129dee563e5faeb246",
+            "event_id": "12205eebc29dd4ce296c5c13b08e07e4b1366ea457d194472545fb3bd0149aa6b275:1",
+            "tracking_cid": "006f55e72017aa4df3f375083797d62c2a0ed06f59dbe4c5fad76d75c954917900ca111220041d171dc61ed9f0ca093c66141817ce870bb1ee40d285129dee563e5faeb246",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-13T20:53:00.182535Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/vote_proposal_on_mainnet_to/116160498",
+            "reason_body": "Console Wallet by PixelPlex is a non-custodial, browser-based wallet. It has been pre-approved by the Tokenomics committee to have featured app status.",
+            "target_effective_at": "2025-11-14T20:53:00Z",
+            "status": "pending",
+            "record_time": "2025-11-06T21:00:41.921276Z",
+            "total_votes": 1,
+            "accept_votes": 1,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "0069489ac0f0bf9e107a9b2ffcfe673c8c271becbf5eb2a2f084ac55aee2b7dbe1ca1112200e88e0c4c82cda13507ea1f3198cd57e8913ca417553e3be219ca9f7c62de590",
+            "event_id": "122008ba758eba8474762ef48be32f48198aa8e7bc3e43c45299dc63e813f1bee2fe:2",
+            "tracking_cid": "00bc62e10971497a85fab415a8d1bd8771e7c0c43f4db3ed73525fa9502dba343fca111220c94f75f546d0da7d5ac2a3112cd92ec6fa992705b9640f83b017c2a42d137268",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-11T19:40:00.231312Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/kucoin_featured_app_partyid/116119054",
+            "reason_body": "KuCoin operates an exchange allowing trades in blockchain assets, and plans to list Canton Coin on its exchange. The Tokenomics Working Group pre-approved featured app status for KuCoin. ",
+            "target_effective_at": "2025-11-12T19:40:00Z",
+            "status": "pending",
+            "record_time": "2025-11-05T21:03:28.092905Z",
+            "total_votes": 9,
+            "accept_votes": 1,
+            "reject_votes": 8
+          },
+          {
+            "contract_id": "00cf4d311d883ceb60d32d79d94f4ed61022bac3c381f29814adb6e28229051454ca1112201d02fa1e2adeb4bb7442f6c52145f57a1f03256c520d7e7505ebab620371e564",
+            "event_id": "1220feb2754667358c2af73bdf8838100c5d70c4324d048abd5ac62e7f5624691b2a:2",
+            "tracking_cid": "0004ab6daba89e66ed01ee3ebd129fbe26b06f197d17814e1985a723696ebdb384ca111220f1d1b361e0f0f11dd9b235d9d762d0bf85e3086cc2b0e09bd65bfd693a03733f",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-11T19:40:00.234105Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/kucoin_featured_app_partyid/116119054",
+            "reason_body": "KuCoin operates an exchange allowing trades in blockchain assets, and plans to list Canton Coin on its exchange. The Tokenomics Working Group pre-approved featured app status for KuCoin. ",
+            "target_effective_at": "2025-11-12T19:40:00Z",
+            "status": "pending",
+            "record_time": "2025-11-05T21:02:07.313071Z",
+            "total_votes": 9,
+            "accept_votes": 9,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "0083bf45c1d0ec35930709a2b99b7f9d6cb2e5852564d7d24175256edead1c1994ca11122022254a8001a937caf7816420fd5dbe1491256dae532c77d190acdca0308e0d84",
+            "event_id": "12206af96029f19135c5a449aeb1afc6b62af3865a295375e6ecc1b79c7ed217bae0:2",
+            "tracking_cid": "00a9d7354d12cc902dd1a022db159ef55cfface1741dbf5fe0c50025b1acc0fdf3ca111220530b4db07819e6e211be7e493a39559195c6a4cb4e904bc3e84a9f2f534f4426",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-09T00:24:00.134570Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/tokenomics-announce/message/252",
+            "reason_body": "Can Track provides real-time transaction monitoring and push notifications via Telegram for Canton Network accounts. Users add their accounts and receive instant, formatted alerts for transfers, validator rewards, and app rewards directly on their mobile devices or laptops. This eliminates the need to constantly check the Canton explorer and provides immediate awareness of account activity. Potential future expansion to a web application component.",
+            "target_effective_at": "2025-11-10T00:24:00Z",
+            "status": "pending",
+            "record_time": "2025-11-05T01:32:02.573952Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "00bcbd6c37b8174f5400484c5c1cb0db2243c069f12ceed7b37abfb1837870e6b6ca111220d03a21f7026caec66b9d10dfa6edad5b3e960c261c9f72911921becab3985b10",
+            "event_id": "122000e5a68b4dd00f898293a69f3b40863706f2f4b272d2d94dc1912fe3635b0fea:2",
+            "tracking_cid": "007d1653db58e8667ed74392c0e6ff1f88ee24b17843c169e60fc269625ed6caeaca111220371924a9a67df5320c7d92ddf2d1b0554327271280a4f55eb9c01f478d477def",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-06T18:00:31.566849Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-announce/topic/fyi_planned_digital_asset/115330544",
+            "reason_body": "Operational: Restore original weight of DA-1 after reonboarding.",
+            "target_effective_at": "2025-11-07T18:00:31.407Z",
+            "status": "pending",
+            "record_time": "2025-10-31T18:22:28.267328Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          }
+        ],
+        "next_cursor": "2025-10-31T18:22:28.267328Z"
+      },
+      "response_time_ms": 212,
+      "size_bytes": 5844
+    },
+    {
+      "name": "list_completed_governances",
+      "endpoint": "/api/v1/governances/completed",
+      "category": "Governance",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "total_sv": 13,
+        "data": [
+          {
+            "contract_id": "0048930e964396b941f478239d9ac9cb011b7f4201a8ed2a5a925bc54496d7fe6aca1112202d2711559a989aedeb70d955ad744c5ddfffd0d71e1f79070ba3dfaeacd187ff",
+            "event_id": "1220efb83572ffbc182ed1376d431992624693d5264b7cb1af5a317257d5b58d9506:2",
+            "tracking_cid": "007d90e15a73947447a77eb720bbea9826dd25858629e3479be6175b623e2e7ba4ca111220949da3fa32f4d406ee9cd7fb9ca7c0826c34c291dcd962a04e340a3b28fd9adc",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-05T11:00:58.621316Z",
+            "requester_name": "Global-Synchronizer-Foundation",
+            "requester_party_id": "Global-Synchronizer-Foundation::1220b0867964b602f2cc7ea61324a95f000f0060e735cfaf4f23f424fdab02c170ac",
+            "reason_url": "https://lists.sync.global/g/tokenomics-announce/message/245",
+            "reason_body": "According to CIP-0067, this voting proposal is a One-Time Allocation of Historical Unclaimed Rewards to the Global Synchronizer Foundation (GSF). The vote covers the transfer of the entire balance of unclaimed rewards from the pool to the designated Foundation address. For full details, please refer to the CIP-0067.\n\nThis is a fixed proposal with the right amount of CC.",
+            "target_effective_at": "2025-11-05T12:00:58.422Z",
+            "status": "accepted",
+            "record_time": "2025-11-05T01:26:18.100352Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "00e0a58887cc396a3394a70577145b54888fe08c37fd743f301e1300f8eb742887ca111220f6357b0387b846c3a3c450a1c6ea0368de6feb694cf6125fcfb6aec00fe20735",
+            "event_id": "1220429ddc3697b181c5450c73bd64d17e11dd41e22790ca5dc88a5b7dcbe037d47f:2",
+            "tracking_cid": "000b3fafbb3aacc59bd7d7895cb1f88275299eb431102f8b4e325ec142ef7010a5ca111220a147de3c762812952a10bd47e4ea62eaa4053e1a78b50fcd9ef1a8ae061bb95c",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-05T11:00:54.455029Z",
+            "requester_name": "Global-Synchronizer-Foundation",
+            "requester_party_id": "Global-Synchronizer-Foundation::1220b0867964b602f2cc7ea61324a95f000f0060e735cfaf4f23f424fdab02c170ac",
+            "reason_url": "https://lists.sync.global/g/tokenomics-announce/message/245",
+            "reason_body": "According to CIP-0067, this voting proposal is a One-Time Allocation of Historical Unclaimed Rewards to the Global Synchronizer Foundation (GSF). The vote covers the transfer of the entire balance of unclaimed rewards from the pool to the designated Foundation address. For full details, please refer to the CIP-0067.",
+            "target_effective_at": "2025-11-05T12:00:54.319Z",
+            "status": "rejected",
+            "record_time": "2025-11-03T22:14:28.592398Z",
+            "total_votes": 12,
+            "accept_votes": 3,
+            "reject_votes": 9
+          },
+          {
+            "contract_id": "007ee8bca340e33fc8da57194b06bbdec109738588b7b856df43b43fb07aa8c584ca111220a92f58b608d1ddda1cd50a17b360fb46a0ff3001d207edc756a75023060825ae",
+            "event_id": "12200371c77298da22feec4c231147add304fb858a135d32f3f883e830482a4784cd:2",
+            "tracking_cid": "00c4a618eca4b56391aeb32d9fefa62815f828da39035b9542328a487e1637bb3bca11122060eaec0ef6b0fbef9389818aa4d9ea4f417cc83d73f2e01664fc6ea117689368",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-05T13:00:23.737790Z",
+            "requester_name": "C7-Technology-Services-Limited",
+            "requester_party_id": "C7-Technology-Services-Limited::122027859595a9f295312977656425f2360813ce5a2681aadc7605d2e198dc82a877",
+            "reason_url": "https://lists.sync.global/g/tokenomics-announce/message/250",
+            "reason_body": "Texture Capital Inc is a subsidiary of Texture Capital Holdings and a FINRA member broker-dealer and operator of an SEC registered Alternative Trading System.Texture Transfer Services is a separate subsidiary that is an SEC-registered transfer agent. Our unique U.S. regulatory status allows us to compliantly issue digital securities and operate secondary markets. Today, Texture Capital already offers a issuer platform where subscribers can onboard and begin raising capital immediately.",
+            "target_effective_at": "2025-11-06T13:00:23.623Z",
+            "status": "accepted",
+            "record_time": "2025-11-03T22:12:24.450334Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "008e9b0bd82af51fb3a59ca0a74bd8ef561af58964f87fbb6f7bd28b9fe50e4241ca111220dc1190d2e76ab06f46de5193e130b9c14fe3bc364538e718a838168c7c259e31",
+            "event_id": "12200acbce1ca3d8267112c88064dc3355c69a91acdc3c7e21560afa961541f4acbb:2",
+            "tracking_cid": "006ee1fec23b7608435274940bc1efd2460d05ef7d699970b45d4385d5f9c140dbca111220ef6572f616ee0233329274a3729179c7549154da8d37bdc21f1e5a8756b08afa",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-04T20:00:21.980819Z",
+            "requester_name": "Global-Synchronizer-Foundation",
+            "requester_party_id": "Global-Synchronizer-Foundation::1220b0867964b602f2cc7ea61324a95f000f0060e735cfaf4f23f424fdab02c170ac",
+            "reason_url": "https://lists.sync.global/g/cip-announce/message/59",
+            "reason_body": "IntellectEU has completed its milestone(s) set in the CIP-0058. The voting proposal is to mint a portion of the Unclaimed Rewards by IntellectEU\u2019s Validator, based on the calculation approved by the Tokenomics working group.",
+            "target_effective_at": "2025-11-05T20:00:21.866Z",
+            "status": "accepted",
+            "record_time": "2025-11-03T22:11:32.789027Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          },
+          {
+            "contract_id": "003a2a7c853edb8e78fec36807b08f9d1c55ae19f0d9426dde94dba68786e6819eca111220627cd1c355d8d746a6f0f86e91ce121241ccce4c94543a9ba4cf75c08fe64402",
+            "event_id": "12209d0b5232b0bf3704030140613c92d172a9b5f49c846479ca73f394f9303de3c8:2",
+            "tracking_cid": "0039af6ae002f892c839e655410b4d0863e2926515da1e7e179787ae78f64b84c6ca111220034e051124f8ee7d07aff40bc650a945ca7f3bbaea02bf75c960cbf4606cd144",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "vote_before": "2025-11-04T16:20:47.527264Z",
+            "requester_name": "Digital-Asset-2",
+            "requester_party_id": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "reason_url": "https://lists.sync.global/g/supervalidator-ops/message/3",
+            "reason_body": "Bump SV onboarding timeouts to 24h",
+            "target_effective_at": "2025-11-05T16:20:47.454Z",
+            "status": "accepted",
+            "record_time": "2025-11-03T22:10:20.207915Z",
+            "total_votes": 13,
+            "accept_votes": 13,
+            "reject_votes": 0
+          }
+        ],
+        "next_cursor": "2025-11-03T22:10:20.207915Z"
+      },
+      "response_time_ms": 495,
+      "size_bytes": 6235
+    },
+    {
+      "name": "get_governance_statistics",
+      "endpoint": "/api/v1/governances/statistics",
+      "category": "Governance",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": {
+        "total_requests": 161,
+        "in_progress_count": 6,
+        "executed_count": 140,
+        "rejected_count": 13,
+        "expired_count": 2
+      },
+      "response_time_ms": 1470,
+      "size_bytes": 103
+    },
+    {
+      "name": "list_validators",
+      "endpoint": "/api/v1/validators",
+      "category": "Validators",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "data": [
+          {
+            "active": true,
+            "validator_id": "modulo-mainnet-2::1220bbd47c5a10d5540c420e1f8f0f1fd513464ec6110dbd5123970dbe3b538805d3",
+            "sponsor": "Five-North-1::1220520b6d396b91c4b13a1786bd5f317e4240001632d4a628c1c4f53a0b5165ba98",
+            "version": "0.4.21",
+            "first_round": 69338,
+            "last_round": 69548,
+            "miss_round": 0,
+            "uptime_percentage": 100.0,
+            "last_active_at": "2025-11-07T05:08:23.854709Z",
+            "metadata_last_update": "2025-11-05T17:23:48.344921Z",
+            "contact": "",
+            "contract_id": "00faeeec19c34a1cc3f931ec747676c2b47101eedf24f8d05f65104cfc710419a9ca111220545cbd79e2b56d7185b6485031587744811666b8a9f1f53e0c8719ce547e7ed7",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "template_id": "3ca1343ab26b453d38c8adb70dca5f1ead8440c42b59b68f070786955cbf9ec1:Splice.ValidatorLicense:ValidatorLicense",
+            "amulet_balance": "164.5315062356",
+            "participated_updates_count": 432,
+            "transfers_count": 217,
+            "record_time": "2025-11-05T17:23:48.681002Z",
+            "as_validator_rewards_total": "11588.7300793122",
+            "sv_license": null
+          },
+          {
+            "active": true,
+            "validator_id": "bitget-validator-2::1220f428aa2b19e3dbbde03ccc9db76f406b986116370cde0cadc8e77195eaec0a01",
+            "sponsor": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "version": "0.4.22",
+            "first_round": 69015,
+            "last_round": 69548,
+            "miss_round": 1,
+            "uptime_percentage": 99.812734082397,
+            "last_active_at": "2025-11-07T05:09:55.322033Z",
+            "metadata_last_update": "2025-11-03T10:07:59.681149Z",
+            "contact": "",
+            "contract_id": "005db90487c629eaa71dbc331d9c7576f07156b4e55b64a3ab9a1901428d615bb2ca11122006c1b00b72e1c4d9a59d22261ad9e8c9a409e2518c511584ee2619bbb9222517",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "template_id": "3ca1343ab26b453d38c8adb70dca5f1ead8440c42b59b68f070786955cbf9ec1:Splice.ValidatorLicense:ValidatorLicense",
+            "amulet_balance": "30835.0212440102",
+            "participated_updates_count": 1053,
+            "transfers_count": 518,
+            "record_time": "2025-11-03T10:08:00.077923Z",
+            "as_validator_rewards_total": "30243.2278444757",
+            "sv_license": null
+          },
+          {
+            "active": true,
+            "validator_id": "Blockdaemon-Validator-3::122022be6f3cdf48ac6feed6a3964c33976352b47e8f2c86d079e77e4fab0e451443",
+            "sponsor": "Cumberland-2::1220120801da0994334c869a6db19d9321f3d5baf9e40377830a90c2af78658aede6",
+            "version": "0.4.22",
+            "first_round": 68637,
+            "last_round": 69548,
+            "miss_round": 0,
+            "uptime_percentage": 100.0,
+            "last_active_at": "2025-11-07T05:12:58.363435Z",
+            "metadata_last_update": "2025-10-31T17:25:17.603763Z",
+            "contact": "",
+            "contract_id": "006e925097466a5f4fb382f9eb1c961b2270655d8eb0fc5fabd8300164b4e18a23ca111220116d1e25a22f53687015105fd2a13ff355f62bc2a5d7a96a86248b3bda76cef7",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "template_id": "3ca1343ab26b453d38c8adb70dca5f1ead8440c42b59b68f070786955cbf9ec1:Splice.ValidatorLicense:ValidatorLicense",
+            "amulet_balance": "53615.6215481022",
+            "participated_updates_count": 1806,
+            "transfers_count": 892,
+            "record_time": "2025-10-31T17:25:18.031869Z",
+            "as_validator_rewards_total": "52832.3556180269",
+            "sv_license": null
+          },
+          {
+            "active": true,
+            "validator_id": "kucoin-node-02::1220350c7d4154d7add20e95ba24673da060a9c63c822cf4733b1009a1ef1064395f",
+            "sponsor": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "version": "0.4.22",
+            "first_round": 68548,
+            "last_round": 69548,
+            "miss_round": 1,
+            "uptime_percentage": 99.9000999000999,
+            "last_active_at": "2025-11-07T05:05:44.994389Z",
+            "metadata_last_update": "2025-10-31T02:15:38.249730Z",
+            "contact": "",
+            "contract_id": "00bf04f666f8cb5d40ab70a9408862f95d7074efd7394c4d90691b8fbe89fbb140ca111220f8658fa6cc338c2d146ec09a1b9ffb82300a1757bffcc6c9d1ad9d24ed631b50",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "template_id": "3ca1343ab26b453d38c8adb70dca5f1ead8440c42b59b68f070786955cbf9ec1:Splice.ValidatorLicense:ValidatorLicense",
+            "amulet_balance": "14814.6230327786",
+            "participated_updates_count": 1985,
+            "transfers_count": 982,
+            "record_time": "2025-10-31T02:15:33.404704Z",
+            "as_validator_rewards_total": "58222.5499746129",
+            "sv_license": null
+          },
+          {
+            "active": true,
+            "validator_id": "OKXRD-VALIDATOR-1::1220469fb6c5eec49f523bf185bc310d618a0fa3e78a9e288682d0181840a1c62f83",
+            "sponsor": "Digital-Asset-2::12209b21d512c6a7e2f5d215266fe6568cb732caaef7ff04e308f990a652340d3529",
+            "version": "0.4.22",
+            "first_round": 68453,
+            "last_round": 69548,
+            "miss_round": 57,
+            "uptime_percentage": 94.7992700729927,
+            "last_active_at": "2025-11-07T05:10:12.540278Z",
+            "metadata_last_update": "2025-10-30T09:59:55.160565Z",
+            "contact": "",
+            "contract_id": "0002c4a6ed18ad638659360245a4a25fbb4ed4c5ab92c18b69affcb0557fe95380ca111220d38bfeeb6986aa7e09d973a4a4cabd01848297b5908151ac45cce8078ff27af1",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "template_id": "3ca1343ab26b453d38c8adb70dca5f1ead8440c42b59b68f070786955cbf9ec1:Splice.ValidatorLicense:ValidatorLicense",
+            "amulet_balance": "61427.0055295861",
+            "participated_updates_count": 2059,
+            "transfers_count": 1016,
+            "record_time": "2025-10-30T09:59:50.082497Z",
+            "as_validator_rewards_total": "59525.1718453368",
+            "sv_license": null
+          }
+        ],
+        "next_cursor": "2025-10-30T09:59:50.082497Z"
+      },
+      "response_time_ms": 200,
+      "size_bytes": 5042
+    },
+    {
+      "name": "get_validator_statistics",
+      "endpoint": "/api/v1/validators/statistics",
+      "category": "Validators",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": {
+        "total_count": 667,
+        "active_count": 600,
+        "recent_count": 494,
+        "inactive_count": 67
+      },
+      "response_time_ms": 222,
+      "size_bytes": 77
+    },
+    {
+      "name": "list_validator_rewards",
+      "endpoint": "/api/v1/rewards/validator",
+      "category": "Rewards",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "data": [
+          {
+            "contract_id": "005302d6137224c0ff89633b32d65df4f92cb1773ae8791616d7820868357fbad9ca1112201f719d72f9510b063d08a03eefd9ae56bd4552edab1f16f3ac51ee8080e0de35",
+            "event_id": "122057929efa6b7f986cb2243365d256905f444a85b3bf3f356561ea358c72f5b858:5",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "receiver": "rwaxyz-validator-1::1220d3550e89fd8d3b67566e1fd57d2cb02eff78ec42c598feaffb5ffb8eedc0ad18",
+            "amount": "0.5701817033",
+            "round": 66482,
+            "record_time": "2025-10-16T08:53:16.460387Z"
+          },
+          {
+            "contract_id": "0016f68f666edb269db9ce92734da21ee293689f2a4d2ea3aa25825ab395582b38ca111220a6da946cfd3aebfd4e102302c07fd5fe2308e64e2988c2276817bae4022ad92a",
+            "event_id": "12201eacb8b27178201af3c01e585b1072630430fd24dad26f3afe42e34c9c63dd35:5",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+            "receiver": "rwaxyz-validator-1::1220d3550e89fd8d3b67566e1fd57d2cb02eff78ec42c598feaffb5ffb8eedc0ad18",
+            "amount": "0.5698538999",
+            "round": 66481,
+            "record_time": "2025-10-16T08:42:07.520396Z"
+          }
+        ]
+      },
+      "response_time_ms": 193,
+      "size_bytes": 1024
+    },
+    {
+      "name": "get_validator_rewards_stats",
+      "endpoint": "/api/v1/rewards/validator/stat",
+      "category": "Rewards",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": {
+        "total_count": 64,
+        "total_amount": "276586.5060333991",
+        "avg": "4321.6641567718609375",
+        "max": "111409.9580000000",
+        "min": "0.5698538999"
+      },
+      "response_time_ms": 207,
+      "size_bytes": 130
+    },
+    {
+      "name": "get_top_rewarded_validators",
+      "endpoint": "/api/v1/rewards/validator/top-rewarded",
+      "category": "Rewards",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": [
+        {
+          "user": "Fairmint-validator-1::122047f456985651be8ea317881a9af4f04521417ce1a449b75543541acf33aac4d2",
+          "rewards_count": 1,
+          "total_amount": "111409.9580000000"
+        },
+        {
+          "user": "cantonnodes-validator-1::12202aabb1637789bf00254a7893853860d8458c7c0235b06433611d6bf41e812b10",
+          "rewards_count": 4,
+          "total_amount": "24004.9319979620"
+        },
+        {
+          "user": "the_tie_validator::1220d3016091c253f526645cce3a0633837b685da083bac4459dad63e61d5c97b5fa",
+          "rewards_count": 2,
+          "total_amount": "24000.0000000000"
+        },
+        {
+          "user": "send-cantonwallet-1::1220f1b0d7a83c7eaaf6d712d95d5952ea2c801238af9c342e8d83c87dfc45c999dc",
+          "rewards_count": 4,
+          "total_amount": "20004.9319999853"
+        },
+        {
+          "user": "noves-validator-1::1220dd5cc6e969cd7d7c11e339fbd07fab5f6fa1f999dc09339228d17299d9d68941",
+          "rewards_count": 1,
+          "total_amount": "17280.0000000000"
+        },
+        {
+          "user": "digitalasset_utility_validator_admin::12205bcc106efa0eaa7f18dc491e5c6f5fb9b0cc68dc110ae66f4ed6467475d7c78e",
+          "rewards_count": 1,
+          "total_amount": "15999.9960000000"
+        },
+        {
+          "user": "cantonloop-mainnet-1::12205fb70ce14897d06baec18a4b889f296c765a8325fd3d99cc084b1f980426ac12",
+          "rewards_count": 7,
+          "total_amount": "14406.5759999340"
+        },
+        {
+          "user": "ObsidianSystems-validator-2::122096fe076cc065af0cb38f94caa60e8ddfecbe8f0cfe10655ae7aa06fab99c66b7",
+          "rewards_count": 9,
+          "total_amount": "12960.0000000000"
+        },
+        {
+          "user": "IntellectEU-validator-1::122085181345795b9e58122cef90b8df61ddfe128cdaf9abbcb77f8cef92950c1d05",
+          "rewards_count": 1,
+          "total_amount": "8640.0000000000"
+        },
+        {
+          "user": "proofgroup-validator-2::12209a2fa706cc4c2ab40f25469daeaa39956ad9525b200ed319e1a1dbeca2643cfa",
+          "rewards_count": 1,
+          "total_amount": "8194.2800000000"
+        }
+      ],
+      "response_time_ms": 192,
+      "size_bytes": 1564
+    },
+    {
+      "name": "list_token_transfers",
+      "endpoint": "/api/v1/token-transfers",
+      "category": "Transfers",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": false,
+      "status": 400,
+      "error": "HTTP Error 400: Bad Request",
+      "response_time_ms": 0
+    },
+    {
+      "name": "get_token_transfer_stats",
+      "endpoint": "/api/v1/token-transfers/stat",
+      "category": "Transfers",
+      "params": {
+        "start": "2025-10-08",
+        "end": "2025-11-07"
+      },
+      "success": true,
+      "status": 200,
+      "data": [
+        {
+          "day": "2025-10-08",
+          "transfers_per_day": 328089,
+          "transfers_accumulated_on_this_day": 28609191,
+          "merge_splits_per_day": 114328,
+          "merge_splits_accumulated_on_this_day": 11020280,
+          "volume_per_day": "49120000246.0219290104",
+          "volume_accumulated_on_this_day": "15816374659769.1306368405",
+          "fees_per_day": "285217.2601502222",
+          "fees_accumulated_on_this_day": "72835878.4969513092"
+        },
+        {
+          "day": "2025-10-09",
+          "transfers_per_day": 340775,
+          "transfers_accumulated_on_this_day": 28949966,
+          "merge_splits_per_day": 113155,
+          "merge_splits_accumulated_on_this_day": 11133435,
+          "volume_per_day": "34559589613.7226163584",
+          "volume_accumulated_on_this_day": "15850934249382.8532531989",
+          "fees_per_day": "282797.9549022510",
+          "fees_accumulated_on_this_day": "73118672.1804227832"
+        },
+        {
+          "day": "2025-10-10",
+          "transfers_per_day": 360488,
+          "transfers_accumulated_on_this_day": 29310454,
+          "merge_splits_per_day": 115872,
+          "merge_splits_accumulated_on_this_day": 11249307,
+          "volume_per_day": "41794790642.9297604481",
+          "volume_accumulated_on_this_day": "15892729040025.7830136470",
+          "fees_per_day": "245800.4224910317",
+          "fees_accumulated_on_this_day": "73364454.0277141424"
+        },
+        {
+          "day": "2025-10-11",
+          "transfers_per_day": 404135,
+          "transfers_accumulated_on_this_day": 29714589,
+          "merge_splits_per_day": 128910,
+          "merge_splits_accumulated_on_this_day": 11378217,
+          "volume_per_day": "50982695010.6931597134",
+          "volume_accumulated_on_this_day": "15943711735036.4761733604",
+          "fees_per_day": "273676.5557885792",
+          "fees_accumulated_on_this_day": "73638022.9615810969"
+        },
+        {
+          "day": "2025-10-12",
+          "transfers_per_day": 403843,
+          "transfers_accumulated_on_this_day": 30118413,
+          "merge_splits_per_day": 122428,
+          "merge_splits_accumulated_on_this_day": 11500619,
+          "volume_per_day": "51817226508.2916457686",
+          "volume_accumulated_on_this_day": "15995528719691.7733589878",
+          "fees_per_day": "266240.9625761842",
+          "fees_accumulated_on_this_day": "73904244.5813900463"
+        },
+        {
+          "day": "2025-10-13",
+          "transfers_per_day": 427250,
+          "transfers_accumulated_on_this_day": 30545663,
+          "merge_splits_per_day": 123708,
+          "merge_splits_accumulated_on_this_day": 11624327,
+          "volume_per_day": "50832157561.6433210269",
+          "volume_accumulated_on_this_day": "16046360877253.4166800147",
+          "fees_per_day": "282981.2026022536",
+          "fees_accumulated_on_this_day": "74187198.4258294649"
+        },
+        {
+          "day": "2025-10-14",
+          "transfers_per_day": 451580,
+          "transfers_accumulated_on_this_day": 30997243,
+          "merge_splits_per_day": 128616,
+          "merge_splits_accumulated_on_this_day": 11752943,
+          "volume_per_day": "48125138018.3336857846",
+          "volume_accumulated_on_this_day": "16094486015271.7503657993",
+          "fees_per_day": "295054.5718567265",
+          "fees_accumulated_on_this_day": "74482234.7239976916"
+        },
+        {
+          "day": "2025-10-15",
+          "transfers_per_day": 469294,
+          "transfers_accumulated_on_this_day": 31466537,
+          "merge_splits_per_day": 132040,
+          "merge_splits_accumulated_on_this_day": 11884983,
+          "volume_per_day": "46580847174.0336793364",
+          "volume_accumulated_on_this_day": "16141066862445.7840451357",
+          "fees_per_day": "314260.6910023810",
+          "fees_accumulated_on_this_day": "74796485.2788513906"
+        },
+        {
+          "day": "2025-10-16",
+          "transfers_per_day": 448543,
+          "transfers_accumulated_on_this_day": 31915080,
+          "merge_splits_per_day": 129814,
+          "merge_splits_accumulated_on_this_day": 12014797,
+          "volume_per_day": "37470043849.8778133680",
+          "volume_accumulated_on_this_day": "16178536906295.6618585037",
+          "fees_per_day": "295383.9724687551",
+          "fees_accumulated_on_this_day": "75091857.2224842769"
+        },
+        {
+          "day": "2025-10-17",
+          "transfers_per_day": 505679,
+          "transfers_accumulated_on_this_day": 32420759,
+          "merge_splits_per_day": 134360,
+          "merge_splits_accumulated_on_this_day": 12149157,
+          "volume_per_day": "43408607918.1937277342",
+          "volume_accumulated_on_this_day": "16221945514213.8555862379",
+          "fees_per_day": "318530.1649486484",
+          "fees_accumulated_on_this_day": "75410368.4009220543"
+        },
+        {
+          "day": "2025-10-18",
+          "transfers_per_day": 502690,
+          "transfers_accumulated_on_this_day": 32923435,
+          "merge_splits_per_day": 135963,
+          "merge_splits_accumulated_on_this_day": 12285120,
+          "volume_per_day": "43703247612.9337461595",
+          "volume_accumulated_on_this_day": "16265648598469.2495033282",
+          "fees_per_day": "315802.9642244827",
+          "fees_accumulated_on_this_day": "75726163.7449753939"
+        },
+        {
+          "day": "2025-10-19",
+          "transfers_per_day": 607046,
+          "transfers_accumulated_on_this_day": 33530481,
+          "merge_splits_per_day": 135939,
+          "merge_splits_accumulated_on_this_day": 12421059,
+          "volume_per_day": "45929674862.3824717653",
+          "volume_accumulated_on_this_day": "16311578273331.6319750935",
+          "fees_per_day": "366706.6187216535",
+          "fees_accumulated_on_this_day": "76092823.8389493900"
+        },
+        {
+          "day": "2025-10-20",
+          "transfers_per_day": 534304,
+          "transfers_accumulated_on_this_day": 34064761,
+          "merge_splits_per_day": 128098,
+          "merge_splits_accumulated_on_this_day": 12549148,
+          "volume_per_day": "42056853950.8554534706",
+          "volume_accumulated_on_this_day": "16353634588590.5558119467",
+          "fees_per_day": "352382.2705762095",
+          "fees_accumulated_on_this_day": "76445190.6460816449"
+        },
+        {
+          "day": "2025-10-21",
+          "transfers_per_day": 721967,
+          "transfers_accumulated_on_this_day": 34786728,
+          "merge_splits_per_day": 143232,
+          "merge_splits_accumulated_on_this_day": 12692380,
+          "volume_per_day": "43698685216.8867101634",
+          "volume_accumulated_on_this_day": "16397333273807.4425221101",
+          "fees_per_day": "479488.5653748234",
+          "fees_accumulated_on_this_day": "76924655.9389452204"
+        },
+        {
+          "day": "2025-10-22",
+          "transfers_per_day": 784444,
+          "transfers_accumulated_on_this_day": 35571172,
+          "merge_splits_per_day": 164469,
+          "merge_splits_accumulated_on_this_day": 12856849,
+          "volume_per_day": "41023323318.9791493020",
+          "volume_accumulated_on_this_day": "16438356597126.4216714121",
+          "fees_per_day": "501834.0164061987",
+          "fees_accumulated_on_this_day": "77426472.7114788766"
+        },
+        {
+          "day": "2025-10-23",
+          "transfers_per_day": 746790,
+          "transfers_accumulated_on_this_day": 36317962,
+          "merge_splits_per_day": 159062,
+          "merge_splits_accumulated_on_this_day": 13015911,
+          "volume_per_day": "17461074364.8857033881",
+          "volume_accumulated_on_this_day": "16455817671491.3073748002",
+          "fees_per_day": "160362.1730217516",
+          "fees_accumulated_on_this_day": "77586834.1376531582"
+        },
+        {
+          "day": "2025-10-24",
+          "transfers_per_day": 851633,
+          "transfers_accumulated_on_this_day": 37169595,
+          "merge_splits_per_day": 171807,
+          "merge_splits_accumulated_on_this_day": 13187718,
+          "volume_per_day": "42491639044.9678072516",
+          "volume_accumulated_on_this_day": "16498309310536.2751820518",
+          "fees_per_day": "3.6481021696",
+          "fees_accumulated_on_this_day": "77586837.7857553278"
+        },
+        {
+          "day": "2025-10-25",
+          "transfers_per_day": 796120,
+          "transfers_accumulated_on_this_day": 37965715,
+          "merge_splits_per_day": 180231,
+          "merge_splits_accumulated_on_this_day": 13367949,
+          "volume_per_day": "38815541375.8939243109",
+          "volume_accumulated_on_this_day": "16537124851912.1691063627",
+          "fees_per_day": "2.9789993184",
+          "fees_accumulated_on_this_day": "77586840.7647546462"
+        },
+        {
+          "day": "2025-10-26",
+          "transfers_per_day": 839765,
+          "transfers_accumulated_on_this_day": 38805480,
+          "merge_splits_per_day": 187284,
+          "merge_splits_accumulated_on_this_day": 13555233,
+          "volume_per_day": "42058721984.8821272125",
+          "volume_accumulated_on_this_day": "16579183573897.0512335752",
+          "fees_per_day": "2.8365333792",
+          "fees_accumulated_on_this_day": "77586843.6012880254"
+        },
+        {
+          "day": "2025-10-27",
+          "transfers_per_day": 871764,
+          "transfers_accumulated_on_this_day": 39677234,
+          "merge_splits_per_day": 185916,
+          "merge_splits_accumulated_on_this_day": 13741144,
+          "volume_per_day": "35805940535.2069564005",
+          "volume_accumulated_on_this_day": "16614989514431.9188899757",
+          "fees_per_day": "2.5965026248",
+          "fees_accumulated_on_this_day": "77586846.1977906502"
+        },
+        {
+          "day": "2025-10-28",
+          "transfers_per_day": 990702,
+          "transfers_accumulated_on_this_day": 40667936,
+          "merge_splits_per_day": 214808,
+          "merge_splits_accumulated_on_this_day": 13955952,
+          "volume_per_day": "36452236914.5524132821",
+          "volume_accumulated_on_this_day": "16651441751346.4713032578",
+          "fees_per_day": "2.8121654801",
+          "fees_accumulated_on_this_day": "77586849.0099561303"
+        },
+        {
+          "day": "2025-10-29",
+          "transfers_per_day": 1006122,
+          "transfers_accumulated_on_this_day": 41674058,
+          "merge_splits_per_day": 251351,
+          "merge_splits_accumulated_on_this_day": 14207297,
+          "volume_per_day": "37773873824.4604819479",
+          "volume_accumulated_on_this_day": "16689215625170.9317852057",
+          "fees_per_day": "1.8346548520",
+          "fees_accumulated_on_this_day": "77586850.8446109823"
+        },
+        {
+          "day": "2025-10-30",
+          "transfers_per_day": 960843,
+          "transfers_accumulated_on_this_day": 42634901,
+          "merge_splits_per_day": 224533,
+          "merge_splits_accumulated_on_this_day": 14431830,
+          "volume_per_day": "33103005789.0862346641",
+          "volume_accumulated_on_this_day": "16722318630960.0180198698",
+          "fees_per_day": "1.6383583008",
+          "fees_accumulated_on_this_day": "77586852.4829692831"
+        },
+        {
+          "day": "2025-10-31",
+          "transfers_per_day": 1108732,
+          "transfers_accumulated_on_this_day": 43743633,
+          "merge_splits_per_day": 244154,
+          "merge_splits_accumulated_on_this_day": 14675984,
+          "volume_per_day": "38516193448.4636636061",
+          "volume_accumulated_on_this_day": "16760834824408.4816834759",
+          "fees_per_day": "1.5857171750",
+          "fees_accumulated_on_this_day": "77586854.0686864581"
+        },
+        {
+          "day": "2025-11-01",
+          "transfers_per_day": 1040093,
+          "transfers_accumulated_on_this_day": 44783726,
+          "merge_splits_per_day": 210156,
+          "merge_splits_accumulated_on_this_day": 14886140,
+          "volume_per_day": "43835401863.7514251079",
+          "volume_accumulated_on_this_day": "16804670226272.2331085838",
+          "fees_per_day": "1.4561156232",
+          "fees_accumulated_on_this_day": "77586855.5248020813"
+        },
+        {
+          "day": "2025-11-02",
+          "transfers_per_day": 1219246,
+          "transfers_accumulated_on_this_day": 46002972,
+          "merge_splits_per_day": 252323,
+          "merge_splits_accumulated_on_this_day": 15138463,
+          "volume_per_day": "42394824409.0819429758",
+          "volume_accumulated_on_this_day": "16847065050681.3150515596",
+          "fees_per_day": "1.4441363522",
+          "fees_accumulated_on_this_day": "77586856.9689384335"
+        },
+        {
+          "day": "2025-11-03",
+          "transfers_per_day": 1155530,
+          "transfers_accumulated_on_this_day": 47158502,
+          "merge_splits_per_day": 259981,
+          "merge_splits_accumulated_on_this_day": 15398444,
+          "volume_per_day": "41616867478.4231126181",
+          "volume_accumulated_on_this_day": "16888681918159.7381641777",
+          "fees_per_day": "1.3219193366",
+          "fees_accumulated_on_this_day": "77586858.2908577701"
+        },
+        {
+          "day": "2025-11-04",
+          "transfers_per_day": 1118381,
+          "transfers_accumulated_on_this_day": 48276883,
+          "merge_splits_per_day": 242542,
+          "merge_splits_accumulated_on_this_day": 15640986,
+          "volume_per_day": "40201638469.9684028337",
+          "volume_accumulated_on_this_day": "16928883556629.7065670114",
+          "fees_per_day": "1.5621783241",
+          "fees_accumulated_on_this_day": "77586859.8530360942"
+        },
+        {
+          "day": "2025-11-05",
+          "transfers_per_day": 1229398,
+          "transfers_accumulated_on_this_day": 49506281,
+          "merge_splits_per_day": 240070,
+          "merge_splits_accumulated_on_this_day": 15881056,
+          "volume_per_day": "38481185104.3438259217",
+          "volume_accumulated_on_this_day": "16967364741734.0503929331",
+          "fees_per_day": "0.9874439505",
+          "fees_accumulated_on_this_day": "77586860.8404800447"
+        },
+        {
+          "day": "2025-11-06",
+          "transfers_per_day": 1372170,
+          "transfers_accumulated_on_this_day": 50878451,
+          "merge_splits_per_day": 233106,
+          "merge_splits_accumulated_on_this_day": 16114162,
+          "volume_per_day": "37384054209.3206512798",
+          "volume_accumulated_on_this_day": "17004748795943.3710442129",
+          "fees_per_day": "1.1621779231",
+          "fees_accumulated_on_this_day": "77586862.0026579678"
+        }
+      ],
+      "response_time_ms": 211,
+      "size_bytes": 10799
+    },
+    {
+      "name": "list_updates",
+      "endpoint": "/api/v1/updates",
+      "category": "Updates",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "data": [
+          {
+            "update_id": "12205a72d530f1821d6f2a892583790f47431460176a62af63e8ce938c9202992a50",
+            "created_events": 1,
+            "exercised_events": 14,
+            "archived_events": 13,
+            "parties_count": 3,
+            "migration_id": 3,
+            "record_time": "2025-11-07T00:15:52.556698Z"
+          },
+          {
+            "update_id": "1220fb7929c4293224788b88866c1fe570d36bf92c7ec29cdd2e877cffc5c3256fda",
+            "created_events": 3,
+            "exercised_events": 11,
+            "archived_events": 9,
+            "parties_count": 7,
+            "migration_id": 3,
+            "record_time": "2025-11-07T00:15:52.556675Z"
+          },
+          {
+            "update_id": "1220d41ff961e8fd99a814846687a436ed8cb88c75b2591dec2f1afe5a5af9e88420",
+            "created_events": 3,
+            "exercised_events": 4,
+            "archived_events": 1,
+            "parties_count": 5,
+            "migration_id": 3,
+            "record_time": "2025-11-07T00:15:52.556525Z"
+          },
+          {
+            "update_id": "122050ec3391116e22bdcd1a4ebd5a5b9dfda7afe1cb82174152d924f06dc618ad22",
+            "created_events": 3,
+            "exercised_events": 3,
+            "archived_events": 1,
+            "parties_count": 4,
+            "migration_id": 3,
+            "record_time": "2025-11-07T00:15:52.556457Z"
+          },
+          {
+            "update_id": "12207b43b7633642db9a520e665616d6b6e6d737411931680a501cb392c43debf9c7",
+            "created_events": 6,
+            "exercised_events": 5,
+            "archived_events": 2,
+            "parties_count": 5,
+            "migration_id": 3,
+            "record_time": "2025-11-07T00:15:52.556454Z"
+          }
+        ],
+        "next_cursor": "2025-11-07T00:15:52.556454Z"
+      },
+      "response_time_ms": 221,
+      "size_bytes": 1177
+    },
+    {
+      "name": "get_updates_stats",
+      "endpoint": "/api/v1/updates/stats",
+      "category": "Updates",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": {
+        "record_time_avg": 302,
+        "total_count": 70404603,
+        "update_time_avg": 614,
+        "update_size_avg": 15300,
+        "update_count_for_last_minute": 474
+      },
+      "response_time_ms": 202,
+      "size_bytes": 127
+    },
+    {
+      "name": "list_mining_rounds",
+      "endpoint": "/api/v1/mining-rounds",
+      "category": "Mining",
+      "params": {
+        "cursor": "2025-11-07T00:15:54.621277Z",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "data": [
+          {
+            "contract_id": "00f10eb988a620fa8da3995ba06debaec59c9513e6544a642a24fe46de80c7b543ca11122056dae9023b984ce76ce00cec727d1ab3836fd2a37e938dd0b0fbef77f4f435be",
+            "event_id": "1220a8da81a3517381e5a5044574fc9548a9fc0c52fb9eb42133481db7d8f823b465:3",
+            "config": {
+              "closed": {
+                "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+                "round": {
+                  "number": "69515"
+                },
+                "issuancePerValidatorRewardCoupon": "0.2000000000",
+                "issuancePerFeaturedAppRewardCoupon": "2.6259489129",
+                "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+                "issuancePerSvRewardCoupon": "0.0725659125",
+                "optIssuancePerValidatorFaucetCoupon": "67.7537998749"
+              }
+            },
+            "round_num": 69515,
+            "mining_round_type": "closed",
+            "record_time": "2025-11-07T00:15:36.196216Z",
+            "archived_at": "2025-11-07T00:17:36.101208Z"
+          },
+          {
+            "contract_id": "00d84cf12799c1110ffda4aa633bc25b779fe556c381b97ae15c0817e04f4750f4ca111220ed833623945a5fcbac4820ecb810a876ecdeb44e385fc0a253c616013cf1ddd7",
+            "event_id": "122049d1cef8f92c8b7120954648ed21451f6e2feb71ab2f96fe329c30ec7e329e12:3",
+            "config": {
+              "summarizing": {
+                "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+                "round": {
+                  "number": "69518"
+                },
+                "amuletPrice": "0.1500000000",
+                "issuanceConfig": {
+                  "amuletToIssuePerYear": "20000000000.0000000000",
+                  "validatorRewardPercentage": "0.1200000000",
+                  "appRewardPercentage": "0.4000000000",
+                  "validatorRewardCap": "0.2000000000",
+                  "featuredAppRewardCap": "20000.0000000000",
+                  "unfeaturedAppRewardCap": "0.6000000000",
+                  "optValidatorFaucetCap": "570.0000000000"
+                },
+                "tickDuration": {
+                  "microseconds": "600000000"
+                }
+              }
+            },
+            "round_num": 69518,
+            "mining_round_type": "summarizing",
+            "record_time": "2025-11-07T00:15:33.818543Z",
+            "archived_at": "2025-11-07T00:16:32.823011Z"
+          },
+          {
+            "contract_id": "00ecb57192f53bf4a90e38f317176cc9f83a6515e58baed7785c06aac5136b0106ca1112203d7e2044d9bb3efbbc8fd0051aa04292007ac7e4ca2215fed8d8dcd5cc268132",
+            "event_id": "122049d1cef8f92c8b7120954648ed21451f6e2feb71ab2f96fe329c30ec7e329e12:4",
+            "config": {
+              "open": {
+                "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+                "round": {
+                  "number": "69521"
+                },
+                "amuletPrice": "0.1500000000",
+                "opensAt": "2025-11-07T00:25:33.419264Z",
+                "targetClosesAt": "2025-11-07T00:45:33.419264Z",
+                "issuingFor": {
+                  "microseconds": "41712600000000"
+                },
+                "transferConfigUsd": {
+                  "createFee": {
+                    "fee": "0.0000000000"
+                  },
+                  "holdingFee": {
+                    "rate": "0.0000190259"
+                  },
+                  "transferFee": {
+                    "initialRate": "0.0000000000",
+                    "steps": [
+                      {
+                        "_1": "100.0000000000",
+                        "_2": "0.0000000000"
+                      },
+                      {
+                        "_1": "1000.0000000000",
+                        "_2": "0.0000000000"
+                      },
+                      {
+                        "_1": "1000000.0000000000",
+                        "_2": "0.0000000000"
+                      }
+                    ]
+                  },
+                  "lockHolderFee": {
+                    "fee": "0.0000000000"
+                  },
+                  "extraFeaturedAppRewardAmount": "1.0000000000",
+                  "maxNumInputs": "100",
+                  "maxNumOutputs": "100",
+                  "maxNumLockHolders": "50"
+                },
+                "issuanceConfig": {
+                  "amuletToIssuePerYear": "20000000000.0000000000",
+                  "validatorRewardPercentage": "0.1200000000",
+                  "appRewardPercentage": "0.4000000000",
+                  "validatorRewardCap": "0.2000000000",
+                  "featuredAppRewardCap": "20000.0000000000",
+                  "unfeaturedAppRewardCap": "0.6000000000",
+                  "optValidatorFaucetCap": "570.0000000000"
+                },
+                "tickDuration": {
+                  "microseconds": "600000000"
+                }
+              }
+            },
+            "round_num": 69521,
+            "mining_round_type": "open",
+            "record_time": "2025-11-07T00:15:33.818543Z",
+            "archived_at": "2025-11-07T00:46:34.198933Z"
+          },
+          {
+            "contract_id": "00dfe250554465c1968ef93461f2f43c726853c13dc16562a934cf53969665eabeca111220c8b596a03b829c1c8b8784e137849b102b8d9142720a1d40d1fb86e2774b4d72",
+            "event_id": "12206f9487079bb0ba6abba814d774d7838928d4c471b7544b129dec5dc98b4e7110:13",
+            "config": {
+              "issuing": {
+                "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+                "round": {
+                  "number": "69517"
+                },
+                "issuancePerValidatorRewardCoupon": "0.2000000000",
+                "issuancePerFeaturedAppRewardCoupon": "1.6685705056",
+                "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+                "issuancePerSvRewardCoupon": "0.0725659125",
+                "opensAt": "2025-11-07T00:16:00.651687Z",
+                "targetClosesAt": "2025-11-07T00:36:00.651687Z",
+                "optIssuancePerValidatorFaucetCoupon": "60.7537352255"
+              }
+            },
+            "round_num": 69517,
+            "mining_round_type": "issuing",
+            "record_time": "2025-11-07T00:06:00.807089Z",
+            "archived_at": "2025-11-07T00:36:08.027397Z"
+          },
+          {
+            "contract_id": "009ecf41a3b16d7438cc8abd9d148ca29b42b5f2a0b2f1434be8e7cf0f07e21a41ca1112206b747084503eb1be0a5eba121dde65e4e5ac9ed30a7a1c224e040c61400c5792",
+            "event_id": "12201d07b9a42b840f30688871c4f685e20b2259074d49cb6ee1d5b1cb22c9097a50:3",
+            "config": {
+              "closed": {
+                "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+                "round": {
+                  "number": "69514"
+                },
+                "issuancePerValidatorRewardCoupon": "0.2000000000",
+                "issuancePerFeaturedAppRewardCoupon": "2.2577281583",
+                "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+                "issuancePerSvRewardCoupon": "0.0725659125",
+                "optIssuancePerValidatorFaucetCoupon": "60.5003335611"
+              }
+            },
+            "round_num": 69514,
+            "mining_round_type": "closed",
+            "record_time": "2025-11-07T00:05:17.829024Z",
+            "archived_at": "2025-11-07T00:06:41.295724Z"
+          }
+        ],
+        "next_cursor": "2025-11-07T00:05:17.829024Z"
+      },
+      "response_time_ms": 2255,
+      "size_bytes": 4775
+    },
+    {
+      "name": "list_active_mining_rounds",
+      "endpoint": "/api/v1/mining-rounds/active",
+      "category": "Mining",
+      "params": null,
+      "success": true,
+      "status": 200,
+      "data": [
+        {
+          "contract_id": "0029ccce3a109cf1471165126678fd0eebf523e868e847eb7b6640238302f0be35ca111220838af406e8d0fc15812c67d1da5e72e5e8c98bdfc4d59bd6066804b26799e944",
+          "event_id": "1220191804265f329d5ab47793df60c9951ce77e081abda584e430d3ab73bbef56c5:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "66481"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "3.8947587798",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0779882160",
+              "optIssuancePerValidatorFaucetCoupon": "69.3919677077"
+            }
+          },
+          "round_num": 66481,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-16T09:26:02.354304Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00d73bb524593f54bad811b3013f9f061b8b0e6a16e7480a921ecae006828a1aceca111220552ba1a8922858b8a8eea66af99da71f96c535927c594e1119ce3176f58dbb09",
+          "event_id": "12208b4c1968b3a855a22837f856750d18b4a6e71d08b00faabd080cf38af3284861:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "66482"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "4.0175896906",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0779882160",
+              "optIssuancePerValidatorFaucetCoupon": "64.6433272963"
+            }
+          },
+          "round_num": 66482,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-16T09:35:55.889303Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "0058fa3878520a1e7be72a35f0a2d50e79ed8738d4c3720e3d95d6f6c02b9394b5ca1112201924b07a9d079008b3eb4e34cdbebb1ada24abdd15f2e524c29e9a89f2046e96",
+          "event_id": "122045007697fa9757a64634b0a27514d91e267a20f4f0d4037c337e674a99585fc3:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "66483"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "5.7062506692",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0779882160",
+              "optIssuancePerValidatorFaucetCoupon": "72.3309087676"
+            }
+          },
+          "round_num": 66483,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-16T09:46:13.474128Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "0088ad29dd70bf73efa322a10a7d76c32fab87e865ce1124aed09a9e1985eeb385ca111220222e29673c76b2d265dfc584e55e9e2f8fd636cd804db4b5c2c9163041513bcd",
+          "event_id": "1220f9053e233a1f4a1e42dc2bc22c2d3f0c5404c499a3efccedc627f32c2fc18ddc:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "66484"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "4.7225086603",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0779882160",
+              "optIssuancePerValidatorFaucetCoupon": "66.8968953441"
+            }
+          },
+          "round_num": 66484,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-16T09:56:56.489802Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00b540a2371496e2d9cf971b80069cdc8a47d31b2187a414740ed3b7d96e4e6829ca111220eb8cbb92006c3eac788f0fbc1790ebf1812b38c58dcb36c1e65fd56548d5c8f6",
+          "event_id": "122099926d7ce05ce2c658fc636dc82ef223c3d6d5fc109c681434d631f54ba4e263:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "68626"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "1.9210681951",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0744895603",
+              "optIssuancePerValidatorFaucetCoupon": "56.6309944782"
+            }
+          },
+          "round_num": 68626,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-31T16:13:48.481449Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00f9f60c34cb0cc23c855c16ad0a02839dc050f6d3cb39908dfd6d87d023077ce6ca1112208b1a21bd70cf2a519f2b6c5e50e84fd2dd4bfdd848680b8394945ffae6edeff6",
+          "event_id": "1220a0494e9031b4c649536745853aa876a4f0500a741f208d60fdd3aedad3dd4be9:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "68627"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "2.3277797722",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0744895603",
+              "optIssuancePerValidatorFaucetCoupon": "63.2893972433"
+            }
+          },
+          "round_num": 68627,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-31T16:23:47.228807Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "008900e88e0ce0136fafcb0f1c3c9a498cb507879047c4821f2b49687fcb04ba42ca1112205fc90e69064b3a51045a239a05f143646f2595c3261503e647f23060a5fbe609",
+          "event_id": "12205fb9b36e6a1220813ee30475b67fd9f0ad91d6468785e51db991710862ecbfca:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "68628"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "2.0096198735",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0744895603",
+              "optIssuancePerValidatorFaucetCoupon": "61.2642778695"
+            }
+          },
+          "round_num": 68628,
+          "mining_round_type": "closed",
+          "record_time": "2025-10-31T16:34:18.822771Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "005da7ad9cb88525be0fb513000aacd6003abb8783a8f5181c84f177b51ab531bdca111220662036a16bdda2a17ba70be7ab1d87e8a833c2b08ab73981121d5bcde36077f7",
+          "event_id": "1220cf1e52337212e2c107d03bf14dd1a37be543b49077312e12e29c04a270700477:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69234"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "2.0087499541",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "optIssuancePerValidatorFaucetCoupon": "63.4513798933"
+            }
+          },
+          "round_num": 69234,
+          "mining_round_type": "closed",
+          "record_time": "2025-11-05T00:10:39.997358Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00121d736f6fe6dec3d94e103a2315081377869df0a1b173c1f6a5d5e9d41d7c49ca111220966869d6e310b8438f4c23ed557b36bff67599482412bf2cde90a93cd7d6028b",
+          "event_id": "1220a685647bc4fed1a34b925ae11576ed49b2d8b3033b8f2b66903611d1af91a1ed:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69235"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "2.5969164007",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "optIssuancePerValidatorFaucetCoupon": "60.2927749104"
+            }
+          },
+          "round_num": 69235,
+          "mining_round_type": "closed",
+          "record_time": "2025-11-05T00:20:33.992903Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00ee3b0a53792cb61f3f48951757c781840060590a22d2853c0696cafffe828dc1ca1112205a4d84774a659216945d2a0cc8789b767eb219b5f868dc10eb86490de2c26c8f",
+          "event_id": "1220d6d3a244419b5dabd35e21aaa087422ec89ad2468f64656266170fec5be6d077:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69396"
+              },
+              "issuancePerValidatorRewardCoupon": "0.1987224037",
+              "issuancePerFeaturedAppRewardCoupon": "2.7264862103",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "optIssuancePerValidatorFaucetCoupon": "0.0000000000"
+            }
+          },
+          "round_num": 69396,
+          "mining_round_type": "closed",
+          "record_time": "2025-11-06T03:54:35.694064Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00abb2f68001b413332233835cfc08930165c369cf1c97afb0c7493413651644c2ca1112204d878bc810ba6564d3b5dc35240453af3b2818a1078f6068fcfd9798abae04b9",
+          "event_id": "1220850a7cfee654782b7393217ff9af56407c0e5a408563185caf74ab23af851413:4",
+          "config": {
+            "open": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69548"
+              },
+              "amuletPrice": "0.1500000000",
+              "opensAt": "2025-11-07T05:03:35.152065Z",
+              "targetClosesAt": "2025-11-07T05:23:35.152065Z",
+              "issuingFor": {
+                "microseconds": "41728800000000"
+              },
+              "transferConfigUsd": {
+                "createFee": {
+                  "fee": "0.0000000000"
+                },
+                "holdingFee": {
+                  "rate": "0.0000190259"
+                },
+                "transferFee": {
+                  "initialRate": "0.0000000000",
+                  "steps": [
+                    {
+                      "_1": "100.0000000000",
+                      "_2": "0.0000000000"
+                    },
+                    {
+                      "_1": "1000.0000000000",
+                      "_2": "0.0000000000"
+                    },
+                    {
+                      "_1": "1000000.0000000000",
+                      "_2": "0.0000000000"
+                    }
+                  ]
+                },
+                "lockHolderFee": {
+                  "fee": "0.0000000000"
+                },
+                "extraFeaturedAppRewardAmount": "1.0000000000",
+                "maxNumInputs": "100",
+                "maxNumOutputs": "100",
+                "maxNumLockHolders": "50"
+              },
+              "issuanceConfig": {
+                "amuletToIssuePerYear": "20000000000.0000000000",
+                "validatorRewardPercentage": "0.1200000000",
+                "appRewardPercentage": "0.4000000000",
+                "validatorRewardCap": "0.2000000000",
+                "featuredAppRewardCap": "20000.0000000000",
+                "unfeaturedAppRewardCap": "0.6000000000",
+                "optValidatorFaucetCap": "570.0000000000"
+              },
+              "tickDuration": {
+                "microseconds": "600000000"
+              }
+            }
+          },
+          "round_num": 69548,
+          "mining_round_type": "open",
+          "record_time": "2025-11-07T04:53:33.653935Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "009df4abd9b6389b1a127f30100719ef6bf001fb3d06acd1f2e1cfccb11d3269e5ca1112203ed97d79279d5152376788a332007d180f7d61c58562f96d68f85bdde1756660",
+          "event_id": "12200bf213fa1cc1d09a30b5293d21095e60501142063707bdcaec768d13c72ab131:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69236"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "2.0474441959",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "optIssuancePerValidatorFaucetCoupon": "63.8799284455"
+            }
+          },
+          "round_num": 69236,
+          "mining_round_type": "closed",
+          "record_time": "2025-11-05T00:31:17.345687Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00fea113ff5b229dab66abbab68724528a8f7d4f84de937ad23c7b25a8f99b188dca11122068cde08b207b485a7c6cd33d5c625e5793c415556598249aaea9b881c48de5ac",
+          "event_id": "12202d8cf873345e189a50150bb4ab0ddb0ed18c67e5b754548fc7cb5d90e0715e16:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69296"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "2.2534051430",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "optIssuancePerValidatorFaucetCoupon": "56.8548215100"
+            }
+          },
+          "round_num": 69296,
+          "mining_round_type": "closed",
+          "record_time": "2025-11-05T10:46:20.430304Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "0052d7dbfc57d24fc6099ba89cd6113a304e80221248ec6fe7e0c07a26617cef21ca1112207805ef90ae6c54b164c298d124e73a6e504e71294cc775fc24d7f1deaa61d507",
+          "event_id": "1220d07918bb4bfedf307f885888d0dae0aad167ba05f492d8930a876aa84e5ad9d2:3",
+          "config": {
+            "closed": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69363"
+              },
+              "issuancePerValidatorRewardCoupon": "0.0644521637",
+              "issuancePerFeaturedAppRewardCoupon": "1.9595449592",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "optIssuancePerValidatorFaucetCoupon": "0.0000000000"
+            }
+          },
+          "round_num": 69363,
+          "mining_round_type": "closed",
+          "record_time": "2025-11-05T22:16:00.081244Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "008742364e06331afe1d0f6e25c520d40a8f5d2859339f710be54a87a5699f60cdca111220118e9b0fbaef9cb00a0b0f285fbe9edc1f6be22486d361f9e3e4cc9197335495",
+          "event_id": "1220b78c24c741e1c8c277e37043fac38c9c0bc90813d5b65e79182d4646ed841b63:13",
+          "config": {
+            "issuing": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69545"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "1.5695974252",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "opensAt": "2025-11-07T05:04:14.241208Z",
+              "targetClosesAt": "2025-11-07T05:24:14.241208Z",
+              "optIssuancePerValidatorFaucetCoupon": "64.2084425197"
+            }
+          },
+          "round_num": 69545,
+          "mining_round_type": "issuing",
+          "record_time": "2025-11-07T04:54:11.940591Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00ef88548cb0b4f2ce7509094fa24ce7ef6feef980c476f37484064cbf5287d63cca1112207927d18c1c20a61eaa7649e03bfcb0a2a39c2829e0e872e4a4547d588b7ddb59",
+          "event_id": "12205412ab4f4571988d82a6e2fc2b86e04bcb38e2ef7263454f80fc74329727e486:4",
+          "config": {
+            "open": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69549"
+              },
+              "amuletPrice": "0.1500000000",
+              "opensAt": "2025-11-07T05:13:50.325171Z",
+              "targetClosesAt": "2025-11-07T05:33:50.325171Z",
+              "issuingFor": {
+                "microseconds": "41729400000000"
+              },
+              "transferConfigUsd": {
+                "createFee": {
+                  "fee": "0.0000000000"
+                },
+                "holdingFee": {
+                  "rate": "0.0000190259"
+                },
+                "transferFee": {
+                  "initialRate": "0.0000000000",
+                  "steps": [
+                    {
+                      "_1": "100.0000000000",
+                      "_2": "0.0000000000"
+                    },
+                    {
+                      "_1": "1000.0000000000",
+                      "_2": "0.0000000000"
+                    },
+                    {
+                      "_1": "1000000.0000000000",
+                      "_2": "0.0000000000"
+                    }
+                  ]
+                },
+                "lockHolderFee": {
+                  "fee": "0.0000000000"
+                },
+                "extraFeaturedAppRewardAmount": "1.0000000000",
+                "maxNumInputs": "100",
+                "maxNumOutputs": "100",
+                "maxNumLockHolders": "50"
+              },
+              "issuanceConfig": {
+                "amuletToIssuePerYear": "20000000000.0000000000",
+                "validatorRewardPercentage": "0.1200000000",
+                "appRewardPercentage": "0.4000000000",
+                "validatorRewardCap": "0.2000000000",
+                "featuredAppRewardCap": "20000.0000000000",
+                "unfeaturedAppRewardCap": "0.6000000000",
+                "optValidatorFaucetCap": "570.0000000000"
+              },
+              "tickDuration": {
+                "microseconds": "600000000"
+              }
+            }
+          },
+          "round_num": 69549,
+          "mining_round_type": "open",
+          "record_time": "2025-11-07T05:03:50.475477Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "0077e9c85508061513098a4066025c6d94527d89983052efb4084678888c15dfdbca1112205c6636a196cabee1218fd11240562167ded5532fdc5b9ec829b0091fc80119d6",
+          "event_id": "12202cdb2796a9c29ac512f0c7d477847ecc09c3d0f7770c2e8fe4d0527bc3f9b3d1:13",
+          "config": {
+            "issuing": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69546"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "1.4892470111",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "opensAt": "2025-11-07T05:14:28.072288Z",
+              "targetClosesAt": "2025-11-07T05:34:28.072288Z",
+              "optIssuancePerValidatorFaucetCoupon": "63.9432223178"
+            }
+          },
+          "round_num": 69546,
+          "mining_round_type": "issuing",
+          "record_time": "2025-11-07T05:04:28.280609Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "007b31bbf391e9d92e55e4de6f64e036f2730a62fd879be46f7c3ab2730fb6e3deca1112204a8fa7584b1b571cba3005c57ee6b29c01b31c98405df16ca10794325a81f936",
+          "event_id": "1220fcda28bf779afdc6382d5fda83da33681b5e066b1c84f90ae7f6cba9cdefeac2:4",
+          "config": {
+            "open": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69550"
+              },
+              "amuletPrice": "0.1500000000",
+              "opensAt": "2025-11-07T05:23:57.997951Z",
+              "targetClosesAt": "2025-11-07T05:43:57.997951Z",
+              "issuingFor": {
+                "microseconds": "41730000000000"
+              },
+              "transferConfigUsd": {
+                "createFee": {
+                  "fee": "0.0000000000"
+                },
+                "holdingFee": {
+                  "rate": "0.0000190259"
+                },
+                "transferFee": {
+                  "initialRate": "0.0000000000",
+                  "steps": [
+                    {
+                      "_1": "100.0000000000",
+                      "_2": "0.0000000000"
+                    },
+                    {
+                      "_1": "1000.0000000000",
+                      "_2": "0.0000000000"
+                    },
+                    {
+                      "_1": "1000000.0000000000",
+                      "_2": "0.0000000000"
+                    }
+                  ]
+                },
+                "lockHolderFee": {
+                  "fee": "0.0000000000"
+                },
+                "extraFeaturedAppRewardAmount": "1.0000000000",
+                "maxNumInputs": "100",
+                "maxNumOutputs": "100",
+                "maxNumLockHolders": "50"
+              },
+              "issuanceConfig": {
+                "amuletToIssuePerYear": "20000000000.0000000000",
+                "validatorRewardPercentage": "0.1200000000",
+                "appRewardPercentage": "0.4000000000",
+                "validatorRewardCap": "0.2000000000",
+                "featuredAppRewardCap": "20000.0000000000",
+                "unfeaturedAppRewardCap": "0.6000000000",
+                "optValidatorFaucetCap": "570.0000000000"
+              },
+              "tickDuration": {
+                "microseconds": "600000000"
+              }
+            }
+          },
+          "round_num": 69550,
+          "mining_round_type": "open",
+          "record_time": "2025-11-07T05:13:58.044653Z",
+          "archived_at": null
+        },
+        {
+          "contract_id": "00f3aa8ee394bd8f3dcb15d60f943614456db2e3a8541d08a83a26dc072b2c1985ca111220af4be2f63e691d055fadca580db6178e9e7a1ab8baccddfb2b5e0b7f7f1f04f0",
+          "event_id": "1220fca28a264ceb49318ea2d29a80ba00c32e6de95dd939fb7cdb07a62d988a8994:13",
+          "config": {
+            "issuing": {
+              "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc",
+              "round": {
+                "number": "69547"
+              },
+              "issuancePerValidatorRewardCoupon": "0.2000000000",
+              "issuancePerFeaturedAppRewardCoupon": "1.3617470016",
+              "issuancePerUnfeaturedAppRewardCoupon": "0.6000000000",
+              "issuancePerSvRewardCoupon": "0.0725659125",
+              "opensAt": "2025-11-07T05:24:51.282330Z",
+              "targetClosesAt": "2025-11-07T05:44:51.282330Z",
+              "optIssuancePerValidatorFaucetCoupon": "6.9806357857"
+            }
+          },
+          "round_num": 69547,
+          "mining_round_type": "issuing",
+          "record_time": "2025-11-07T05:14:51.213553Z",
+          "archived_at": null
+        }
+      ],
+      "response_time_ms": 643,
+      "size_bytes": 16318
+    },
+    {
+      "name": "list_featured_apps",
+      "endpoint": "/api/v1/featured-apps",
+      "category": "Apps",
+      "params": {
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "data": [
+          {
+            "contract_id": "005226a68f3bc08346e487658264b1ad60dc0cd62aa58b8190ffa9fc564c68abe8ca111220aa26327b9c60d387297a6a778454af5edb8cdcc9a63eae7b5c7514e730ec4966",
+            "created_at": "2025-11-06T13:00:33.007835Z",
+            "provider": "TextureCapital-validator-1::12206f711aa1c1017053f53a069279518584074c0b0348f522b020d1fcc311e01988",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc"
+          },
+          {
+            "contract_id": "00b92f7835414f3bbc5ca788c182398a77c717ed23365e1601b3dedea16e813020ca1112200fe38379e95156f59c67262647d6caf65b65cd1c4d5edca8c9a34c70fd6b406b",
+            "created_at": "2025-11-05T22:29:08.343394Z",
+            "provider": "cantor8-digik-1::12204dcfad78c016ab59babba72d4ffe9bdca8aeaf6299a3f0da59523ee3f765b053",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc"
+          },
+          {
+            "contract_id": "00f5d7c19f58a464ea87367e86e7fda24b753433899de8c029375a2cf8e663f493ca1112206ab8a34906687498432667649462e086e24c24aa248fc6699cb5ec7fa60b41aa",
+            "created_at": "2025-11-05T21:20:08.145048Z",
+            "provider": "auth0_007c68f92e9e93fbd6f5a89b0a0c::12208d1aaf40a035e46b5076e41b84acc17a7cfb9c5b6d0848b2203cc2e5eceaee43",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc"
+          },
+          {
+            "contract_id": "009733a65eacdf61a98f23799bfbdc3f688d8101fb2561549e9643c68d88c7c346ca1112207f9be85c68d7ecd2a75118b94b9c24de691b2ea9f1c667f46d39b1bdb6274629",
+            "created_at": "2025-11-04T16:00:52.879877Z",
+            "provider": "Pilot::1220dd489bd2242472a14015e9aebc12a48879a7e3aac60875506df30f7fce4e0f78",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc"
+          },
+          {
+            "contract_id": "003a420e698669b64b37acf21096512cebc004e714587822fe22ed56b054f56597ca111220f8b0e2182ee95511fc7f737d93f09e121740599b58951c56a4ae2dbd5826d453",
+            "created_at": "2025-11-02T08:41:20.479006Z",
+            "provider": "LoopID::1220940ccaf484be99fc67387ce461bd358aa6c76e43224e959a4bd20fe30a0b11c6",
+            "dso": "DSO::1220b1431ef217342db44d516bb9befde802be7d8899637d290895fa58880f19accc"
+          }
+        ],
+        "next_cursor": "2025-11-02T08:41:20.479006Z"
+      },
+      "response_time_ms": 304,
+      "size_bytes": 1970
+    },
+    {
+      "name": "general_search",
+      "endpoint": "/api/v1/general-search",
+      "category": "Search",
+      "params": {
+        "arg": "1220",
+        "limit": 5
+      },
+      "success": true,
+      "status": 200,
+      "data": {
+        "ans": {
+          "data": [],
+          "has_more": false
+        },
+        "parties": {
+          "data": [
+            {
+              "party_id": "0002069f682abfe4e06eb08d1999cea2::12200991a27d37f97ad7bf66b60c51381093f092ab62ec236910c1d8826a1a934668",
+              "amulets": {
+                "locked_amulet_balance": "0.0000000000",
+                "amulet_balance": "11.0000000000"
+              },
+              "balance": {
+                "party_id": "0002069f682abfe4e06eb08d1999cea2::12200991a27d37f97ad7bf66b60c51381093f092ab62ec236910c1d8826a1a934668",
+                "total_unlocked_coin": "11.0000000000",
+                "total_locked_coin": "0.0000000000",
+                "total_coin_holdings": "11.0000000000",
+                "total_available_coin": "0",
+                "computed_as_of_round": 0,
+                "computed_as_of_time": "2025-11-07T05:16:06.793906260Z"
+              },
+              "total_transfers_count": 0,
+              "total_transfer_count_as_receiver": 0,
+              "total_transfer_count_as_sender": 0,
+              "total_transfer_burn_fee": "0",
+              "total_merge_split_count": 0,
+              "total_merge_split_burn_fee": "0",
+              "total_transfer_allocation_count": 0,
+              "total_transfer_allocation_count_as_receiver": 0,
+              "total_transfer_allocation_count_as_sender": 0,
+              "total_transfer_instruction_count": 0,
+              "total_transfer_instruction_count_as_receiver": 0,
+              "total_transfer_instruction_count_as_sender": 0,
+              "total_transfer_command_count": 0,
+              "total_transfer_command_count_as_receiver": 0,
+              "total_transfer_command_count_as_sender": 0,
+              "validator_license": null,
+              "sv_license": null,
+              "amulet_names": null,
+              "total_updates_count": 0
+            },
+            {
+              "party_id": "000a58a8b9194712b39b475bc14dcd03::12204c902ea5d14d73a7d0ac5d153ff8f2621e709c2e85e1ea1fb93e6d63be0da4ec",
+              "amulets": {
+                "locked_amulet_balance": "0",
+                "amulet_balance": "0"
+              },
+              "balance": {
+                "party_id": "000a58a8b9194712b39b475bc14dcd03::12204c902ea5d14d73a7d0ac5d153ff8f2621e709c2e85e1ea1fb93e6d63be0da4ec",
+                "total_unlocked_coin": "0",
+                "total_locked_coin": "0",
+                "total_coin_holdings": "0",
+                "total_available_coin": "0",
+                "computed_as_of_round": 0,
+                "computed_as_of_time": "2025-11-07T05:16:06.793908765Z"
+              },
+              "total_transfers_count": 0,
+              "total_transfer_count_as_receiver": 0,
+              "total_transfer_count_as_sender": 0,
+              "total_transfer_burn_fee": "0",
+              "total_merge_split_count": 0,
+              "total_merge_split_burn_fee": "0",
+              "total_transfer_allocation_count": 0,
+              "total_transfer_allocation_count_as_receiver": 0,
+              "total_transfer_allocation_count_as_sender": 0,
+              "total_transfer_instruction_count": 0,
+              "total_transfer_instruction_count_as_receiver": 0,
+              "total_transfer_instruction_count_as_sender": 0,
+              "total_transfer_command_count": 0,
+              "total_transfer_command_count_as_receiver": 0,
+              "total_transfer_command_count_as_sender": 0,
+              "validator_license": null,
+              "sv_license": null,
+              "amulet_names": null,
+              "total_updates_count": 0
+            },
+            {
+              "party_id": "000d1c88aaeae25346b5ac1b63f42dec::1220dbae28af88dd9c1ee090deb4b8ba52112fb3e38b0ed15f5cfd80fbaaf9bfbdbe",
+              "amulets": {
+                "locked_amulet_balance": "0.0000000000",
+                "amulet_balance": "269.7409526666"
+              },
+              "balance": {
+                "party_id": "000d1c88aaeae25346b5ac1b63f42dec::1220dbae28af88dd9c1ee090deb4b8ba52112fb3e38b0ed15f5cfd80fbaaf9bfbdbe",
+                "total_unlocked_coin": "269.7409526666",
+                "total_locked_coin": "0.0000000000",
+                "total_coin_holdings": "269.7409526666",
+                "total_available_coin": "0",
+                "computed_as_of_round": 0,
+                "computed_as_of_time": "2025-11-07T05:16:06.793909767Z"
+              },
+              "total_transfers_count": 0,
+              "total_transfer_count_as_receiver": 0,
+              "total_transfer_count_as_sender": 0,
+              "total_transfer_burn_fee": "0",
+              "total_merge_split_count": 0,
+              "total_merge_split_burn_fee": "0",
+              "total_transfer_allocation_count": 0,
+              "total_transfer_allocation_count_as_receiver": 0,
+              "total_transfer_allocation_count_as_sender": 0,
+              "total_transfer_instruction_count": 0,
+              "total_transfer_instruction_count_as_receiver": 0,
+              "total_transfer_instruction_count_as_sender": 0,
+              "total_transfer_command_count": 0,
+              "total_transfer_command_count_as_receiver": 0,
+              "total_transfer_command_count_as_sender": 0,
+              "validator_license": null,
+              "sv_license": null,
+              "amulet_names": null,
+              "total_updates_count": 0
+            },
+            {
+              "party_id": "000d2aac72b2d1dd7f585cb0f4f98be7::122028689267d0f15485f7f3f740933c60744ac6a19e377372e6c32b0df6a23db059",
+              "amulets": {
+                "locked_amulet_balance": "0.0000000000",
+                "amulet_balance": "342.3123816666"
+              },
+              "balance": {
+                "party_id": "000d2aac72b2d1dd7f585cb0f4f98be7::122028689267d0f15485f7f3f740933c60744ac6a19e377372e6c32b0df6a23db059",
+                "total_unlocked_coin": "342.3123816666",
+                "total_locked_coin": "0.0000000000",
+                "total_coin_holdings": "342.3123816666",
+                "total_available_coin": "0",
+                "computed_as_of_round": 0,
+                "computed_as_of_time": "2025-11-07T05:16:06.793910478Z"
+              },
+              "total_transfers_count": 0,
+              "total_transfer_count_as_receiver": 0,
+              "total_transfer_count_as_sender": 0,
+              "total_transfer_burn_fee": "0",
+              "total_merge_split_count": 0,
+              "total_merge_split_burn_fee": "0",
+              "total_transfer_allocation_count": 0,
+              "total_transfer_allocation_count_as_receiver": 0,
+              "total_transfer_allocation_count_as_sender": 0,
+              "total_transfer_instruction_count": 0,
+              "total_transfer_instruction_count_as_receiver": 0,
+              "total_transfer_instruction_count_as_sender": 0,
+              "total_transfer_command_count": 0,
+              "total_transfer_command_count_as_receiver": 0,
+              "total_transfer_command_count_as_sender": 0,
+              "validator_license": null,
+              "sv_license": null,
+              "amulet_names": null,
+              "total_updates_count": 0
+            },
+            {
+              "party_id": "000d4bf217c2edd9f759f39e53937726::1220b172357a1df0e2f9a57e278d286e04466527276665086be29f235d028b3ad7c2",
+              "amulets": {
+                "locked_amulet_balance": "0.0000000000",
+                "amulet_balance": "21.4006085914"
+              },
+              "balance": {
+                "party_id": "000d4bf217c2edd9f759f39e53937726::1220b172357a1df0e2f9a57e278d286e04466527276665086be29f235d028b3ad7c2",
+                "total_unlocked_coin": "21.4006085914",
+                "total_locked_coin": "0.0000000000",
+                "total_coin_holdings": "21.4006085914",
+                "total_available_coin": "0",
+                "computed_as_of_round": 0,
+                "computed_as_of_time": "2025-11-07T05:16:06.793911540Z"
+              },
+              "total_transfers_count": 0,
+              "total_transfer_count_as_receiver": 0,
+              "total_transfer_count_as_sender": 0,
+              "total_transfer_burn_fee": "0",
+              "total_merge_split_count": 0,
+              "total_merge_split_burn_fee": "0",
+              "total_transfer_allocation_count": 0,
+              "total_transfer_allocation_count_as_receiver": 0,
+              "total_transfer_allocation_count_as_sender": 0,
+              "total_transfer_instruction_count": 0,
+              "total_transfer_instruction_count_as_receiver": 0,
+              "total_transfer_instruction_count_as_sender": 0,
+              "total_transfer_command_count": 0,
+              "total_transfer_command_count_as_receiver": 0,
+              "total_transfer_command_count_as_sender": 0,
+              "validator_license": null,
+              "sv_license": null,
+              "amulet_names": null,
+              "total_updates_count": 0
+            }
+          ],
+          "has_more": true
+        },
+        "updates": {
+          "data": [],
+          "has_more": false
+        }
+      },
+      "response_time_ms": 201,
+      "size_bytes": 6100
+    }
+  ]
+}
