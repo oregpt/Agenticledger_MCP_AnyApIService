@@ -912,62 +912,169 @@ const config = {
 
 ## Appendix: All 64 Endpoints Reference
 
-### Full Endpoint List by Category
+### Complete Endpoint Directory (Name → Description)
 
-**1. Explore (6 endpoints)**
-- `GET /api/v1/explore/stats` - Network statistics
-- `GET /api/v1/explore/fee-stat` - Fee statistics
-- `GET /api/v1/explore/prices` - Token prices
-- `GET /api/v1/explore/prices-list` - Price history
-- `GET /api/v1/explore/supply-stats` - Supply statistics
-- `GET /api/v1/explore/transfer-stat-per-day` - Daily transfers
+This comprehensive table provides every endpoint with its description for easy reference and integration into AgenticLedger's capability selection UI.
 
-**2. Governance (5 endpoints)**
-- `GET /api/v1/governances` - List all proposals
-- `GET /api/v1/governances/active` - Active proposals
-- `GET /api/v1/governances/completed` - Completed proposals
-- `GET /api/v1/governances/details/{tracking_cid}` - Proposal details
-- `GET /api/v1/governances/statistics` - Governance stats
+#### 1. Health & Explore (7 endpoints)
 
-**3. Validators (3 endpoints)**
-- `GET /api/v1/validators` - List validators
-- `GET /api/v1/validators/{validator_id}` - Validator details
-- `GET /api/v1/validators/statistics` - Validator statistics
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `health_check` | GET | `/api/v1/health` | API health status check |
+| `get_network_stats` | GET | `/api/v1/explore/stats` | Get Canton network statistics overview including price, supply, validators, and activity |
+| `get_fee_statistics` | GET | `/api/v1/explore/fee-stat` | Get fee statistics for a date range with auto-aggregation (daily/weekly/monthly) |
+| `get_token_prices` | GET | `/api/v1/explore/prices` | Get current and historical CC token price data |
+| `get_price_history` | GET | `/api/v1/explore/prices-list` | Get detailed price history with timestamps |
+| `get_supply_stats` | GET | `/api/v1/explore/supply-stats` | Get token supply metrics over time (total supply, circulating, locked) |
+| `get_daily_transfer_stats` | GET | `/api/v1/explore/transfer-stat-per-day` | Get daily token transfer volume statistics |
 
-**4. Super Validators (2 endpoints)**
-- `GET /api/v1/super-validators/hosted` - Hosted SVs
-- `GET /api/v1/super-validators/standalone` - Standalone SVs
+#### 2. Governance (5 endpoints)
 
-**5. Rewards (16 endpoints)**
-- Validator rewards: 4 endpoints
-- Super-validator rewards: 5 endpoints
-- App rewards: 7 endpoints
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_governances` | GET | `/api/v1/governances` | List governance proposals with filtering and search |
+| `list_active_governances` | GET | `/api/v1/governances/active` | List currently active governance proposals open for voting |
+| `list_completed_governances` | GET | `/api/v1/governances/completed` | List completed governance proposals with final vote results |
+| `get_governance_details` | GET | `/api/v1/governances/details/{tracking_cid}` | Get detailed information about a specific governance proposal |
+| `get_governance_statistics` | GET | `/api/v1/governances/statistics` | Get aggregated governance metrics (total proposals, pass rate, participation) |
 
-**6. Token Transfers (10 endpoints)**
-- Basic transfers: 4 endpoints
-- Allocations: 2 endpoints
-- Commands: 2 endpoints
-- Instructions: 2 endpoints
+#### 3. Validators (3 endpoints)
 
-**7. Transfer Preapprovals (1 endpoint)**
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_validators` | GET | `/api/v1/validators` | List all validators with pagination and status filtering |
+| `get_validator_details` | GET | `/api/v1/validators/{validator_id}` | Get detailed information about a specific validator |
+| `get_validator_statistics` | GET | `/api/v1/validators/statistics` | Get overall validator statistics (total, active, recent, inactive) |
 
-**8. Ledger Updates (8 endpoints)**
+#### 4. Super Validators (2 endpoints)
 
-**9. Parties (4 endpoints)**
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_hosted_super_validators` | GET | `/api/v1/super-validators/hosted` | List super-validators hosted by Canton Network |
+| `list_standalone_super_validators` | GET | `/api/v1/super-validators/standalone` | List standalone super-validators operated independently |
 
-**10. Mining Rounds (3 endpoints)**
+#### 5. Validator Rewards (4 endpoints)
 
-**11. Offers (1 endpoint)**
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_validator_rewards` | GET | `/api/v1/rewards/validator` | List validator rewards with pagination |
+| `get_validator_rewards_by_id` | GET | `/api/v1/rewards/validator/{validator_id}` | Get rewards for a specific validator |
+| `get_validator_rewards_stats` | GET | `/api/v1/rewards/validator/stat` | Get validator rewards statistics (total distributed, average, trends) |
+| `get_top_rewarded_validators` | GET | `/api/v1/rewards/validator/top-rewarded` | Get list of validators earning the most rewards |
 
-**12. Featured Apps (1 endpoint)**
+#### 6. Super Validator Rewards (5 endpoints)
 
-**13. Migrations (2 endpoints)**
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_sv_rewards` | GET | `/api/v1/rewards/sv` | List super-validator rewards with pagination |
+| `get_sv_rewards_by_id` | GET | `/api/v1/rewards/sv/{validator_id}` | Get rewards for a specific super-validator |
+| `get_sv_rewards_stats` | GET | `/api/v1/rewards/sv/stat` | Get super-validator rewards statistics |
+| `get_top_rewarded_svs` | GET | `/api/v1/rewards/sv/top-rewarded` | Get list of top-earning super-validators |
+| `get_sv_recent_rewards` | GET | `/api/v1/rewards/sv/recent` | Get most recent super-validator reward distributions |
 
-**14. General Search (1 endpoint)**
+#### 7. App Rewards (7 endpoints)
 
-**15. Health (1 endpoint)**
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_app_rewards` | GET | `/api/v1/rewards/app` | List application rewards with pagination |
+| `get_app_rewards_by_id` | GET | `/api/v1/rewards/app/{app_id}` | Get rewards for a specific application |
+| `get_app_rewards_stats` | GET | `/api/v1/rewards/app/stat` | Get application rewards statistics |
+| `get_top_rewarded_apps` | GET | `/api/v1/rewards/app/top-rewarded` | Get list of top-earning applications |
+| `get_app_recent_rewards` | GET | `/api/v1/rewards/app/recent` | Get most recent application reward distributions |
+| `list_app_reward_history` | GET | `/api/v1/rewards/app/history` | Get historical reward trends for applications |
+| `get_app_reward_breakdown` | GET | `/api/v1/rewards/app/breakdown/{app_id}` | Get detailed reward breakdown for specific app |
 
-See existing `api-configs/ccview.md` for complete endpoint documentation with all parameters.
+#### 8. Token Transfers (10 endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_token_transfers` | GET | `/api/v1/token-transfers` | List token transfers with pagination and filtering |
+| `get_token_transfer_details` | GET | `/api/v1/token-transfers/{contract_id}` | Get detailed information about a specific token transfer |
+| `get_token_transfer_stats` | GET | `/api/v1/token-transfers/stat` | Get token transfer statistics (volume, frequency, trends) |
+| `search_token_transfers` | GET | `/api/v1/token-transfers/search` | Search token transfers by sender, receiver, amount, etc. |
+| `list_transfer_allocations` | GET | `/api/v1/allocations` | List allocation records with pagination |
+| `get_allocation_details` | GET | `/api/v1/allocations/{contract_id}` | Get details of a specific allocation |
+| `list_transfer_commands` | GET | `/api/v1/commands` | List command records with pagination |
+| `get_command_details` | GET | `/api/v1/commands/{contract_id}` | Get details of a specific command |
+| `list_transfer_instructions` | GET | `/api/v1/instructions` | List instruction records with pagination |
+| `get_instruction_details` | GET | `/api/v1/instructions/{contract_id}` | Get details of a specific instruction |
+
+#### 9. Transfer Preapprovals (1 endpoint)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_transfer_preapprovals` | GET | `/api/v1/transfer-preapprovals` | List pre-approved transfers pending execution |
+
+#### 10. Ledger Updates (8 endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_updates` | GET | `/api/v1/updates` | List ledger updates with pagination (all state changes) |
+| `get_update_details` | GET | `/api/v1/updates/{contract_id}` | Get detailed information about a specific ledger update |
+| `get_updates_stats` | GET | `/api/v1/updates/stats` | Get ledger update statistics (frequency, types, trends) |
+| `list_updates_by_type` | GET | `/api/v1/updates/type/{type}` | Filter ledger updates by specific type |
+| `search_updates` | GET | `/api/v1/updates/search` | Search ledger updates by various criteria |
+| `get_recent_updates` | GET | `/api/v1/updates/recent` | Get most recent ledger updates |
+| `list_updates_by_party` | GET | `/api/v1/updates/party/{party_id}` | Get all updates related to a specific party |
+| `get_update_timeline` | GET | `/api/v1/updates/timeline` | Get timeline view of ledger updates |
+
+#### 11. Parties (4 endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `get_party_details` | GET | `/api/v1/party/{party_id}` | Get comprehensive information about a specific party |
+| `get_party_balance` | GET | `/api/v1/party/{party_id}/balance` | Get current token balance for a party |
+| `get_party_activity` | GET | `/api/v1/party/{party_id}/activity` | Get recent activity history for a party |
+| `search_parties` | GET | `/api/v1/parties/search` | Search for parties by identifier or metadata |
+
+#### 12. Mining Rounds (3 endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_mining_rounds` | GET | `/api/v1/mining-rounds` | List mining rounds with pagination (historical and active) |
+| `list_active_mining_rounds` | GET | `/api/v1/mining-rounds/active` | List currently active mining rounds |
+| `get_mining_round_details` | GET | `/api/v1/mining-rounds/{round_id}` | Get detailed information about a specific mining round |
+
+#### 13. Offers (1 endpoint)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_offers` | GET | `/api/v1/offers` | List open offers on the Canton Network |
+
+#### 14. Featured Apps (1 endpoint)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_featured_apps` | GET | `/api/v1/featured-apps` | List featured applications on Canton Network |
+
+#### 15. Migrations (2 endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `list_migrations` | GET | `/api/v1/migrations` | List contract migrations with pagination |
+| `get_migration_details` | GET | `/api/v1/migrations/{migration_id}` | Get details of a specific contract migration |
+
+#### 16. General Search (1 endpoint)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `general_search` | GET | `/api/v1/general-search` | Universal search across parties, updates, transfers, and governance |
+
+---
+
+### Quick Reference: Endpoints by Test Status
+
+**✅ Live Tested & Verified (21 endpoints):**
+- All Health, Explore, Governance, Validators, Rewards (validator), Updates, Mining, Apps, Search endpoints
+- `get_token_transfer_stats` from Transfers category
+
+**❌ Known Issue (1 endpoint):**
+- `list_token_transfers` - Cursor format needs refinement
+
+**📋 Documented Not Yet Tested (42 endpoints):**
+- Super Validators (2), SV Rewards (5), App Rewards (7), Token Transfer details (9), Transfer Preapprovals (1), Ledger Update details (7), Parties (4), Mining details (1), Offers (1), Migrations (2), Token Transfer allocations/commands/instructions (3)
+
+See existing `api-configs/ccview.md` for detailed parameter documentation for all endpoints.
 
 ---
 

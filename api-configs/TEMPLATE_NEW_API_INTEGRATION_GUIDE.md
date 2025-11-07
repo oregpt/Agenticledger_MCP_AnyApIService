@@ -101,11 +101,12 @@ Before using this guide, AgenticLedger platform teams should inspect their own p
 ## Table of Contents
 1. Quick Reference
 2. Live Test Results - PROOF IT WORKS
-3. Suggested JSON Configuration
+3. Suggested Configuration (TypeScript + JSON)
 4. Platform Integration Notes
 5. Usage Examples
 6. Troubleshooting
-7. Appendix: How to Update JSON Config
+7. Appendix: Complete Endpoint Directory (REQUIRED)
+8. Summary & Action Items
 
 ---
 
@@ -449,7 +450,49 @@ For JSON-based platforms:
 
 ---
 
-## Appendix: How to Update JSON Config
+## Appendix: Complete Endpoint Directory (REQUIRED)
+
+**🚨 CRITICAL: This section is REQUIRED for AgenticLedger integration**
+
+### Why This Matters
+
+AgenticLedger's capability selection UI needs a complete list of all endpoints with descriptions to show users what actions they can perform with this API. This table is used directly in the platform.
+
+### Complete Endpoint Directory (Name → Description)
+
+This comprehensive table provides every endpoint with its description for easy reference and integration into AgenticLedger's capability selection UI.
+
+#### Category 1: [Category Name] (X endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `endpoint_name_1` | GET | `/api/v1/path` | Clear description of what this endpoint does |
+| `endpoint_name_2` | POST | `/api/v1/another` | Clear description of what this endpoint does |
+| `endpoint_name_3` | GET | `/api/v1/query` | Clear description with key functionality |
+
+#### Category 2: [Category Name] (X endpoints)
+
+| Endpoint Name | Method | Path | Description |
+|---------------|--------|------|-------------|
+| `endpoint_name_4` | GET | `/api/v2/resource` | Clear description of what this endpoint does |
+| `endpoint_name_5` | DELETE | `/api/v2/resource/{id}` | Clear description with parameter info |
+
+[Continue for ALL endpoints - no exceptions]
+
+### Quick Reference: Endpoints by Test Status
+
+**✅ Live Tested & Verified (X endpoints):**
+- List all endpoints that were tested with real API calls
+
+**❌ Known Issues (X endpoints):**
+- List endpoints with known problems and the issue description
+
+**📋 Documented Not Yet Tested (X endpoints):**
+- List endpoints that are documented but not yet tested
+
+---
+
+## How to Update JSON Config
 
 ### Option 1: Add to Platform Database (Recommended)
 [Platform-specific instructions]
@@ -497,9 +540,13 @@ Before considering the guide complete:
 - [ ] All required sections present
 - [ ] Every endpoint has at least one test
 - [ ] All tests include real API calls and responses
-- [ ] JSON configuration is complete and valid
+- [ ] TypeScript configuration is complete and valid (Option A)
+- [ ] JSON configuration is complete and valid (Option B)
 - [ ] At least 3 usage examples included
 - [ ] At least 3 troubleshooting scenarios documented
+- [ ] **REQUIRED:** Complete Endpoint Directory table with ALL endpoints, methods, paths, and descriptions
+- [ ] Endpoint directory organized by logical categories
+- [ ] Test status breakdown showing tested vs documented endpoints
 
 ### Platform-First Approach
 - [ ] Disclaimer at top emphasizing platform patterns
