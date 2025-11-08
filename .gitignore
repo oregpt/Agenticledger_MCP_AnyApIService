@@ -35,3 +35,16 @@ coverage/
 # Temporary files
 *.tmp
 .cache/
+
+# API Credentials - DO NOT COMMIT
+**/test-credentials.env
+**/*credentials*.env
+**/*-credentials.env
+BinanceUS/test-credentials.env
+CoinbasePrime/test-credentials.env
+Kraken/test-credentials.env
+
+# Test scripts with embedded credentials
+**/test-*.cjs
+**/test-*.js
+**/full-test-results.txt
