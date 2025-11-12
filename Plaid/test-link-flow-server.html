@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plaid Link Test - Get Access Token</title>
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 0;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    button:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+    }
+    #result {
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #4CAF50;
+      margin-top: 20px;
+      display: none;
+      word-wrap: break-word;
+    }
+    #error {
+      background: #ffe6e6;
+      padding: 15px;
+      border-left: 4px solid #ff0000;
+      margin-top: 20px;
+      display: none;
+    }
+    .code {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 10px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+    .success {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+    .info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-left: 4px solid #2196F3;
+      margin: 20px 0;
+    }
+    .step {
+      margin: 15px 0;
+      padding-left: 25px;
+    }
+    .loading {
+      display: none;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏦 Plaid Link Test - Get Access Token</h1>
+
+    <div class="info">
+      <strong>What this does:</strong>
+      <div class="step">1️⃣ Gets a link token from Plaid (via local server)</div>
+      <div class="step">2️⃣ Opens Plaid Link UI to connect a test bank</div>
+      <div class="step">3️⃣ Exchanges public token for access token</div>
+      <div class="step">4️⃣ Shows you the access token to use in API calls</div>
+    </div>
+
+    <button id="link-button">🚀 Connect Bank Account (Sandbox)</button>
+    <div class="loading" id="loading">Loading...</div>
+
+    <div id="error"></div>
+    <div id="result"></div>
+
+    <div class="info" style="margin-top: 30px; background: #fff3cd; border-color: #ffc107;">
+      <strong>⚠️ Test Credentials for Plaid Link:</strong>
+      <div class="step">Bank: <strong>First Platypus Bank</strong></div>
+      <div class="step">Username: <strong>user_good</strong></div>
+      <div class="step">Password: <strong>pass_good</strong></div>
+    </div>
+  </div>
+
+  <script>
+    // Step 1: Get link token from our local server
+    async function getLinkToken() {
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('link-button').disabled = true;
+      document.getElementById('error').style.display = 'none';
+
+      try {
+        const response = await fetch('http://localhost:3000/api/create-link-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: 'test-user-' + Date.now()
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.link_token) {
+          return data.link_token;
+        } else {
+          throw new Error(data.error_message || 'Failed to create link token');
+        }
+      } catch (error) {
+        document.getElementById('error').innerHTML =
+          '<strong>Error:</strong> ' + error.message +
+          '<br><br><strong>Make sure the server is running!</strong><br>' +
+          'Open a terminal and run:<br>' +
+          '<code style="background:#333;color:#fff;padding:5px;">node plaid-link-server.cjs</code>';
+        document.getElementById('error').style.display = 'block';
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('link-button').disabled = false;
+        throw error;
+      }
+    }
+
+    // Step 2 & 3: Initialize Plaid Link and exchange token
+    document.getElementById('link-button').addEventListener('click', async () => {
+      try {
+        const linkToken = await getLinkToken();
+        document.getElementById('loading').style.display = 'none';
+
+        const handler = Plaid.create({
+          token: linkToken,
+          onSuccess: async (public_token, metadata) => {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').innerHTML = '<strong>Step 1/2:</strong> Got public token<br>Exchanging for access token...';
+            document.getElementById('result').style.display = 'block';
+
+            try {
+              // Exchange for access token via our server
+              const response = await fetch('http://localhost:3000/api/exchange-token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  publicToken: public_token
+                })
+              });
+
+              const data = await response.json();
+              document.getElementById('loading').style.display = 'none';
+
+              if (data.access_token) {
+                displaySuccess(data, metadata);
+              } else {
+                throw new Error(data.error_message || 'Failed to exchange token');
+              }
+            } catch (error) {
+              document.getElementById('loading').style.display = 'none';
+              document.getElementById('error').textContent = 'Exchange error: ' + error.message;
+              document.getElementById('error').style.display = 'block';
+            }
+          },
+          onExit: (err, metadata) => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('link-button').disabled = false;
+
+            if (err) {
+              document.getElementById('error').textContent = 'Link error: ' + err.error_message;
+              document.getElementById('error').style.display = 'block';
+            } else {
+              console.log('User exited Link flow', metadata);
+            }
+          }
+        });
+
+        handler.open();
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+
+    function displaySuccess(data, metadata) {
+      const institutionName = metadata.institution?.name || 'Unknown';
+      const accountNames = metadata.accounts?.map(a => a.name).join(', ') || 'Unknown';
+
+      const html = `
+        <h2 class="success">✅ SUCCESS!</h2>
+
+        <h3>Your Access Token:</h3>
+        <div class="code" id="access-token">${data.access_token}</div>
+        <button onclick="copyToken()" style="background:#2196F3;">📋 Copy Token</button>
+
+        <h3>Item ID:</h3>
+        <div class="code">${data.item_id}</div>
+
+        <h3>Connected Bank:</h3>
+        <div class="code">${institutionName}</div>
+
+        <h3>Connected Accounts:</h3>
+        <div class="code">${accountNames}</div>
+
+        <h3>🎯 Next Steps - Test the API:</h3>
+        <p>Run this command in your terminal:</p>
+        <div class="code">cd "C:\\Users\\oreph\\Documents\\AgenticLedger\\Custom MCP SERVERS\\AnyAPICall\\Plaid"
+node test-plaid-api.cjs --access-token ${data.access_token}</div>
+
+        <h3>💾 Save This Token:</h3>
+        <p>The access token doesn't expire and allows access to this user's bank data.</p>
+        <p><strong>Share this token to test all endpoints!</strong></p>
+      `;
+
+      document.getElementById('result').innerHTML = html;
+      document.getElementById('result').style.display = 'block';
+    }
+
+    function copyToken() {
+      const token = document.getElementById('access-token').textContent;
+      navigator.clipboard.writeText(token).then(() => {
+        alert('✅ Token copied to clipboard!');
+      });
+    }
+  </script>
+</body>
+</html>
