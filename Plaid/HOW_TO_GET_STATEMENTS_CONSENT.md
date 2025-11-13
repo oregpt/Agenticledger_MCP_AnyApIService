@@ -143,7 +143,7 @@ curl -X POST https://sandbox.plaid.com/link/token/create \
     "client_id": "6914a81a11cde40020b0fc33",
     "secret": "f63eb9a9c21a982d782df6eeb5e327",
     "user": {"client_user_id": "test-user-123"},
-    "access_token": "access-sandbox-88b8cf12-41f3-4ea4-a2bd-01c3a4985395",
+    "access_token": "access-xxxxxxxxxxxxxxxxxxx5",
     "products": ["statements"]
   }'
 ```
