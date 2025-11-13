@@ -48,3 +48,8 @@ Kraken/test-credentials.env
 **/test-*.cjs
 **/test-*.js
 **/full-test-results.txt
+
+# Plaid test credentials and sensitive files
+Plaid/SANDBOX_TEST_CREDENTIALS.md
+Plaid/plaid-link-server.cjs
+Plaid/test-link-flow-server.html
