@@ -17,7 +17,7 @@ if sys.platform == 'win32':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
-API_KEY = "temp_mainnet_HsafylQwUo6yWBfSn0s5o6EDAT48Cp99jK8TH1p9kn1sqnDkxFcuSphbLQKko"
+API_KEY = "temp_mainnet_xxxxxxxxxxxxxxxxo"
 BASE_URL = "https://ccview.io"
 
 def make_request(endpoint, params=None):
