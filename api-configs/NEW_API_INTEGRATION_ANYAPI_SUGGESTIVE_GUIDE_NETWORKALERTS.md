@@ -4,7 +4,7 @@
 
 Before using this guide, AgenticLedger platform teams should inspect their own platform to see what patterns have previously worked for existing APIs using AnyAPICall. This document provides suggestions and guidance, but your platform's existing patterns should take precedence.
 
-**✅ STATUS: LIVE TESTED - 6 ENDPOINTS VERIFIED (100% PASS RATE)**
+**✅ STATUS: LIVE TESTED - 7 ENDPOINTS VERIFIED (100% PASS RATE)**
 
 This guide has been tested with live Canton Monitor API credentials. All test results included below.
 
@@ -85,16 +85,17 @@ The NetworkAlerts (Canton Monitor) API provides real-time monitoring and alertin
 
 ### Verified Endpoints (Live Tested)
 
-This guide covers **6 endpoints** that have been successfully tested:
+This guide covers **7 endpoints** that have been successfully tested:
 
 | # | Endpoint | Auth Required | Description |
 |---|----------|---------------|-------------|
 | 1 | `GET /health` | ❌ No | Health check for uptime monitoring |
 | 2 | `GET /api/status` | ✅ Yes | Live current values with active alerts |
-| 3 | `GET /api/metrics` | ✅ Yes | Query historical metrics data |
-| 4 | `GET /api/metrics/latest` | ✅ Yes | Most recent value per source/type |
-| 5 | `GET /api/schema` | ✅ Yes | Column definitions for metrics |
-| 6 | `GET /api/keys` | ✅ Yes | List available API keys (admin) |
+| 3 | `GET /api/metrics` | ✅ Yes | Query historical metrics data (raw column names) |
+| 4 | `GET /api/metrics_v2` | ✅ Yes | Query historical metrics with schema-mapped column names |
+| 5 | `GET /api/metrics/latest` | ✅ Yes | Most recent value per source/type |
+| 6 | `GET /api/schema` | ✅ Yes | Column definitions for metrics |
+| 7 | `GET /api/keys` | ✅ Yes | List available API keys (admin) |
 
 ### Use Cases
 
@@ -111,16 +112,17 @@ This guide covers **6 endpoints** that have been successfully tested:
 
 ### Test Summary
 
-**✅ 6/6 Endpoints Tested Successfully (100% Pass Rate)**
+**✅ 7/7 Endpoints Tested Successfully (100% Pass Rate)**
 
 | # | Endpoint | Status | Response Time | HTTP Code |
 |---|----------|--------|---------------|-----------|
 | 1 | `GET /health` | ✅ PASS | 296ms | 200 |
 | 2 | `GET /api/status` | ✅ PASS | 6,441ms | 200 |
 | 3 | `GET /api/metrics` | ✅ PASS | 253ms | 200 |
-| 4 | `GET /api/metrics/latest` | ✅ PASS | 198ms | 200 |
-| 5 | `GET /api/schema` | ✅ PASS | 153ms | 200 |
-| 6 | `GET /api/keys` | ✅ PASS | 250ms | 200 |
+| 4 | `GET /api/metrics_v2` | ✅ PASS | 248ms | 200 |
+| 5 | `GET /api/metrics/latest` | ✅ PASS | 198ms | 200 |
+| 6 | `GET /api/schema` | ✅ PASS | 153ms | 200 |
+| 7 | `GET /api/keys` | ✅ PASS | 250ms | 200 |
 
 **Additional Tests:**
 | Test | Status | Response Time |
@@ -285,7 +287,70 @@ curl -H "X-API-Key: ZS-SZV2I1U6WwQuSGfoGND8K_isbel_QzNwE_6vmG1g" \
 
 ---
 
-### Test 4: Latest Metrics ✅
+### Test 4: Historical Metrics V2 (Schema-Mapped) ✅
+
+**Endpoint:** `GET /api/metrics_v2?limit=5`
+
+**Purpose:** Same as `/api/metrics` but automatically maps `value1`/`value2` to human-readable column names (`gross_cc`/`est_traffic_cc`) using the schema table.
+
+**Request:**
+```bash
+curl -H "X-API-Key: Zq1rgOrzjbBfHx9pyxY30ACKhsVZf_vaAHX4YE4rqsY" \
+  "https://cantaraalert-production.up.railway.app/api/metrics_v2?limit=5"
+```
+
+**Response:**
+```json
+{
+    "count": 5,
+    "data": [
+        {
+            "id": 99,
+            "obtained_timestamp": "2025-11-27T19:21:26.936639+00:00",
+            "source": "canton-rewards.noves.fi",
+            "type": "EstEarning_24hr_avg",
+            "gross_cc": "17.28",
+            "est_traffic_cc": "11.58",
+            "value3": null,
+            "value4": null,
+            "value5": null
+        },
+        {
+            "id": 98,
+            "obtained_timestamp": "2025-11-27T19:21:26.936639+00:00",
+            "source": "canton-rewards.noves.fi",
+            "type": "EstEarning_1hr_avg",
+            "gross_cc": "22.3",
+            "est_traffic_cc": "11.58",
+            "value3": null,
+            "value4": null,
+            "value5": null
+        }
+    ]
+}
+```
+
+**Result:**
+- Status: 200 OK
+- Response Time: 248ms
+- Data: Same structure as `/api/metrics` but with mapped column names
+
+**Key Finding:** Drop-in replacement for `/api/metrics` - just change the endpoint name. Returns `gross_cc` and `est_traffic_cc` instead of `value1` and `value2`.
+
+**Filter Tests (all work identically to /api/metrics):**
+```bash
+# Type filter - works ✅
+curl -H "X-API-Key: YOUR_KEY" \
+  "https://cantaraalert-production.up.railway.app/api/metrics_v2?type=EstEarning_latest_round&limit=3"
+
+# Source filter - works ✅
+curl -H "X-API-Key: YOUR_KEY" \
+  "https://cantaraalert-production.up.railway.app/api/metrics_v2?source=canton-rewards.noves.fi&limit=3"
+```
+
+---
+
+### Test 6: Latest Metrics ✅
 
 **Endpoint:** `GET /api/metrics/latest`
 
@@ -337,7 +402,7 @@ curl -H "X-API-Key: ZS-SZV2I1U6WwQuSGfoGND8K_isbel_QzNwE_6vmG1g" \
 
 ---
 
-### Test 5: Schema Definition ✅
+### Test 7: Schema Definition ✅
 
 **Endpoint:** `GET /api/schema`
 
@@ -389,7 +454,7 @@ curl -H "X-API-Key: ZS-SZV2I1U6WwQuSGfoGND8K_isbel_QzNwE_6vmG1g" \
 
 ---
 
-### Test 6: API Keys List ✅
+### Test 8: API Keys List ✅
 
 **Endpoint:** `GET /api/keys?limit=3`
 
@@ -433,7 +498,7 @@ curl -H "X-API-Key: ZS-SZV2I1U6WwQuSGfoGND8K_isbel_QzNwE_6vmG1g" \
 
 ---
 
-### Test 7: Type Filter ✅
+### Test 9: Type Filter ✅
 
 **Endpoint:** `GET /api/metrics?type=EstEarning_latest_round&limit=3`
 
@@ -493,7 +558,7 @@ curl -H "X-API-Key: ZS-SZV2I1U6WwQuSGfoGND8K_isbel_QzNwE_6vmG1g" \
 
 ---
 
-### Test 8: Bearer Token Auth ✅
+### Test 10: Bearer Token Auth ✅
 
 **Endpoint:** `GET /api/status` with Bearer token
 
@@ -511,7 +576,7 @@ curl -H "Authorization: Bearer ZS-SZV2I1U6WwQuSGfoGND8K_isbel_QzNwE_6vmG1g" \
 
 ---
 
-### Test 9: Unauthorized Request ✅
+### Test 11: Unauthorized Request ✅
 
 **Endpoint:** `GET /api/status` without auth
 
@@ -594,7 +659,46 @@ const NETWORK_ALERTS: APIDefinition = {
       name: 'get_metrics',
       path: '/api/metrics',
       method: 'GET',
-      description: 'Query historical metrics data with optional filters',
+      description: 'Query historical metrics data with optional filters (returns value1, value2)',
+      parameters: [],
+      queryParams: [
+        {
+          name: 'source',
+          type: 'string',
+          required: false,
+          description: 'Filter by source (e.g., canton-rewards.noves.fi)'
+        },
+        {
+          name: 'type',
+          type: 'string',
+          required: false,
+          description: 'Filter by type (EstEarning_latest_round, EstEarning_1hr_avg, EstEarning_24hr_avg)'
+        },
+        {
+          name: 'from',
+          type: 'string',
+          required: false,
+          description: 'Start timestamp in ISO 8601 format'
+        },
+        {
+          name: 'to',
+          type: 'string',
+          required: false,
+          description: 'End timestamp in ISO 8601 format'
+        },
+        {
+          name: 'limit',
+          type: 'integer',
+          required: false,
+          description: 'Max rows to return (default: 100, max: 1000)'
+        }
+      ]
+    },
+    {
+      name: 'get_metrics_v2',
+      path: '/api/metrics_v2',
+      method: 'GET',
+      description: 'Query historical metrics with schema-mapped column names (returns gross_cc, est_traffic_cc instead of value1, value2)',
       parameters: [],
       queryParams: [
         {
@@ -731,7 +835,7 @@ If your platform uses JSON configuration files:
       "name": "get_metrics",
       "path": "/api/metrics",
       "method": "GET",
-      "description": "Query historical metrics data with optional filters",
+      "description": "Query historical metrics data with optional filters (returns value1, value2)",
       "parameters": [],
       "queryParams": [
         {"name": "source", "type": "string", "required": false, "description": "Filter by source"},
@@ -745,6 +849,27 @@ If your platform uses JSON configuration files:
         "count": 5,
         "data": [
           {"id": 60, "obtained_timestamp": "2025-11-27T17:23:44.825928+00:00", "source": "canton-rewards.noves.fi", "type": "EstEarning_24hr_avg", "value1": "16.55", "value2": "11.74"}
+        ]
+      }
+    },
+    {
+      "name": "get_metrics_v2",
+      "path": "/api/metrics_v2",
+      "method": "GET",
+      "description": "Query historical metrics with schema-mapped column names (returns gross_cc, est_traffic_cc)",
+      "parameters": [],
+      "queryParams": [
+        {"name": "source", "type": "string", "required": false, "description": "Filter by source"},
+        {"name": "type", "type": "string", "required": false, "description": "Filter by metric type"},
+        {"name": "from", "type": "string", "required": false, "description": "Start timestamp (ISO 8601)"},
+        {"name": "to", "type": "string", "required": false, "description": "End timestamp (ISO 8601)"},
+        {"name": "limit", "type": "integer", "required": false, "description": "Max rows (default: 100, max: 1000)"}
+      ],
+      "exampleRequest": {"limit": 5},
+      "exampleResponse": {
+        "count": 5,
+        "data": [
+          {"id": 99, "obtained_timestamp": "2025-11-27T19:21:26.936639+00:00", "source": "canton-rewards.noves.fi", "type": "EstEarning_24hr_avg", "gross_cc": "17.28", "est_traffic_cc": "11.58"}
         ]
       }
     },
@@ -1549,11 +1674,12 @@ AgenticLedger's capability selection UI needs a complete list of all endpoints w
 | `health_check` | GET | `/health` | Health check endpoint for uptime monitoring (no auth required) |
 | `get_live_status` | GET | `/api/status` | Get live current metrics with active alerts (performs live scrape, ~6s response) |
 
-#### Category 2: Metrics Data (2 endpoints)
+#### Category 2: Metrics Data (3 endpoints)
 
 | Endpoint Name | Method | Path | Description |
 |---------------|--------|------|-------------|
-| `get_metrics` | GET | `/api/metrics` | Query historical metrics data with optional filters (source, type, from, to, limit) |
+| `get_metrics` | GET | `/api/metrics` | Query historical metrics data with optional filters (returns value1, value2) |
+| `get_metrics_v2` | GET | `/api/metrics_v2` | Query historical metrics with schema-mapped column names (returns gross_cc, est_traffic_cc) |
 | `get_latest_metrics` | GET | `/api/metrics/latest` | Get most recent value for each source/type combination (fast, recommended for dashboards) |
 
 #### Category 3: Configuration (1 endpoint)
@@ -1570,10 +1696,11 @@ AgenticLedger's capability selection UI needs a complete list of all endpoints w
 
 ### Quick Reference: Endpoints by Test Status
 
-**✅ Live Tested & Verified (6 endpoints - 100%):**
+**✅ Live Tested & Verified (7 endpoints - 100%):**
 - `health_check` - 200 OK, 296ms
 - `get_live_status` - 200 OK, 6,441ms (live scrape)
 - `get_metrics` - 200 OK, 253ms
+- `get_metrics_v2` - 200 OK, 248ms (schema-mapped columns)
 - `get_latest_metrics` - 200 OK, 198ms
 - `get_schema` - 200 OK, 153ms
 - `list_api_keys` - 200 OK, 250ms

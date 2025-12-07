@@ -9,8 +9,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Your Plaid credentials
-const PLAID_CLIENT_ID = '6914a8xxxxxxxxxxx3';
-const PLAID_SECRET = 'f63xxxxxxxxxxxxxxxxxxxxxx27';
+const PLAID_CLIENT_ID = '6914a81a11cde40020b0fc33';
+const PLAID_SECRET = 'f63eb9a9c21a982d782df6eeb5e327';
 const PORT = 3000;
 
 /**
